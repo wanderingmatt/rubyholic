@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @locations.name %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%=h @locations.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%=h @locations.longitude %>
+</p>
+
+
+<%= link_to 'Edit', edit_locations_path(@locations) %> |
+<%= link_to 'Back', locations_path %>
