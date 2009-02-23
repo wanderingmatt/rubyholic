@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.xml
   def show
     @group = Group.find(params[:id])
+    @location = Location.find(@group.location_id)
 
     respond_to do |format|
       format.html # show.html.erb
