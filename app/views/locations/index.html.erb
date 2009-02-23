@@ -7,18 +7,18 @@
     <th>Longitude</th>
   </tr>
 
-<% for locations in @locations %>
+<% for location in @locations %>
   <tr>
-    <td><%=h locations.name %></td>
-    <td><%=h locations.latitude %></td>
-    <td><%=h locations.longitude %></td>
-    <td><%= link_to 'Show', locations %></td>
-    <td><%= link_to 'Edit', edit_locations_path(locations) %></td>
-    <td><%= link_to 'Destroy', locations, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h location.name %></td>
+    <td><%=h location.latitude %></td>
+    <td><%=h location.longitude %></td>
+    <td><%= link_to 'Show', location %></td>
+    <td><%= link_to 'Edit', edit_location_path(location) %></td>
+    <td><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New locations', new_locations_path %>
+<%= link_to 'New location', new_location_path %>

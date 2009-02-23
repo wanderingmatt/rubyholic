@@ -1,6 +1,6 @@
-<h1>Editing locations</h1>
+<h1>Editing location</h1>
 
-<% form_for(@locations) do |f| %>
+<% form_for(@location) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -20,5 +20,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @locations %> |
+<%= link_to 'Show', @location %> |
 <%= link_to 'Back', locations_path %>
