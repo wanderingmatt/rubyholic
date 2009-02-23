@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  # require 'will_paginate'
+  require 'will_paginate'
   
   helper :all # include all helpers, all the time
 

@@ -9,7 +9,7 @@
   </p>
   <p>
     <%= f.label :location_id %><br />
-    <%= f.text_field :location_id %>
+    <%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %>
   </p>   
   <p>
     <%= f.submit "Create" %>

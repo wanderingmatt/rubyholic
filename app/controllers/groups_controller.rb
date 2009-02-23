@@ -3,7 +3,8 @@ class GroupsController < ApplicationController
   # GET /groups.xml
   def index
     # @groups = Group.find(:all)
-    @groups = Group.paginate :page => params[:page], :order => 'created_at DESC'
+    @groups = Group.paginate :page => params[:page], :per_page => 10, :order => 'name DESC'
+    # @locations = Location.find(@groups.location_id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -37,6 +38,7 @@ class GroupsController < ApplicationController
   # GET /groups/1/edit
   def edit
     @group = Group.find(params[:id])
+    @location = Location.find(@group.location_id)
   end
 
   # POST /groups
