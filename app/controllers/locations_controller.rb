@@ -13,11 +13,16 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.xml
   def show
-    @location = Location.find(params[:id])
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @location }
+    begin
+      @location = Location.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error("Attempt to access invalid group #{params[:id]}")
+      redirect_to_index('Invalid group')
+    else    
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @location }
+      end
     end
   end
 
@@ -34,7 +39,12 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
-    @location = Location.find(params[:id])
+    begin
+      @location = Location.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error("Attempt to access invalid group #{params[:id]}")
+      redirect_to_index('Invalid group')
+    end
   end
 
   # POST /locations

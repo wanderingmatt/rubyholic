@@ -3,6 +3,7 @@ require 'test_helper'
 class LocationsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
+    
     assert_response :success
     assert_not_nil assigns(:locations)
   end
@@ -48,6 +49,13 @@ class LocationsControllerTest < ActionController::TestCase
     get :show, :id => locations(:one).id
     assert_response :success
   end
+  
+  test "should not show invalid location" do
+    get :show, :id => Location.maximum(:id) + 1
+  
+    assert_response :redirect
+    assert flash[:notice]
+  end
 
   test "should get edit" do
     get :edit, :id => locations(:one).id
@@ -62,6 +70,13 @@ class LocationsControllerTest < ActionController::TestCase
       :name => 'location[longitude]'
     }
     assert_response :success
+  end
+  
+  test "should not edit invalid location" do
+    get :edit, :id => Location.maximum(:id) + 1
+
+    assert_response :redirect
+    assert flash[:notice]
   end
 
   test "should update location" do
