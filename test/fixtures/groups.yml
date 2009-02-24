@@ -1,7 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-
+  name: X-Men
+  location_id: 1
 two:
-  name: MyString
+  name: Brotherhood of Mutants
+  location_id: 2

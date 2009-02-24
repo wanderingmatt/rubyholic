@@ -14,4 +14,14 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+  
+  
+  private
+  
+  
+  # Redirects the User to index and displays a flash message if one was provided
+  def redirect_to_index message = nil
+    flash[:notice] = message if message
+    redirect_to :action => 'index'
+  end
 end
