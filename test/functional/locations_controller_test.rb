@@ -9,6 +9,16 @@ class LocationsControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
+    
+    assert_tag :tag => 'input', :attributes => {
+      :name => 'location[name]'
+    }
+    assert_tag :tag => 'input', :attributes => {
+      :name => 'location[latitude]'
+    }
+    assert_tag :tag => 'input', :attributes => {
+      :name => 'location[longitude]'
+    }
     assert_response :success
   end
 
@@ -23,6 +33,16 @@ class LocationsControllerTest < ActionController::TestCase
 
     assert_redirected_to location_path(assigns(:location))
   end
+  
+  test "should not create invalid location" do
+    assert_difference('Location.count', 0) do
+      post :create, :location => {
+        :name => ''
+        }
+    end
+
+    assert_not_nil assigns(:location).errors.on :name
+  end
 
   test "should show location" do
     get :show, :id => locations(:one).id
@@ -31,12 +51,26 @@ class LocationsControllerTest < ActionController::TestCase
 
   test "should get edit" do
     get :edit, :id => locations(:one).id
+    
+    assert_tag :tag => 'input', :attributes => {
+      :name => 'location[name]'
+    }
+    assert_tag :tag => 'input', :attributes => {
+      :name => 'location[latitude]'
+    }
+    assert_tag :tag => 'input', :attributes => {
+      :name => 'location[longitude]'
+    }
     assert_response :success
   end
 
   test "should update location" do
-    put :update, :id => locations(:one).id, :location => { }
+    put :update, :id => locations(:one).id, :location => {
+      :name => 'Project-X Laboratory'
+      }
+      
     assert_redirected_to location_path(assigns(:location))
+    assert_equal 'Project-X Laboratory', Location.find(locations(:one).id).name
   end
 
   test "should destroy location" do

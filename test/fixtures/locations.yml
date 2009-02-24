@@ -1,13 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  id: 1
-  name: MyString
+  name: X-Mansion
   latitude: 1.5
   longitude: 1.5
 
 two:
-  id: 2
-  name: MyString
+  name: X-Jet
   latitude: 1.5
   longitude: 1.5

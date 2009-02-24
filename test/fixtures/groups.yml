@@ -2,7 +2,7 @@
 
 one:
   name: X-Men
-  location_id: 1
+  location: one
 two:
   name: Brotherhood of Mutants
-  location_id: 2
+  location: two
