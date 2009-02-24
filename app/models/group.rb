@@ -3,11 +3,15 @@ class Group < ActiveRecord::Base
   
   validates_presence_of :name, :location_id
   
-  def self.sort(page, order)    
+  def self.sort(page, order)
+    options = {}
+    
     if order == 'location'
-      paginate :page => page, :per_page => 10, :order => 'location_id'
+      options[:order] = 'location_id'
     else order == 'name'
-      paginate :page => page, :per_page => 10, :order => 'name'
+      options[:order] = 'name'
     end
+    
+    paginate({ :page => page, :per_page => 10 }.merge options)
   end
 end
