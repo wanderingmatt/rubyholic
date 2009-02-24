@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Location</th>
+    <th><%= link_to 'Name', groups_path(:sorted_by => 'name') %></a></th>
+    <th><%= link_to 'Location', groups_path(:sorted_by => 'location') %></th>
   </tr>
 
 <% for group in @groups %>
@@ -16,7 +16,7 @@
   </tr>
 <% end %>
 </table>
+<br />
 <%= will_paginate @groups %>
 <br />
-
 <%= link_to 'New group', new_group_path %>

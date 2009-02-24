@@ -2,10 +2,8 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.xml
   def index
-    # @groups = Group.find(:all)
-    @groups = Group.paginate :page => params[:page], :per_page => 10, :order => 'name DESC'
-    # @locations = Location.find(@groups.location_id)
-
+    @groups = Group.sort(params[:page], params[:sorted_by])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @groups }
