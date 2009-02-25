@@ -15,7 +15,6 @@ class GroupsController < ApplicationController
   def show
     begin
       @group = Group.find(params[:id])
-      @location = Location.find(@group.location_id)
     rescue ActiveRecord::RecordNotFound
       logger.error("Attempt to access invalid group #{params[:id]}")
       redirect_to_index('Invalid group')
@@ -42,7 +41,6 @@ class GroupsController < ApplicationController
   def edit
     begin
       @group = Group.find(params[:id])
-      @location = Location.find(@group.location_id)
     rescue ActiveRecord::RecordNotFound
       logger.error("Attempt to access invalid group #{params[:id]}")
       redirect_to_index('Invalid group')
