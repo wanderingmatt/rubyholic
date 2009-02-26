@@ -4,7 +4,6 @@
   <tr>
     <th>Group</th>
     <th>Location</th>
-    <th>Date</th>
     <th>Start time</th>
     <th>End time</th>
     <th>Description</th>
@@ -12,9 +11,8 @@
 
 <% for event in @events %>
   <tr>
-    <td><%=h event.group_id %></td>
-    <td><%=h event.location_id %></td>
-    <td><%=h event.date %></td>
+    <td><%=h event.group.name %></td>
+    <td><%=h event.location.name %></td>
     <td><%=h event.start_time %></td>
     <td><%=h event.end_time %></td>
     <td><%=h event.description %></td>

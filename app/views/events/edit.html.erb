@@ -5,15 +5,13 @@
 
   <p>
     <%= f.label :group_id %><br />
-    <%= f.text_field :group_id %>
+    <%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %>
+    <%= link_to 'Add a New Group', :controller => 'groups', :action => 'new' %>
   </p>
   <p>
     <%= f.label :location_id %><br />
-    <%= f.text_field :location_id %>
-  </p>
-  <p>
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
+    <%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %>
+    <%= link_to 'Add a New Location', :controller => 'locations', :action => 'new' %>
   </p>
   <p>
     <%= f.label :start_time %><br />
