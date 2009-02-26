@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
-  has_many :groups
+  has_many :events
+  has_many :groups, :through => :locations
   
   validates_presence_of :name
 end

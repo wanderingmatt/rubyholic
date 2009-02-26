@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th><%= link_to 'Name', groups_path(:sorted_by => 'name') %></a></th>
-    <th><%= link_to 'Location', groups_path(:sorted_by => 'location') %></th>
+    <th><%= link_to 'Location', groups_path(:sorted_by => 'locations.name') %></th>
   </tr>
 
 <% for group in @groups %>
