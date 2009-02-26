@@ -2,7 +2,7 @@ class CreateGroups < ActiveRecord::Migration
   def self.up
     create_table :groups do |t|
       t.string :name
-      t.integer :location_id, :null => false, :options => "CONSTRAINT fk_group_locations REFERENCES locations(id)"
+      t.integer :location_id
 
       t.timestamps
     end
