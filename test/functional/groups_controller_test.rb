@@ -14,17 +14,13 @@ class GroupsControllerTest < ActionController::TestCase
     assert_tag :tag => 'input', :attributes => {
       :name => 'group[name]'
     }
-    assert_tag :tag => 'select', :attributes => {
-      :name => 'group[location_id]'
-    }
     assert_response :success
   end
 
   test "should create group" do
     assert_difference('Group.count') do
       post :create, :group => {
-        :name => 'X-Men',
-        :location_id => 1
+        :name => 'X-Men'
         }
     end
 
@@ -34,11 +30,11 @@ class GroupsControllerTest < ActionController::TestCase
   test "should not create invalid group" do
     assert_difference('Group.count', 0) do
       post :create, :group => {
-        :name => 'X-Men'
+        :name => ''
         }
     end
   
-    assert_not_nil assigns(:group).errors.on :location_id
+    assert_not_nil assigns(:group).errors.on :name
   end
 
   test "should show group" do
@@ -59,9 +55,6 @@ class GroupsControllerTest < ActionController::TestCase
     
     assert_tag :tag => 'input', :attributes => {
       :name => 'group[name]'
-    }
-    assert_tag :tag => 'select', :attributes => {
-      :name => 'group[location_id]'
     }
     assert_response :success
   end

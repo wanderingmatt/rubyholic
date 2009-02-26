@@ -2,7 +2,6 @@
 
 one:
   name: X-Men
-  location: one
+  
 two:
   name: Brotherhood of Mutants
-  location: two

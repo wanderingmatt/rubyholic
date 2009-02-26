@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "event validates presence of group" do
+    event = Event.new
+    assert ! event.valid?
+    assert event.errors.on(:group_id)
   end
 end
