@@ -5,6 +5,6 @@ class Event < ActiveRecord::Base
   validates_presence_of :group_id, :location_id, :start_time, :end_time
   
   def self.sort(page, order)
-    paginate({ :page => page, :per_page => 10, :order => order })
+    paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
   end
 end

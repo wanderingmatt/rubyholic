@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th><%= link_to 'Group', events_path(:sorted_by => 'group_id') %></th>
-    <th><%= link_to 'Location', events_path(:sorted_by => 'location_id') %></th>
+    <th><%= link_to 'Group', events_path(:sorted_by => 'groups.name') %></th>
+    <th><%= link_to 'Location', events_path(:sorted_by => 'locations.name') %></th>
     <th><%= link_to 'Start Time', events_path(:sorted_by => 'start_time') %></th>
     <th><%= link_to 'End Time', events_path(:sorted_by => 'end_time') %></th>
     <th>Description</th>
