@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.xml
   def index
-    @groups = Group.sort(params[:page], params[:sorted_by])
+    @groups = Group.find(:all)
     
     respond_to do |format|
       format.html # index.html.erb

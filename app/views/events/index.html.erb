@@ -2,13 +2,13 @@
 
 <table>
   <tr>
-    <th>Group</th>
-    <th>Location</th>
-    <th>Start time</th>
-    <th>End time</th>
+    <th><%= link_to 'Group', events_path(:sorted_by => 'group_id') %></th>
+    <th><%= link_to 'Location', events_path(:sorted_by => 'location_id') %></th>
+    <th><%= link_to 'Start Time', events_path(:sorted_by => 'start_time') %></th>
+    <th><%= link_to 'End Time', events_path(:sorted_by => 'end_time') %></th>
     <th>Description</th>
   </tr>
-
+  
 <% for event in @events %>
   <tr>
     <td><%=h event.group.name %></td>
@@ -21,8 +21,9 @@
     <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+
 </table>
-
 <br />
-
+<%= will_paginate @events %>
+<br />
 <%= link_to 'New event', new_event_path %>
