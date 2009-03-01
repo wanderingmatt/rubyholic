@@ -25,18 +25,31 @@ class EventTest < ActiveSupport::TestCase
     assert event.errors.on(:end_time)
   end
   
-  test "sort should return the correct order" do    
+  test "sorts fields correctly" do    
+    actual = Event.sort(1, 'start_time')
+    
+    expected = [
+      events(:one),
+      events(:two),
+      events(:three),
+      events(:five),
+      events(:four)
+    ]
+    
+    assert expected == actual
+  end
+  
+  test "sorts related fields correctly" do    
     actual = Event.sort(1, 'groups.name')
     
     expected = [
-      events(:three).id,
-      events(:two).id,
-      events(:four).id,
-      events(:five).id,
-      events(:one).id,
-      events(:one).id
+      events(:three),
+      events(:two),
+      events(:four),
+      events(:five),
+      events(:one)
     ]
     
-    assert expected, actual
+    assert expected == actual
   end
 end

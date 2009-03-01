@@ -1,11 +1,26 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: X-Mansion
+  name: X-Mansion Conference Room
   latitude: 1.5
   longitude: 1.5
 
 two:
+  name: X-Mansion Basement
+  latitude: 1.5
+  longitude: 1.5
+
+three:
+  name: X-Mansion Backyard
+  latitude: 1.5
+  longitude: 1.5
+   
+four:
   name: X-Jet
+  latitude: 1.5
+  longitude: 1.5
+  
+five:
+  name: Cerebro
   latitude: 1.5
   longitude: 1.5
