@@ -4,6 +4,8 @@
 class ApplicationController < ActionController::Base
   require 'will_paginate'
   
+  before_filter :geocode_ip
+  
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
@@ -19,6 +21,10 @@ class ApplicationController < ActionController::Base
   private
   
   
+  def geocode_ip
+    @location = GeoKit::Geocoders::IpGeocoder.geocode('216.9.21.102')
+  end
+
   # Redirects the User to index and displays a flash message if one was provided
   def redirect_to_index message = nil
     flash[:notice] = message if message
