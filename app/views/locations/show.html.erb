@@ -4,6 +4,11 @@
 </p>
 
 <p>
+  <b>Address:</b>
+  <%=h @location.address %>
+</p>
+
+<p>
   <b>Latitude:</b>
   <%=h @location.latitude %>
 </p>
@@ -12,7 +17,6 @@
   <b>Longitude:</b>
   <%=h @location.longitude %>
 </p>
-
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

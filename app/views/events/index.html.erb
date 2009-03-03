@@ -3,7 +3,6 @@
 <p>IP: <%= request.remote_ip %></p>
 <p>Location Data: <%= @location.each { |loc| loc } %></p>
 
-
 <table>
   <tr>
     <th><%= link_to 'Group', events_path(:sorted_by => 'groups.name') %></th>

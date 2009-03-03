@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Address</th>
     <th>Latitude</th>
     <th>Longitude</th>
   </tr>
@@ -10,6 +11,7 @@
 <% for location in @locations %>
   <tr>
     <td><%=h location.name %></td>
+    <td><%=h location.address %></td>
     <td><%=h location.latitude %></td>
     <td><%=h location.longitude %></td>
     <td><%= link_to 'Show', location %></td>
