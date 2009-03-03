@@ -50,8 +50,8 @@ class AddLocationTestData < ActiveRecord::Migration
       :address => '11 W 53rd St, New York, NY 10019'
     )
     Location.create(
-      :name => 'X-Jet',
-      :address => '276 Titicus Rd, North Salem, NY 10560'
+      :name => 'Asteroid M',
+      :address => '1000 Jefferson Dr SW, Washington, DC 20560'
     )
     Location.create(
       :name => 'Cerebro',
