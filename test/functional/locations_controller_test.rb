@@ -17,12 +17,7 @@ class LocationsControllerTest < ActionController::TestCase
     assert_tag :tag => 'input', :attributes => {
       :name => 'location[address]'
     }
-    assert_tag :tag => 'input', :attributes => {
-      :name => 'location[latitude]'
-    }
-    assert_tag :tag => 'input', :attributes => {
-      :name => 'location[longitude]'
-    }
+    
     assert_response :success
   end
 
@@ -40,7 +35,8 @@ class LocationsControllerTest < ActionController::TestCase
   test "should not create invalid location" do
     assert_difference('Location.count', 0) do
       post :create, :location => {
-        :name => ''
+        :name => '',
+        :address => '3380 146th Pl SE, Bellevue, WA 98007'
         }
     end
 
@@ -68,12 +64,7 @@ class LocationsControllerTest < ActionController::TestCase
     assert_tag :tag => 'input', :attributes => {
       :name => 'location[address]'
     }
-    assert_tag :tag => 'input', :attributes => {
-      :name => 'location[latitude]'
-    }
-    assert_tag :tag => 'input', :attributes => {
-      :name => 'location[longitude]'
-    }
+
     assert_response :success
   end
   

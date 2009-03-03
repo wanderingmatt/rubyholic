@@ -52,5 +52,5 @@ if defined? Geokit
 	# Be aware that there are Terms of Use restrictions on how you can use the 
 	# various geocoders.  Make sure you read up on relevant Terms of Use for each
 	# geocoder you are going to use.
-	Geokit::Geocoders::provider_order = [:google]
+	Geokit::Geocoders::provider_order = [:google, :us]
 end
