@@ -1,8 +1,8 @@
 <h1>Listing events</h1>
 
-<p><%= request.remote_ip %></p>
-<p><%= @location %></p>
-<p><%= session[:geo_location].success %>
+<p>IP: <%= request.remote_ip %></p>
+<p>Location Data: <%= @location.each { |loc| loc } %></p>
+
 
 <table>
   <tr>
