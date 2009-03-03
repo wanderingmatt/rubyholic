@@ -15,6 +15,9 @@ class LocationsControllerTest < ActionController::TestCase
       :name => 'location[name]'
     }
     assert_tag :tag => 'input', :attributes => {
+      :name => 'location[address]'
+    }
+    assert_tag :tag => 'input', :attributes => {
       :name => 'location[latitude]'
     }
     assert_tag :tag => 'input', :attributes => {
@@ -26,9 +29,8 @@ class LocationsControllerTest < ActionController::TestCase
   test "should create location" do
     assert_difference('Location.count') do
       post :create, :location => {
-        :name => 'Vivace',
-        :latitude => '47.62193',
-        :longitude => '-122.3174'
+        :name => 'Onehub',
+        :address => '3380 146th Pl SE, Bellevue, WA 98007',
         }
     end
 
@@ -64,6 +66,9 @@ class LocationsControllerTest < ActionController::TestCase
       :name => 'location[name]'
     }
     assert_tag :tag => 'input', :attributes => {
+      :name => 'location[address]'
+    }
+    assert_tag :tag => 'input', :attributes => {
       :name => 'location[latitude]'
     }
     assert_tag :tag => 'input', :attributes => {
@@ -81,11 +86,11 @@ class LocationsControllerTest < ActionController::TestCase
 
   test "should update location" do
     put :update, :id => locations(:one).id, :location => {
-      :name => 'Project-X Laboratory'
+      :name => 'Onehubby'
       }
       
     assert_redirected_to location_path(assigns(:location))
-    assert_equal 'Project-X Laboratory', Location.find(locations(:one).id).name
+    assert_equal 'Onehubby', Location.find(locations(:one).id).name
   end
 
   test "should destroy location" do
