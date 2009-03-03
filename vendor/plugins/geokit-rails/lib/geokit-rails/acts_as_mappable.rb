@@ -82,7 +82,8 @@ module Geokit
             self.auto_geocode_error_message = options[:auto_geocode][:error_message] || 'could not locate address'
           
             # set the actual callback here
-            before_validation_on_create :auto_geocode_address        
+            # before_validation_on_create :auto_geocode_address        
+            before_validation :auto_geocode_address # CHANGED to 'before_validation' to auto-geocode updates as well (manderson)
           end
         end
       end
