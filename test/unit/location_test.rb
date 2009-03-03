@@ -12,4 +12,10 @@ class LocationTest < ActiveSupport::TestCase
     assert ! location.valid?
     assert location.errors.on(:address)
   end
+  
+  test "should auto-geocode address" do
+    location = Location.new(locations(:one))
+    assert_equal 47.5798527, location.latitude
+    assert_equal -122.1456091, location.longitude
+  end
 end
