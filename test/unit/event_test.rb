@@ -36,6 +36,8 @@ class EventTest < ActiveSupport::TestCase
       events(:four)
     ]
     
+    expected.each { |e| puts "Name: #{e.group.name}, Location: #{e.location.name}, Start Time: #{e.start_time}" }
+    
     assert expected == actual
   end
   
