@@ -3,34 +3,34 @@
 one:
   group: one
   location: one
-  start_time: 2009-02-24 23:44:51
-  end_time: 2009-02-24 23:44:51
+  start_time: 2009-02-25 07:45:00
+  end_time: <%= Time.parse('2009-02-24 11:59pm').utc.to_s(:db) %>
   description: MyText
 
 two:
   group: two
   location: two
-  start_time: 2009-02-25 23:44:51
-  end_time: 2009-02-25 23:44:51
+  start_time: <%= Time.parse('2009-02-25 11:45pm').utc.to_s(:db) %>
+  end_time: <%= Time.parse('2009-02-25 11:59pm').utc.to_s(:db) %>
   description: MyText
   
 three:
   group: three
   location: three
-  start_time: 2009-02-26 23:44:51
-  end_time: 2009-02-26 23:44:51
+  start_time: <%= Time.parse('2009-02-26 11:45pm').utc.to_s(:db) %>
+  end_time: <%= Time.parse('2009-02-26 11:59pm').utc.to_s(:db) %>
   description: MyText
   
 four:
   group: four
   location: four
-  start_time: 2009-02-28 23:44:51
-  end_time: 2009-02-28 23:44:51
+  start_time: <%= Time.parse('2009-02-28 11:45pm').utc.to_s(:db) %>
+  end_time: <%= Time.parse('2009-02-28 11:59pm').utc.to_s(:db) %>
   description: MyText
   
 five:
   group: five
   location: five
-  start_time: 2009-02-27 23:44:51
-  end_time: 2009-02-27 23:44:51
+  start_time: <%= Time.parse('2009-02-27 11:45pm').utc.to_s(:db) %>
+  end_time: <%= Time.parse('2009-02-27 11:59pm').utc.to_s(:db) %>
   description: MyText

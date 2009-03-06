@@ -16,8 +16,8 @@
   <tr>
     <td><%=h event.group.name %></td>
     <td><%=h event.location.name %></td>
-    <td><%=h event.start_time %></td>
-    <td><%=h event.end_time %></td>
+    <td><%=h Event.pretty_time(event.start_time) %></td>
+    <td><%=h Event.pretty_time(event.end_time) %></td>
     <td><%=h event.description %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
