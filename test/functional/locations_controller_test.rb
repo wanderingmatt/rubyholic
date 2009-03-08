@@ -54,6 +54,15 @@ class LocationsControllerTest < ActionController::TestCase
     assert_response :redirect
     assert flash[:notice]
   end
+  
+  test "map partial gets location data" do
+    get :show, :id => locations(:one).id
+    
+    assert_response :success
+    
+    assert_tag :tag => 'div', :content => locations(:one).name
+    assert_tag :tag => 'div', :content => locations(:one).address
+  end
 
   test "should get edit" do
     get :edit, :id => locations(:one).id

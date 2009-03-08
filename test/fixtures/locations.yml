@@ -3,19 +3,29 @@
 one:
   name: Onehub
   address: 3380 146th Pl SE, Bellevue, WA 98007
+  latitude: 47.5798527
+  longitude: -122.1456091
 
 two:
   name: X-Mansion Basement
   address: 3380 146th Pl SE, Bellevue, WA 98007
+  latitude: 47.5798527
+  longitude: -122.1456091
 
 three:
   name: X-Mansion Backyard
   address: 3380 146th Pl SE, Bellevue, WA 98007
+  latitude: 47.5798527
+  longitude: -122.1456091
    
 four:
   name: X-Jet
   address: 3380 146th Pl SE, Bellevue, WA 98007
+  latitude: 47.5798527
+  longitude: -122.1456091
   
 five:
   name: Cerebro
   address: 3380 146th Pl SE, Bellevue, WA 98007
+  latitude: 47.5798527
+  longitude: -122.1456091
