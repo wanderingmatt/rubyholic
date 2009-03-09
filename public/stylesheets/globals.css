@@ -1,0 +1,151 @@
+/* 
+FILENAME: globals.css
+DESCRIPTION: This stylesheet serves global declarations to all Rubyholic assets
+*/
+
+/* =GRID OVERRIDE */
+/*  Grid is inactive when entire section is commented */
+/*
+body {
+  background: #fff url("../images/16_col.png") center top repeat-y !important;
+}
+
+#wrapper, #banner, #content, #container {
+  background: none !important;
+}
+*/
+/* =BASE */
+
+body {
+  background: #fff;
+  font: normal 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font size across browsers */
+  text-align: left;
+	color: #444;
+}
+
+a:link, a:visited {
+	font-weight: normal;
+	text-decoration: none;
+}
+	
+a:hover, a:active {
+}
+
+a, strong, b { /* Straightens out OS X font rendering */
+  line-height: 19px;
+}
+
+.hidden {
+	display: none;
+}
+
+/* =GRID =MODIFIERS */
+
+.container_16:after{clear:both;content:'.';display:block;visibility:hidden;height:0}
+.container_16{display:inline-block}
+* html .container_16{height:1%}
+.container_16{display:block}
+
+li.alpha {
+  clear: both;
+}
+
+/* =WRAPPER */
+
+#wrapper {
+  margin: 20px auto;
+}
+
+/* =HEADINGS */
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* =BUTTONS =BASE */
+/* Abstracted from the Wufoo implementation - thanks guys! */
+/* http://particletree.com/features/rediscovering-the-button-element/ */
+
+.buttons {
+	overflow: hidden; /* Float clearing for good browsers */
+	margin-bottom: 20px;
+	font-size: .85em;
+}
+
+.buttons a.button, .buttons button {
+  display: block;
+  float: left;
+  background: #22242c url("../images/bg_button_banner.png") bottom center repeat-x;
+  border: 1px solid #4c5163;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 9px; /* Links */
+  white-space: nowrap;
+  text-align: center;
+}
+
+.buttons button {
+  width: auto;
+  overflow: visible;
+  padding: 4px 10px 3px 7px; /* IE6 */
+}
+
+.buttons button[type] {
+  padding: 5px 10px 5px 7px; /* Firefox */
+  line-height: 18px; /* Safari */
+}
+
+*:first-child+html button[type] {
+  padding: 4px 10px 3px 7px; /* IE7 */
+}
+
+.buttons button img, .buttons a img {
+  margin: 0 3px -3px 0 !important;
+  padding: 0;
+  border: none;
+  width: 16px;
+  height: 16px;
+}
+
+/* =BUTTONS =TWEAKS */
+
+.buttons a.button, .buttons button { /* Safari */
+  -webkit-border-radius: 20px;
+}
+
+.buttons a.button, .buttons button, x:-moz-any-link, x:default {
+  -moz-border-radius: 20px;
+}
+
+/* =BUTTONS =STANDARD */
+
+.buttons button:hover, .buttons a.button:hover, .buttons a.button:active {
+  background: #111216;
+  border: 1px solid #444858;
+  color: #fff;
+}
+
+/* =BUTTONS =RESUME */
+
+button.resume, .buttons a.resume {
+  background: transparent;
+  width: 140px;
+  padding: 8px;
+  border: 2px solid #fae443;
+  color: #555a6e;
+}
+
+.buttons a.resume:hover, button.resume:hover, .buttons a.resume:active {
+  background: #fae443;
+  border: 2px solid #fae443;
+  color: #565b6e;
+}
