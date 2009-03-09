@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  layout 'application'
+  
   # GET /locations
   # GET /locations.xml
   def index

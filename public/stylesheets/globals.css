@@ -16,6 +16,10 @@ body {
 */
 /* =BASE */
 
+html, body {
+  height: 100%;
+}
+
 body {
   background: #fff;
   font: normal 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font size across browsers */
@@ -53,18 +57,45 @@ li.alpha {
 /* =WRAPPER */
 
 #wrapper {
-  margin: 20px auto;
+  position: relative;
+  margin: 0 auto;
 }
 
 /* =HEADINGS */
 
 h1 {
+  margin-bottom: 40px;
   font-size: 40px;
 }
 
 h2 {
   font-weight: normal;
   text-transform: uppercase;
+}
+
+/* =EVENTS */
+
+#wrapper {
+  position: relative;
+}
+.events #map {
+  position: relative;
+}
+.events .placer {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.events #strip .inner {
+  background: #b4b4b4;
+	min-height:100%;
+  padding: 20px;
+  z-index: 10;
+}
+
+.events #nearest_events li {
+  margin-bottom: 20px;
 }
 
 /* =BUTTONS =BASE */
