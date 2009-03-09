@@ -1,33 +1,32 @@
-<%- width = '300' if local_assigns[:width].nil? -%>
-<%- height = '300' if local_assigns[:height].nil? -%>
-<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAzr2EBOXUKnm_jVnk0OJI7xSosDVG8KKPE1-m51RBrvYughuyMxQ-i1QfUnH94QxWIa6N4U6MouMmBA" 
-	type="text/javascript"></script>
+<%- width = local_assigns[:width] || '640' -%>
+<%- height = local_assigns[:height] || '480' -%>
 
-   <script type="text/javascript">
-       // helper function to create markers
-       function createMarker(point,html) {
-           var marker = new GMarker(point);
-           GEvent.addListener(marker, "click", function() {
-            marker.openInfoWindowHtml(html);
-            });
-           return marker;
-       }
-       
-       // this is called when the page loads. 
-       // it initializes the map, and creates each marker
-       function initialize() {
-           var map = new GMap(document.getElementById("map"));
-           map.addControl(new GSmallMapControl());
-           map.centerAndZoom(new GPoint(<%=object.longitude%>,<%=object.latitude%>), 2);
-           
-           
-           var point = new GPoint(<%=object.longitude%>,<%=object.latitude%>);
-           var marker = createMarker(point,'<div><%=h object.name%></div><div><%= object.address %></div>')
-           map.addOverlay(marker);
+<%- content_for :javascript_includes do -%>
 
-       }    
-   </script>
+<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;sensor=false&amp;key=ABQIAAAAkfx3DAhNRdaCBVzNqW7iPhTJQa0g3IQ9GZqIMmInSLzwtGDKaBQRhG_-xjGuWU3pfxyY_Vlk3PjKZw"
+        type="text/javascript"></script>
+<script type="text/javascript">
 
-  <body onload="initialize()" onunload="GUnload()">
-    <div id="map" style="width: <%= width %>px; height: <%= height %>px"></div>
-  </body>
+function initialize() {
+  if (GBrowserIsCompatible()) {
+    var map = new GMap2(document.getElementById("map"));
+    map.setUIToDefault();
+    
+    var point = new GLatLng(<%= object.latitude %>, <%= object.longitude %>);
+    map.setCenter(point, 15);
+    
+    var marker = new GMarker(point);
+    map.addOverlay(marker);
+    
+    GEvent.addListener(marker, "click", function() {
+      var info = "<%= object.name %>";
+      map.openInfoWindowHtml(point, info);
+    });
+  }
+}
+
+</script>
+
+<%- end -%>
+
+<div id="map" style="width: <%= width %>px; height: <%= height %>px"></div>
