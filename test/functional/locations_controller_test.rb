@@ -59,9 +59,9 @@ class LocationsControllerTest < ActionController::TestCase
     get :show, :id => locations(:one).id
     
     assert_response :success
-    
-    assert_tag :tag => 'div', :content => locations(:one).name
-    assert_tag :tag => 'div', :content => locations(:one).address
+
+    assert_tag :tag => 'div', :attributes => { :id => 'map' }
+    assert_match "GLatLng(#{locations(:one).latitude}, #{locations(:one).longitude})", @response.body
   end
 
   test "should get edit" do
