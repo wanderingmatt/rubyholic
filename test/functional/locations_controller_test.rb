@@ -60,9 +60,8 @@ class LocationsControllerTest < ActionController::TestCase
     
     assert_response :success
 
-    # TODO: Turn these back on.  They're failing right now, and it's distracting.
-    assert_tag :tag => 'div', :content => locations(:one).name
-    assert_tag :tag => 'div', :content => locations(:one).address
+    assert_tag :tag => 'div', :attributes => { :id => 'map' }
+    assert_match "GLatLng(#{locations(:one).latitude}, #{locations(:one).longitude})", @response.body
   end
 
   test "should get edit" do
