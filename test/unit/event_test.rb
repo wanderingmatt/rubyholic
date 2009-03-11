@@ -36,8 +36,6 @@ class EventTest < ActiveSupport::TestCase
       events(:four)
     ]
     
-    expected.each { |e| puts e.start_time }
-    
     assert expected == actual
   end
   
