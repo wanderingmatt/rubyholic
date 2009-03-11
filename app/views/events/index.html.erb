@@ -24,6 +24,20 @@ function initialize() {
     <div id="strip" class="grid_4">
       <div class="inner">
         <h1>Rubyholic</h1>
+        
+        <%# form_tag :controller => "search", :method => 'post' do %>
+          <%#= text_field_tag :search %>
+          <%#= submit_tag "Go" %>
+        <%# end %>
+        
+        <%#= render :partial => "search/form" %>
+        
+        <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
+            <label for="search_query">Search Groups</label>
+            <input type="text" size="30" id="search_query" name="q" value="Search Groups" />
+            <button type="submit">Search</button>
+        </form>
+        
         <ol id="nearest_events">
 
         <% for event in @events %>

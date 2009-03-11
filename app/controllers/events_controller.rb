@@ -5,6 +5,13 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.sort(params[:page], params[:sorted_by])
+    # @results = Group.search(
+    #   (params[:search] || ""), :page => (params[:page] || 1)
+    # )
+    # 
+    # unless @results.nil?
+    #   flash[:notice] = "There are search results."
+    # end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -84,4 +91,8 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # def self.search(search, page)
+  #   paginate :per_page => 5, :page => page, :conditions => ['name like ?', "%#{search}%"], :order => 'name'
+  # end
 end
