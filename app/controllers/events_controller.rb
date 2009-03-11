@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  layout 'application'
+  
   # GET /events
   # GET /events.xml
   def index

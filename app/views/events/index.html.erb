@@ -1,32 +1,52 @@
-<h1>Listing events</h1>
+<%- content_for :javascript_includes do -%>
 
-<p>IP: <%= request.remote_ip %></p>
-<p>Location Data: <%= @location.each { |loc| loc } %></p>
+<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;sensor=false&amp;key=ABQIAAAAkfx3DAhNRdaCBVzNqW7iPhTJQa0g3IQ9GZqIMmInSLzwtGDKaBQRhG_-xjGuWU3pfxyY_Vlk3PjKZw"
+        type="text/javascript"></script>
+<script type="text/javascript">
 
-<table>
-  <tr>
-    <th><%= link_to 'Group', events_path(:sorted_by => 'groups.name') %></th>
-    <th><%= link_to 'Location', events_path(:sorted_by => 'locations.name') %></th>
-    <th><%= link_to 'Start Time', events_path(:sorted_by => 'start_time') %></th>
-    <th><%= link_to 'End Time', events_path(:sorted_by => 'end_time') %></th>
-    <th>Description</th>
-  </tr>
-  
-<% for event in @events %>
-  <tr>
-    <td><%=h event.group.name %></td>
-    <td><%=h event.location.name %></td>
-    <td><%=h Event.pretty_time(event.start_time) %></td>
-    <td><%=h Event.pretty_time(event.end_time) %></td>
-    <td><%=h event.description %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+function initialize() {
+  if (GBrowserIsCompatible()) {
+    var map = new GMap2(document.getElementById("map"));
+    map.setUIToDefault();
+    
+    var point = new GLatLng(47.545233, -122.016203);
+    map.setCenter(point, 15);
+  }
+}
 
-</table>
-<br />
-<%= will_paginate @events %>
-<br />
-<%= link_to 'New event', new_event_path %>
+</script>
+
+<%- end -%>
+
+<div id="map" style="width: 100%; height: 480px"></div>
+<div class="placer">
+  <div class="container_12">
+    <div id="strip" class="grid_4">
+      <div class="inner">
+        <h1>Rubyholic</h1>
+        <ol id="nearest_events">
+
+        <% for event in @events %>
+          <li>
+            <h3><%=h event.group.name %></h3>
+            <div><%=h event.location.name %></div>
+            <div><%=h event.start_time.strftime("%B %d, %Y") %></div>
+            <!-- <div><%#h event.end_time %></div> -->
+            <!-- <div><%#h event.description %></div> -->
+            <div><%= link_to 'Show', event %>
+            <%= link_to 'Edit', edit_event_path(event) %>
+            <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></div>
+          </li>
+        <% end %>
+
+        </ol>
+        <%= will_paginate @events %>
+      </div>
+    </div>
+    <div id="content" class="grid_8">
+      <%= link_to 'New event', new_event_path %>
+      <p>IP: <%= request.remote_ip %></p>
+      <p>Location Data: <%= @location.each { |loc| loc } %></p>
+    </div>
+  </div>
+</div>
