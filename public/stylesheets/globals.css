@@ -21,6 +21,7 @@ html, body {
 }
 
 body {
+  position: relative;
   background: #fff;
   font: normal 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font size across browsers */
   text-align: left;
@@ -56,10 +57,10 @@ li.alpha {
 
 /* =WRAPPER */
 
-#wrapper {
+/*#wrapper {
   position: relative;
   margin: 0 auto;
-}
+}*/
 
 /* =HEADINGS */
 
@@ -82,18 +83,23 @@ h2 {
 
 /* =EVENTS */
 
-#wrapper {
+/*#wrapper {
   position: relative;
-}
+}*/
 
 .events #map {
   position: relative;
 }
 
-.events .placer {
+/*.events .placer {
   width: 100%;
   position: absolute;
   top: 0;
+}*/
+
+.events #strip {
+  position: absolute;
+  top: -480px;
 }
 
 .events #strip .inner {
@@ -106,6 +112,11 @@ h2 {
 
 .events #nearest_events li {
   margin-bottom: 20px;
+}
+
+.events #content {
+  position: absolute;
+  left: 320px;
 }
 
 /* =BUTTONS =BASE */

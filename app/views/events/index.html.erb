@@ -1,15 +1,9 @@
 <%- content_for :javascript_includes do -%>
-
 <%= GMap.header %>
-
 <%= @map.to_html %>
-
 <%- end -%>
 
-
-
 <%= @map.div :width => '100%', :height => 480 %>
-<div class="placer">
   <div class="container_12">
     <div id="strip" class="grid_4">
       <div class="inner">
@@ -53,4 +47,3 @@
       <p>Location Data: <%= @location.join(" ").to_s %></p>
     </div>
   </div>
-</div>
