@@ -64,8 +64,13 @@ li.alpha {
 /* =HEADINGS */
 
 h1 {
-  margin-bottom: 40px;
+  display: block;
+  background: url("/images/logo_rubyholic.png") no-repeat;
+  margin-bottom: 20px;
+  width: 260px;
+  height: 67px;
   font-size: 40px;
+  text-indent: -9999px;
 }
 
 h2 {
@@ -73,14 +78,18 @@ h2 {
   text-transform: uppercase;
 }
 
+/* =LOGO */
+
 /* =EVENTS */
 
 #wrapper {
   position: relative;
 }
+
 .events #map {
   position: relative;
 }
+
 .events .placer {
   width: 100%;
   position: absolute;
@@ -91,6 +100,7 @@ h2 {
   background: #b4b4b4;
 	min-height:100%;
   padding: 20px;
+  border-top: 1px solid #d4d4d4;
   z-index: 10;
 }
 
