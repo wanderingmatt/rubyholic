@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   
   def geocode_ip
     # TODO Raw array of location data. Needs to be refinded.
-    @location = GEOIPDB.city request.env['REMOTE_HOST']
+    @location = GEOIPDB.city request.remote_ip
   end
 
   # Redirects the User to index and displays a flash message if one was provided
