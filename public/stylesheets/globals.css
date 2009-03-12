@@ -21,15 +21,14 @@ html, body {
 }
 
 body {
-  position: relative;
-  background: #fff;
+/*  position: relative;
+*/  background: #fff;
   font: normal 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font size across browsers */
   text-align: left;
 	color: #444;
 }
 
 a:link, a:visited {
-	font-weight: normal;
 	text-decoration: none;
 }
 	
@@ -59,7 +58,6 @@ li.alpha {
 
 /*#wrapper {
   position: relative;
-  margin: 0 auto;
 }*/
 
 /* =HEADINGS */
@@ -79,7 +77,16 @@ h2 {
   text-transform: uppercase;
 }
 
-/* =LOGO */
+h3 {
+  font-size: 16px;
+}
+
+/* =GUTTER */
+
+#gutter {
+  background: #000;
+  height: 40px;
+}
 
 /* =EVENTS */
 
@@ -87,10 +94,10 @@ h2 {
   position: relative;
 }*/
 
-.events #map {
+/*.events #map {
   position: relative;
 }
-
+*/
 /*.events .placer {
   width: 100%;
   position: absolute;
@@ -99,19 +106,64 @@ h2 {
 
 .events #strip {
   position: absolute;
-  top: -480px;
+  top: -520px;
 }
 
 .events #strip .inner {
-  background: #b4b4b4;
+  background: #981a21;
 	min-height:100%;
   padding: 20px;
-  border-top: 1px solid #d4d4d4;
+  border-top: 1px solid #ad5e5a;
   z-index: 10;
 }
 
 .events #nearest_events li {
+  position: relative;
+  clear: left;
   margin-bottom: 20px;
+  padding-left: 40px;
+}
+
+.events .date {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 20px;
+  line-height: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.events .date .day {
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.events .date .month {
+  position: relative;
+  top: -4px;
+  font-size: 10px;
+  color: #c18683;
+}
+
+.events .date .year {
+  position: relative;
+  top: -8px;
+  font-size: 10px;
+  color: #ad5e5a;
+}
+
+.events h3 a {
+  font-weight: bold;
+  color: #f6e69f;
+}
+
+.events .location a {
+  font-size: 14px;
+  color: #c18683;
 }
 
 .events #content {
