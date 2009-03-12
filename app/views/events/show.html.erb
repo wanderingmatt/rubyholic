@@ -10,12 +10,12 @@
 
 <p>
   <b>Start time:</b>
-  <%=h @event.start_time %>
+  <%=h Event.pretty_time(@event.start_time) %>
 </p>
 
 <p>
   <b>End time:</b>
-  <%=h @event.end_time %>
+  <%=h Event.pretty_time(@event.end_time) %>
 </p>
 
 <p>

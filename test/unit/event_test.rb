@@ -52,4 +52,8 @@ class EventTest < ActiveSupport::TestCase
     
     assert expected == actual
   end
+  
+  test "time should be formatted properly" do
+    assert_equal "Tue 24 Feb, 2009 at 11:45 PM", Event.pretty_time(events(:one).start_time)
+  end
 end

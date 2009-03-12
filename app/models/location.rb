@@ -5,4 +5,9 @@ class Location < ActiveRecord::Base
   has_many :groups, :through => :locations
   
   validates_presence_of :name, :address
+  
+  define_index do
+    indexes name
+    indexes address
+  end
 end

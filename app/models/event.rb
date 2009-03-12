@@ -7,4 +7,8 @@ class Event < ActiveRecord::Base
   def self.sort(page, order)
     paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
   end
+  
+  def self.pretty_time(time)
+    time.strftime("%a %d %h, %Y at %I:%M %p")
+  end
 end

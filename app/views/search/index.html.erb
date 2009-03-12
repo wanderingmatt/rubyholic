@@ -1,0 +1,13 @@
+
+<%- if @search -%>
+  <h1>Search Results for <%=h @query %></h1>
+  <ul>
+  <% for result in @search %>
+    <li><%=h result.name %></li>
+  <% end %>
+  </ul>
+<%- else -%>
+  <p>There are no results.</p>
+<%- end -%>
+
+<%= will_paginate @search %>

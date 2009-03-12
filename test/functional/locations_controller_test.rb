@@ -40,7 +40,7 @@ class LocationsControllerTest < ActionController::TestCase
         }
     end
 
-    assert_not_nil assigns(:location).errors.on :name
+    assert_not_nil assigns(:location).errors.on(:name)
   end
 
   test "should show location" do
