@@ -5,8 +5,8 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   
   define_index do
-    indexes name, :sortable => true
-    
-    has updated_at
+    indexes name
+    indexes events.description, :as => :event_descriptions
+    indexes [locations.name, locations.address], :as => :location_addresses
   end
 end
