@@ -6,7 +6,7 @@ class Group < ActiveRecord::Base
   
   define_index do
     indexes name, :sortable => true
-    
-    has updated_at
+    indexes events, :sortable => true
+    indexes [locations.name, locations.address], :as => :locations
   end
 end
