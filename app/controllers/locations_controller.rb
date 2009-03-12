@@ -17,6 +17,7 @@ class LocationsController < ApplicationController
   def show
     begin
       @location = Location.find(params[:id])
+      create_map @location
     rescue ActiveRecord::RecordNotFound
       logger.error("Attempt to access invalid group #{params[:id]}")
       redirect_to_index('Invalid group')
@@ -93,5 +94,17 @@ class LocationsController < ApplicationController
       format.html { redirect_to(locations_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def create_map(location)
+    position = [location.latitude,location.longitude]
+    @map = GMap.new('map')
+    @map.control_init(:large_map_3d => true,:map_type => true, :scale => true)
+    @map.center_zoom_init(position,17)
+    @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
+    @map.set_map_type_init(GMapType::G_HYBRID_MAP)
+    @map.overlay_init(GMarker.new(position, :info_window => "<div>#{location.name}</div><div>#{location.address}</div>"))
   end
 end

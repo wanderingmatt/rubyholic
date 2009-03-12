@@ -5,18 +5,13 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.sort(params[:page], params[:sorted_by])
-    # @results = Group.search(
-    #   (params[:search] || ""), :page => (params[:page] || 1)
-    # )
-    # 
-    # unless @results.nil?
-    #   flash[:notice] = "There are search results."
-    # end
+
+    create_map @location
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
-    end
+    end    
   end
 
   # GET /events/1
@@ -91,8 +86,15 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
   
-  # def self.search(search, page)
-  #   paginate :per_page => 5, :page => page, :conditions => ['name like ?', "%#{search}%"], :order => 'name'
-  # end
+  def create_map(location)
+    @map = GMap.new('map')
+    @map.control_init(:large_map_3d => true,:map_type => true, :scale => true)
+    @map.center_zoom_init([location[9],location[10]],8)
+    @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
+    @map.set_map_type_init(GMapType::G_PHYSICAL_MAP)
+  end
+
 end

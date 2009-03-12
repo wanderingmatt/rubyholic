@@ -7,6 +7,18 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:events)
   end
+  
+  test "map renders location from ip" do
+    @request.env['REMOTE_HOST'] = '140.142.222.108'
+    
+    get :index
+    
+    assert_response :success
+
+    assert_tag :tag => 'div', :attributes => { :id => 'map' }
+    assert_match "GLatLng(47.0597,-122.3623)", @response.body
+  end
+  
 
   test "should get new" do
     get :new
