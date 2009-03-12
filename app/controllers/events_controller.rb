@@ -5,7 +5,6 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.sort(params[:page], params[:sorted_by])
-
     create_map @location
 
     respond_to do |format|

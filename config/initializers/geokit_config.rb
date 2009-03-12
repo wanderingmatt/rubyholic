@@ -26,8 +26,9 @@ if defined? Geokit
 	# This is your Google Maps geocoder key. 
 	# See http://www.google.com/apis/maps/signup.html
 	# and http://www.google.com/apis/maps/documentation/#Geocoding_Examples
-	Geokit::Geocoders::google = Ym4r::GmPlugin::ApiKey::GMAPS_API_KEY
-    
+  Geokit::Geocoders::google = Ym4r::GmPlugin::ApiKey.get(:host => ENV["SERVER_NAME"])
+  # Geokit::Geocoders::google = Ym4r::GmPlugin::ApiKey::GMAPS_API_KEY
+  	
 	# This is your username and password for geocoder.us.
 	# To use the free service, the value can be set to nil or false.  For 
 	# usage tied to an account, the value should be set to username:password.
