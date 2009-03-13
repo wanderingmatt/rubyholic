@@ -1,33 +1,49 @@
-<h1>New event</h1>
+<div id="gutter">
+  <%= link_to 'Home', events_path %>
+</div>
+<div class="bg_container">
+  <div class="container_12">
+    <div id="tab" class="grid_4">
+      <div class="inner">
+        <h1>Rubyholic</h1>
+      </div>
+    </div>
+    <div id="intro" class="grid_4">
+      <h2>Add a New Event</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="grid_7 prefix_1">
 
-<% form_for(@event) do |f| %>
-  <%= f.error_messages %>
+  <% form_for(@event) do |f| %>
+    <%= f.error_messages %>
 
-  <p>
-    <%= f.label :group_id %><br />
-    <%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %>
-    <%= link_to 'Add a New Group', :controller => 'groups', :action => 'new' %>
-  </p>
-  <p>
-    <%= f.label :location_id %><br />
-    <%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %>
-    <%= link_to 'Add a New Location', :controller => 'locations', :action => 'new' %>
-  </p>
-  <p>
-    <%= f.label :start_time %><br />
-    <%= f.datetime_select :start_time %>
-  </p>
-  <p>
-    <%= f.label :end_time %><br />
-    <%= f.datetime_select :end_time %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
+    <p>
+      <%= f.label :group_id %><br />
+      <%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %>
+      <%= link_to 'Add a New Group', :controller => 'groups', :action => 'new' %>
+    </p>
+    <p>
+      <%= f.label :location_id %><br />
+      <%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %>
+      <%= link_to 'Add a New Location', :controller => 'locations', :action => 'new' %>
+    </p>
+    <p>
+      <%= f.label :start_time %><br />
+      <%= f.datetime_select :start_time %>
+    </p>
+    <p>
+      <%= f.label :end_time %><br />
+      <%= f.datetime_select :end_time %>
+    </p>
+    <p>
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.submit "Create" %>
+    </p>
+  <% end %>
 
-<%= link_to 'Back', events_path %>
+  <%= link_to 'Back', events_path %>
+  </div>
+</div>

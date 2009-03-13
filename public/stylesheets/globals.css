@@ -10,7 +10,7 @@ body {
   background: #fff url("../images/16_col.png") center top repeat-y !important;
 }
 
-#wrapper, #banner, #content, #container {
+.bg_container {
   background: none !important;
 }
 */
@@ -45,36 +45,29 @@ a, strong, b { /* Straightens out OS X font rendering */
 
 /* =GRID =MODIFIERS */
 
-.container_16:after{clear:both;content:'.';display:block;visibility:hidden;height:0}
-.container_16{display:inline-block}
-* html .container_16{height:1%}
-.container_16{display:block}
+.container_12:after{clear:both;content:'.';display:block;visibility:hidden;height:0}
+.container_12{display:inline-block}
+* html .container_12{height:1%}
+.container_12{display:block}
 
 li.alpha {
   clear: both;
 }
 
-/* =WRAPPER */
-
-/*#wrapper {
-  position: relative;
-}*/
-
 /* =HEADINGS */
 
 h1 {
   display: block;
-  background: url("/images/logo_rubyholic.png") no-repeat;
-  margin-bottom: 20px;
+  background: url("/images/logo_rubyholic.png") no-repeat 50% 0;
   width: 260px;
-  height: 67px;
+  height: 60px;
   font-size: 40px;
   text-indent: -9999px;
 }
 
 h2 {
-  font-weight: normal;
-  text-transform: uppercase;
+  margin-bottom: 40px;
+  font-size: 36px;
 }
 
 h3 {
@@ -84,25 +77,65 @@ h3 {
 /* =GUTTER */
 
 #gutter {
+  position: relative;
   background: #000;
-  height: 40px;
+  height: 50px;
+}
+
+#gutter a {
+  position: absolute;
+  right: 0;
+  padding: 0 20px;
+  line-height: 50px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+#gutter a strong {
+  font-size: 20px;
+}
+
+#gutter a:link, #gutter a:visited {
+  color: #646464;
+}
+
+#gutter a:hover {
+  background: #191919;
+  color: #f6e69f;
+}
+
+/* =CONTAINER */
+
+.bg_container {
+  background: #fff url("/images/bg_container.png") repeat-x 0 0;
+  border-top: 1px solid #fff;
+}
+
+.container_12 {
+  padding-top: 90px;
+}
+
+/* =INTRO */
+
+#intro p {
+  font-size: 14px;
+  text-align: justify;
+  color: #828282;
 }
 
 /* =EVENTS */
 
-/*#wrapper {
-  position: relative;
-}*/
-
-/*.events #map {
-  position: relative;
-}
-*/
-/*.events .placer {
-  width: 100%;
+#tab {
   position: absolute;
-  top: 0;
-}*/
+  top: -51px;
+  left: 0;
+}
+
+#tab .inner {
+  background: #981a21;
+  padding: 20px 20px 19px 20px;
+  border-bottom: 1px solid #3d1614;
+}
 
 .events #strip {
   position: absolute;
@@ -113,7 +146,7 @@ h3 {
   background: #981a21;
 	min-height:100%;
   padding: 20px;
-  border-top: 1px solid #ad5e5a;
+  border-top: 1px solid #5b201d;
   z-index: 10;
 }
 
