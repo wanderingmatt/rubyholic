@@ -8,24 +8,24 @@ one:
 
 two:
   name: X-Mansion Basement
-  address: 3380 146th Pl SE, Bellevue, WA 98007
-  latitude: 47.5798527
-  longitude: -122.1456091
+  address: 252 June Rd, North Salem, NY 10560
+  latitude: 41.3589
+  longitude: -73.5967
 
 three:
   name: X-Mansion Backyard
-  address: 3380 146th Pl SE, Bellevue, WA 98007
-  latitude: 47.5798527
-  longitude: -122.1456091
+  address: 11 W 53rd St, New York, NY 10019
+  latitude: 40.7607
+  longitude: -73.9765
    
 four:
-  name: X-Jet
-  address: 3380 146th Pl SE, Bellevue, WA 98007
-  latitude: 47.5798527
-  longitude: -122.1456091
+  name: Vivace
+  address: 532 Broadway Ave East, Seattle, WA 98122
+  latitude: 47.6065
+  longitude: -122.321
   
 five:
   name: Cerebro
-  address: 3380 146th Pl SE, Bellevue, WA 98007
-  latitude: 47.5798527
-  longitude: -122.1456091
+  address: 276 Titicus Rd, North Salem, NY 10560
+  latitude: 41.3304
+  longitude: -73.5973

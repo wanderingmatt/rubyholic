@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  named_scope :upcoming, :conditions => ["start_time > ?", Time.now]
+  
   belongs_to :group
   belongs_to :location
   
