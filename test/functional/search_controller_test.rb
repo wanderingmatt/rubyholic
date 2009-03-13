@@ -11,6 +11,8 @@ class SearchControllerTest < ActionController::TestCase
       [groups(:one)]
     )
     
+    
+    
     get :index, :q => 'hello world'
   end
 
