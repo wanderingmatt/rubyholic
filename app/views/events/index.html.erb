@@ -1,49 +1,47 @@
 <%- content_for :javascript_includes do -%>
-
-<%= GMap.header %>
-
+<%= GMap.header :host => request.headers["SERVER_NAME"] %>
 <%= @map.to_html %>
-
 <%- end -%>
 
+<div id="gutter">
 
-
+</div>
 <%= @map.div :width => '100%', :height => 480 %>
-<div class="placer">
-  <div class="container_12">
-    <div id="strip" class="grid_4">
-      <div class="inner">
-        <h1>Rubyholic</h1>
-        
-        <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
-            <label for="search_query">Search Groups</label>
-            <input type="text" size="30" id="search_query" name="q" value="Search Groups" />
-            <button type="submit">Search</button>
-        </form>
-        
-        <ol id="nearest_events">
+<div class="container_12">
+  <div id="strip" class="grid_4">
+    <div class="inner">
+      <h1>Rubyholic</h1>
+      <ol id="nearest_events">
 
-        <% for event in @events %>
-          <li>
-            <h3><%=h event.group.name %></h3>
-            <div><%=h event.location.name %></div>
-            <div><%=h event.start_time.strftime("%B %d, %Y") %></div>
-            <!-- <div><%#h event.end_time %></div> -->
-            <!-- <div><%#h event.description %></div> -->
-            <div><%= link_to 'Show', event %>
-            <%= link_to 'Edit', edit_event_path(event) %>
-            <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></div>
-          </li>
-        <% end %>
+      <% for event in @events %>
+        <li>
+          <h3><%= link_to event.group.name, event.group %></h3>
+          <div class="location"><%= link_to event.location.name, event.location %></div>
+          <div class="date" align="justify">
+            <span class="day"><%=h event.start_time.strftime("%d") %></span>
+            <span class="month"><%=h event.start_time.strftime("%b") %></span>
+            <span class="year"><%=h event.start_time.strftime("%Y") %></span>
+          </div>
+          <!-- <div><%#h event.end_time %></div> -->
+          <!-- <div><%#h event.description %></div> -->
+          <!-- <div><%= link_to 'Show', event %>
+          <%= link_to 'Edit', edit_event_path(event) %>
+          <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></div> -->
+        </li>
+      <% end %>
 
-        </ol>
-        <%= will_paginate @events %>
-      </div>
+      </ol>
+      <%= will_paginate @events %>
     </div>
-    <div id="content" class="grid_8">
-      <%= link_to 'New event', new_event_path %>
-      <p>IP: <%= request.remote_ip %></p>
-      <p>Location Data: <%= @location.join(" ").to_s %></p>
-    </div>
+  </div>
+  <div id="content" class="grid_8">
+    <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
+        <label for="search_query">Search Groups</label>
+        <input type="text" size="30" id="search_query" name="q" value="Search Groups" />
+        <button type="submit">Search</button>
+    </form>
+    <%= link_to 'New event', new_event_path %>
+    <p>IP: <%= request.remote_ip %></p>
+    <p>Location Data: <%= @location.join(" ").to_s %></p>
   </div>
 </div>

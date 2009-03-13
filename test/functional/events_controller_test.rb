@@ -9,7 +9,7 @@ class EventsControllerTest < ActionController::TestCase
   end
   
   test "map renders location from ip" do
-    @request.env['REMOTE_HOST'] = '140.142.222.108'
+    @request.env['REMOTE_ADDR'] = '140.142.222.108'
     
     get :index
     

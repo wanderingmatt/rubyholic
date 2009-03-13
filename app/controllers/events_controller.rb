@@ -5,7 +5,6 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.sort(params[:page], params[:sorted_by])
-
     create_map @location
 
     respond_to do |format|
@@ -95,6 +94,17 @@ class EventsController < ApplicationController
     @map.center_zoom_init([location[9],location[10]],8)
     @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
     @map.set_map_type_init(GMapType::G_PHYSICAL_MAP)
+    get_upcoming_markers.each do |marker|
+      @map.record_init @map.add_overlay(marker)
+    end
+  end
+  
+  def get_upcoming_markers
+    markers = []
+    Event.upcoming.each do |event|
+      markers << GMarker.new([event.location.latitude, event.location.longitude], :info_window => "<div>#{event.group.name}</div><div>#{event.location.name}</div><div>#{Event.pretty_time(event.start_time)}</div>")
+    end
+    markers
   end
 
 end
