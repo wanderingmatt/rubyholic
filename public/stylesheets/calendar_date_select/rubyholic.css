@@ -1,0 +1,145 @@
+/* 
+FILENAME: calendar_date_select/rubyholic.css
+DESCRIPTION: This stylesheet serves any additional declarations that are unique to the Calendar Date Select plugin
+*/
+
+.calendar_date_select {
+	display: block;
+	background: #fff;
+	width: 225px; /* Was 195px, but was widened to accomodate for the month/year inputs needing to be wider */
+	border: 1px solid #d4d4d4;
+	color: #444;
+	z-index: 9999;
+}
+
+iframe.ie6_blocker { /* this is a fun ie6 hack to get drop downs to stay behind the popup window.  This should always be just underneath .calendar_date_select */
+	position: absolute;
+	z-index: 9998;
+}
+
+.calendar_date_select table {
+	table-layout: fixed;
+	overflow: auto;
+}
+
+.calendar_date_select .cds_header {
+  position: relative;
+  background: #f6f6f6;
+	padding: 9px 0;
+	font-size: 1.3em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.calendar_date_select .cds_header a {
+  position: absolute;
+	width: 22px;
+	height: 22px;
+  text-indent: -9999px;
+}
+
+.calendar_date_select .cds_header a.prev {
+  left: 5px;
+	background: url("/images/icons/previous_22x22.png") 0 0 no-repeat;
+}
+
+.calendar_date_select .cds_header a.next {
+  right: 5px;
+	background: url("/images/icons/next_22x22.png") 0 0 no-repeat;
+}
+
+.calendar_date_select .cds_header a:hover {
+	background-position: 0 -22px;
+}
+
+.calendar_date_select .cds_header a.close {
+	display: none;
+}
+
+.calendar_date_select .cds_header select.month {
+	width: 100px; /* was 86px */
+}
+
+.calendar_date_select .cds_header select.year {
+	width: 65px; /* was 55px */
+}
+
+.calendar_date_select thead th {
+  background: #f6f6f6;
+	border: 0;
+	text-align: center;
+}
+
+.calendar_date_select td {
+  height: 30px;
+	border: 1px solid #d4d4d4;
+	font-weight: bold;
+	vertical-align: middle;
+	text-align: center;
+	color: #646464;
+}
+
+.calendar_date_select td div {
+  width: 100%;
+}
+
+.calendar_date_select td.other {
+  background: #eee;
+}
+
+.calendar_date_select td.weekend {
+  border-right: 0;
+}
+
+.calendar_date_select td.today {
+	background: #dff4ff;
+	color: #646464;
+}
+
+.calendar_date_select td.selected {
+  background: #6299c5;
+	color: #fff;
+}
+
+.calendar_date_select td.disabled {
+	background: #d4d4d4;
+	color: #fff;
+}
+
+.calendar_date_select td:hover {
+	background-color: #6299c5;
+	color: #fff;
+}
+
+.calendar_date_select .cds_buttons {
+  display: none;
+}
+
+.calendar_date_select .cds_buttons .hour, .calendar_date_select .cds_buttons .minute {
+  margin: 4px 3px 0 0;
+}
+
+.calendar_date_select .cds_buttons .hour {
+  padding-right: 3px;
+}
+
+.calendar_date_select .cds_buttons .minute {
+  padding-right: 5px;
+}
+
+.calendar_date_select .cds_footer {
+	background: #eee;
+	padding: 9px;
+	font-size: 1.3em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.calendar_date_select .buttons a {
+  float: none;
+  margin: 0;
+}
+
+.fieldWithErrors .calendar_date_select {
+	border: 1px solid red;
+}
