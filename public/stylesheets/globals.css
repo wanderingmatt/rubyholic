@@ -5,7 +5,7 @@ DESCRIPTION: This stylesheet serves global declarations to all Rubyholic assets
 
 /* =GRID OVERRIDE */
 /*  Grid is inactive when entire section is commented */
-/*
+
 body {
   background: #fff url("../images/16_col.png") center top repeat-y !important;
 }
@@ -13,7 +13,7 @@ body {
 .bg_container {
   background: none !important;
 }
-*/
+
 /* =BASE */
 
 html, body {
@@ -237,8 +237,8 @@ label {
   display: block;
 /*  float: left;*/
   width: 100px;
-  line-height: 30px;
-  font-size: 12px;
+  line-height: 35px;
+  font-size: 11px;
   text-transform: uppercase;
 /*  color: #828282;*/
 }
@@ -247,11 +247,19 @@ select {
   width: 100%;
 }
 
-input[type='text'], textarea {
+input, textarea, select {
+  font: normal 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font size across browsers */
+}
+
+input[type="text"], textarea {
   display: block;
   width: 408px;
   border: 1px solid #b4b4b4;
   line-height: 20px;
+}
+
+textarea {
+  height: 80px;
 }
 
 .multiple_fields select {
@@ -263,6 +271,10 @@ form li span {
   background: #d4d4d4;
   width: 410px;
   padding: 5px;
+}
+
+form .buttons {
+  margin-left: 100px;
 }
 
 /* =BUTTONS =BASE */

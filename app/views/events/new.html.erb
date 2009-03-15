@@ -29,25 +29,26 @@
             </li>
             <li class="multiple_fields">
               <%= f.label :start_time %>
-              <%= calendar_date_select_tag "e_date" %>
+              <span class="datetime"><%= calendar_date_select_tag "e_date" %></span>
             </li>
             <li class="multiple_fields">
               <%= f.label :start_time %>
-              <%= f.datetime_select :start_time %>
+              <span class="datetime"><%= f.datetime_select :start_time %></span>
             </li>
             <li class="multiple_fields">
               <%= f.label :end_time %>
-              <%= f.datetime_select :end_time %>
+              <span class="datetime"><%= f.datetime_select :end_time %></span>
             </li>
             <li>
               <%= f.label :description %>
-              <span class="textarea"><%= f.text_area :description, :size => '30x6' %></span>
+              <span class="textarea"><%= f.text_area :description, :size => '30x4' %></span>
             </li>
           </ol>
-          <%= f.submit "Create" %>
+          <div class="buttons">
+            <%= f.submit "Create" %> <%= link_to 'Back', events_path %>
+          </div>
         </fieldset>
       <% end %>
     </div>
-  <%= link_to 'Back', events_path %>
   </div>
 </div>
