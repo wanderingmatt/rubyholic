@@ -29,8 +29,6 @@ class EventTest < ActiveSupport::TestCase
     actual = Event.sort(1, 'start_time')
     
     expected = [
-      events(:one),
-      events(:two),
       events(:three),
       events(:five),
       events(:four)
@@ -44,10 +42,8 @@ class EventTest < ActiveSupport::TestCase
     
     expected = [
       events(:three),
-      events(:two),
       events(:four),
       events(:five),
-      events(:one)
     ]
     
     assert expected == actual

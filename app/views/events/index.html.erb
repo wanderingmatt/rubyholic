@@ -50,7 +50,7 @@
           <button type="submit">Search</button>
       </form>
       <p>IP: <%= request.remote_ip %></p>
-      <p>Location Data: <%= @location.join(" ").to_s %></p>
+      <p>Location Data: <%= "#{@location[:latitude]}, #{@location[:longitude]}" %></p>
     </div>
   </div>
 </div>
