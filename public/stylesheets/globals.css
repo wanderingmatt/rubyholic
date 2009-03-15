@@ -5,7 +5,7 @@ DESCRIPTION: This stylesheet serves global declarations to all Rubyholic assets
 
 /* =GRID OVERRIDE */
 /*  Grid is inactive when entire section is commented */
-/*
+
 body {
   background: #fff url("../images/16_col.png") center top repeat-y !important;
 }
@@ -13,7 +13,7 @@ body {
 .bg_container {
   background: none !important;
 }
-*/
+
 /* =BASE */
 
 html, body {
@@ -61,13 +61,16 @@ h1 {
 }
 
 h2 {
-  margin-bottom: 40px;
+  position: relative;
+  margin-bottom: 20px;
+  line-height: 40px;
   font-size: 36px;
 }
 
 .new h2 img {
   position: absolute;
-  left: -35px;
+  top: 9px;
+  left: -55px;
 }
 
 h3 {
@@ -111,7 +114,7 @@ h3 {
 }
 
 .container_12 {
-  padding-top: 90px;
+  padding-top: 70px;
 }
 
 /* =LOGO */
@@ -137,43 +140,33 @@ h1 a {
 
 #tab {
   position: absolute;
-  top: -51px;
+  top: -50px;
   left: 0;
 }
 
-#tab .inner {
+#strip {
+  position: absolute;
+  top: -540px;
+}
+
+#tab .inner,
+#strip .inner {
   background: #981a21;
   padding: 20px 0 19px 0;
   border-bottom: 1px solid #3d1614;
 }
 
-.events #strip {
-  position: absolute;
-  top: -531px;
-}
-
-.events #strip .inner {
-  background: #981a21;
-	min-height: 100%;
-  border-top: 1px solid #5b201d;
-  z-index: 10;
-}
-
-.events #upcoming_events li {
-/*  margin-bottom: 20px;*/
-}
-
-.events #upcoming_events li a {
+#upcoming_events li a {
   position: relative;
   display: block;
   padding: 10px 20px 10px 60px;
 }
 
-.events #upcoming_events li a:hover {
-  background-color: #7a151a;
+#upcoming_events li a:hover {
+  background: #7a151a url("/images/icons/arrow.png") no-repeat 260px 50%;
 }
 
-.events #upcoming_events li .date {
+#upcoming_events li .date {
   position: absolute;
   left: 20px;
   top: 10px;
@@ -184,33 +177,33 @@ h1 a {
   text-align: center;
 }
 
-.events #upcoming_events li .date .day {
+#upcoming_events li .date .day {
   line-height: 20px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
 }
 
-.events #upcoming_events li .date .month {
+#upcoming_events li .date .month {
   position: relative;
-  top: -4px;
+  top: -5px;
   font-size: 10px;
   color: #c18683;
 }
 
-.events #upcoming_events li .date .year {
+#upcoming_events li .date .year {
   position: relative;
-  top: -8px;
+  top: -10px;
   font-size: 10px;
   color: #ad5e5a;
 }
 
-.events #upcoming_events li h3 {
+#upcoming_events li h3 {
   font-weight: bold;
   color: #f6e69f;
 }
 
-.events #upcoming_events li .location {
+#upcoming_events li .location {
   font-size: 14px;
   color: #c18683;
 }
@@ -227,6 +220,7 @@ h1 a {
 }
 .new #form img.arrow {
   position: absolute;
+  top: 9px;
   left: 20px;
 }
 
@@ -234,7 +228,7 @@ h1 a {
   display: block;
   background: url("/images/icons/add.png") 0 0 no-repeat;
   height: 20px;
-  margin: 5px 0;
+  margin: 5px 0 -5px 5px;
   padding-left: 25px;
   font-size: 11px;
   text-transform: uppercase;
@@ -249,7 +243,7 @@ h1 a {
 form li {
   position: relative;
   clear: left;
-  margin-right: 20px;
+  margin: 0 0;
   margin-bottom: 20px;
   padding-left: 100px;
 /*  line-height: 40px;*/
@@ -261,7 +255,7 @@ label {
   display: block;
 /*  float: left;*/
   width: 100px;
-  line-height: 35px;
+  line-height: 40px;
   font-size: 11px;
   text-transform: uppercase;
 /*  color: #828282;*/
@@ -301,6 +295,7 @@ form li span {
   background: #d4d4d4;
   width: 410px;
   padding: 5px;
+  line-height: 30px;
 }
 
 form .buttons {
