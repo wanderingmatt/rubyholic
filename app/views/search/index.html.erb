@@ -1,40 +1,47 @@
-<h1>Search Results</h1>
+<div id="content">
+  <h1>Search Results</h1>
 
-<form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
-  <!-- <label for="search_query">Search Groups</label> -->
-  <input type="text" size="30" id="search_query" name="q" value="<%= @query %>" />
-  <button type="submit">Search</button>
-</form>
+  <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
+    <!-- <label for="search_query">Search Groups</label> -->
+    <input type="text" size="30" id="search_query" name="q" value="<%= @query %>" />
+    <button type="submit">Search</button>
+  </form>
 
-<% if @search.empty? %>
-  There are no search results for <%= @query %>.
-<% else %>
-  <h2>There are <%= @search.size %> results for <%= @query %></h2>
-  <table>
-    <tr>
-      <th>Event Description</th>
-      <th>Date</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th>Address</th>
-      <th>Actions</th>
-    </tr>
+  <% if @search.empty? %>
+    There are no search results for <%= @query %>.
+  <% else %>
+    <h2>There are <%= @search.size %> results for <%= @query %></h2>
+    <table>
+      <tr>
+        <th>Event Description</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
     
-    <% for result in @search %>
-    <tr>
-      <td><%= h result.description %></td>
-      <td><%#= h result.start_time %></td>
-      <td><%#= h result.description %></td>
-      <td><%#= h result.locations.name %></td>
-      <td><%#= h result.location.address %></td>
-      <td>
-        <%= link_to 'Show', result %> | 
-        <%= link_to 'Edit', edit_group_path(result) %> | 
-        <%= link_to 'Destroy', result, :confirm => 'Are you sure?', :method => :delete %>
-      </td>
-    </tr>
-    <%- end -%>
-  </table>
-  <br />
-<%= will_paginate @search %>
-<%- end -%>
+      <% for result in @search %>
+      <tr>
+        <td><%= h result.description %></td>
+        <td><%#= h result.start_time %></td>
+        <td><%#= h result.description %></td>
+        <td><%#= h result.locations.name %></td>
+        <td><%#= h result.location.address %></td>
+        <td>
+          <%= link_to 'Show', result %> | 
+          <%= link_to 'Edit', edit_group_path(result) %> | 
+          <%= link_to 'Destroy', result, :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      </tr>
+      <%- end -%>
+    </table>
+    <br />
+  <%= will_paginate @search %>
+  <%- end -%>
+</div>
+
+<div id="sidebar">
+  <%= render :partial => 'group_recommendations' %>
+  <%= render :partial => 'location_recommendations' %>
+</div>

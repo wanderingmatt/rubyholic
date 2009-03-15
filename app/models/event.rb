@@ -15,10 +15,6 @@ class Event < ActiveRecord::Base
   end
   
   define_index do
-    indexes description
-    indexes group.name, :as => :name
-    indexes group_id
-    indexes location.name, :as => :location
-    indexes location_id
+    indexes name
   end
 end
