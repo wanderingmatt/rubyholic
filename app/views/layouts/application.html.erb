@@ -10,7 +10,7 @@
   <%= stylesheet_link_tag 'globals', :media => 'all' %>
   <%= yield :javascript_includes %>
 </head>
-<body class="<%= controller_name %>"> 
+<body class="<%= controller_name %> <%= action_name %>"> 
   <div id="wrapper">
     <%= yield %>
   </div>

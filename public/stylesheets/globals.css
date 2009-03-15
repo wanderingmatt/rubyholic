@@ -65,6 +65,11 @@ h2 {
   font-size: 36px;
 }
 
+.new h2 img {
+  position: absolute;
+  left: -35px;
+}
+
 h3 {
   font-size: 16px;
 }
@@ -116,7 +121,7 @@ h1 a {
   background: url("/images/logo_rubyholic.png") no-repeat 50% 0;
   width: 260px;
   height: 60px;
-  margin: 20px;
+  margin: 0 20px;
   text-indent: -9999px;
 }
 
@@ -138,7 +143,7 @@ h1 a {
 
 #tab .inner {
   background: #981a21;
-  padding: 20px 20px 19px 20px;
+  padding: 20px 0 19px 0;
   border-bottom: 1px solid #3d1614;
 }
 
@@ -161,8 +166,7 @@ h1 a {
 .events #upcoming_events li a {
   position: relative;
   display: block;
-  padding: 10px 0;
-  padding-left: 60px;
+  padding: 10px 20px 10px 60px;
 }
 
 .events #upcoming_events li a:hover {
