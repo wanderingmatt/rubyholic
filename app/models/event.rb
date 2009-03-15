@@ -13,4 +13,12 @@ class Event < ActiveRecord::Base
   def self.pretty_time(time)
     time.strftime("%a %d %h, %Y at %I:%M %p")
   end
+  
+  define_index do
+    indexes description
+    indexes group.name, :as => :name
+    indexes group_id
+    indexes location.name, :as => :location
+    indexes location_id
+  end
 end
