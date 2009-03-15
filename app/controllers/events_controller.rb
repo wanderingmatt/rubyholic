@@ -91,7 +91,7 @@ class EventsController < ApplicationController
   def create_map(location)
     @map = GMap.new('map')
     @map.control_init(:large_map_3d => true,:map_type => true, :scale => true)
-    @map.center_zoom_init([location[9],location[10]],8)
+    @map.center_zoom_init([location[:latitude],location[:longitude]],8)
     @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
     @map.set_map_type_init(GMapType::G_PHYSICAL_MAP)
     get_upcoming_markers.each do |marker|
