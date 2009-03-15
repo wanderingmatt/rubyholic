@@ -1,6 +1,6 @@
 <%- content_for :javascript_includes do -%>
-<%#= GMap.header :host => request.headers["SERVER_NAME"] %>
-<%#= @map.to_html %>
+<%= GMap.header :host => request.headers["SERVER_NAME"] %>
+<%= @map.to_html %>
 <%- end -%>
 
 <div id="gutter">
