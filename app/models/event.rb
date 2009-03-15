@@ -6,8 +6,12 @@ class Event < ActiveRecord::Base
   
   validates_presence_of :group_id, :location_id, :start_time, :end_time
   
-  def self.sort(page, order)
-    self.upcoming.paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
+  def self.sort(page, order, upcoming = 'true')
+    if upcoming == 'true'
+      self.upcoming.paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
+    else
+      paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
+    end
   end
   
   def self.pretty_time(time)

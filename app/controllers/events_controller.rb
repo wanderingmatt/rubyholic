@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.sort(params[:page], params[:sorted_by])
-    create_map @location
+    @events = Event.sort(params[:page], params[:sorted_by], session[:upcoming])
+    create_map @ip_location
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class LocationTest < ActiveSupport::TestCase
+  # TODO: Need to mock auto-geocode in this test
   test "location validates presence of name" do
     location = Location.new
     location.address = locations(:one).address
@@ -17,6 +18,7 @@ class LocationTest < ActiveSupport::TestCase
     assert location.errors.on(:address)
   end
   
+  # TODO: Need to mock auto-geocode in this test
   test "should auto-geocode address" do
     location = Location.create(:name => locations(:one).name, :address => locations(:one).address)
     assert location.valid?

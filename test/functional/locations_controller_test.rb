@@ -20,7 +20,8 @@ class LocationsControllerTest < ActionController::TestCase
     
     assert_response :success
   end
-
+  
+  # TODO: Need to mock auto-geocode in this test
   test "should create location" do
     assert_difference('Location.count') do
       post :create, :location => {
@@ -32,6 +33,7 @@ class LocationsControllerTest < ActionController::TestCase
     assert_redirected_to location_path(assigns(:location))
   end
   
+  # TODO: Need to mock auto-geocode in this test
   test "should not create invalid location" do
     assert_difference('Location.count', 0) do
       post :create, :location => {
@@ -84,6 +86,7 @@ class LocationsControllerTest < ActionController::TestCase
     assert flash[:notice]
   end
 
+  # TODO: Need to mock auto-geocode in this test
   test "should update location" do
     put :update, :id => locations(:one).id, :location => {
       :name => 'Onehubby'

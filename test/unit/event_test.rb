@@ -26,9 +26,11 @@ class EventTest < ActiveSupport::TestCase
   end
   
   test "sorts fields correctly" do    
-    actual = Event.sort(1, 'start_time')
+    actual = Event.sort(1, 'start_time', 'false')
     
     expected = [
+      events(:one),
+      events(:two),
       events(:three),
       events(:five),
       events(:four)
@@ -38,12 +40,26 @@ class EventTest < ActiveSupport::TestCase
   end
   
   test "sorts related fields correctly" do    
-    actual = Event.sort(1, 'groups.name')
+    actual = Event.sort(1, 'groups.name', 'false')
     
     expected = [
       events(:three),
+      events(:two),
       events(:four),
       events(:five),
+      events(:one)
+    ]
+    
+    assert expected == actual
+  end
+  
+  test "sorts fields hides past events" do    
+    actual = Event.sort(1, 'start_time', 'true')
+    
+    expected = [
+      events(:three),
+      events(:five),
+      events(:four)
     ]
     
     assert expected == actual
