@@ -5,7 +5,7 @@ DESCRIPTION: This stylesheet serves global declarations to all Rubyholic assets
 
 /* =GRID OVERRIDE */
 /*  Grid is inactive when entire section is commented */
-
+/*
 body {
   background: #fff url("../images/16_col.png") center top repeat-y !important;
 }
@@ -13,7 +13,7 @@ body {
 .bg_container {
   background: none !important;
 }
-
+*/
 /* =BASE */
 
 html, body {
@@ -222,6 +222,30 @@ h1 a {
 
 /* =FORMS */
 
+.new #form {
+  position: relative;
+}
+.new #form img.arrow {
+  position: absolute;
+  left: 20px;
+}
+
+.new #form a.add {
+  display: block;
+  background: url("/images/icons/add.png") 0 0 no-repeat;
+  height: 20px;
+  margin: 5px 0;
+  padding-left: 25px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #828282;
+}
+
+.new #form a:hover.add {
+  background-position: 0 -20px;
+  color: #093;
+}
+
 form li {
   position: relative;
   clear: left;
@@ -262,8 +286,14 @@ textarea {
   height: 80px;
 }
 
+.multiple_fields input,
 .multiple_fields select {
+  display: inline;
   width: auto;
+}
+
+.multiple_fields img {
+  display: inline;
 }
 
 form li span {

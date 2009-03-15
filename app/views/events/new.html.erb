@@ -9,10 +9,11 @@
       </div>
     </div>
     <div id="intro" class="grid_4">
-      <h2><%= image_tag 'add.png', :size => '25x24', :alt => '' %>Add a New Event</h2>
+      <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>Add a New Event</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
-    <div class="grid_7 prefix_1">
+    <div id="form" class="grid_7 prefix_1">
+      <%= image_tag 'icons/arrow.png', :size => '25x24', :alt => '', :class => 'arrow' %>
       <% form_for(@event) do |f| %>
         <fieldset>
           <%= f.error_messages %>
@@ -20,7 +21,7 @@
             <li>
               <%= f.label :group_id %>
               <span class="select"><%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %></span>
-              <%= link_to 'Add a New Group', :controller => 'groups', :action => 'new' %>
+              <%= link_to 'Add a New Group', { :controller => 'groups', :action => 'new' }, :class => 'add' %>
             </li>
             <li>
               <%= f.label :location_id %>
@@ -29,7 +30,7 @@
             </li>
             <li class="multiple_fields">
               <%= f.label :start_time %>
-              <span class="datetime"><%= calendar_date_select_tag "e_date" %></span>
+              <span class="datetime"><%= calendar_date_select_tag :start_time %></span>
             </li>
             <li class="multiple_fields">
               <%= f.label :start_time %>
