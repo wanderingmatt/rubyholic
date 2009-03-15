@@ -5,7 +5,8 @@
   <% if !@locations.nil? && @locations.size > 0 %>
     <ol>
     <% for location in @locations %>
-      <li><%= link_to "#{location.name.titleize}", location %></li>
+      <li><%= link_to "#{location.name.titleize}", location %><br />
+        <%= location.address %></li>
     <% end %>
     </ol>
   <% else %>
