@@ -19,23 +19,23 @@
           <ol>
             <li>
               <%= f.label :group_id %>
-              <%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %>
+              <span class="select"><%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %></span>
               <%= link_to 'Add a New Group', :controller => 'groups', :action => 'new' %>
             </li>
             <li>
               <%= f.label :location_id %>
-              <%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %>
-              <%= link_to 'Add a New Location', :controller => 'locations', :action => 'new' %>
+              <span class="select"><%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %></span>
+              <%= link_to 'Add a New Location', { :controller => 'locations', :action => 'new' }, :class => 'add' %>
             </li>
-            <li>
+            <li class="multiple_fields">
               <%= f.label :start_time %>
               <%= calendar_date_select_tag "e_date" %>
             </li>
-            <li>
+            <li class="multiple_fields">
               <%= f.label :start_time %>
               <%= f.datetime_select :start_time %>
             </li>
-            <li>
+            <li class="multiple_fields">
               <%= f.label :end_time %>
               <%= f.datetime_select :end_time %>
             </li>

@@ -226,8 +226,9 @@ form li {
   position: relative;
   clear: left;
   margin-right: 20px;
+  margin-bottom: 20px;
   padding-left: 100px;
-  line-height: 40px;
+/*  line-height: 40px;*/
 }
 
 label {
@@ -236,15 +237,25 @@ label {
   display: block;
 /*  float: left;*/
   width: 100px;
+  line-height: 30px;
   font-size: 12px;
   text-transform: uppercase;
 /*  color: #828282;*/
 }
 
-input, textarea {
+select {
+  width: 100%;
+}
+
+input[type='text'], textarea {
   display: block;
   width: 408px;
   border: 1px solid #b4b4b4;
+  line-height: 20px;
+}
+
+.multiple_fields select {
+  width: auto;
 }
 
 form li span {
