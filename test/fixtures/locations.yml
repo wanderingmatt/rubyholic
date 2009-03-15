@@ -3,8 +3,8 @@
 one:
   name: Onehub
   address: 3380 146th Pl SE, Bellevue, WA 98007
-  latitude: 47.5798527
-  longitude: -122.1456091
+  latitude: 47.5799
+  longitude: -122.1456
 
 two:
   name: X-Mansion Basement
