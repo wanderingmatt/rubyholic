@@ -1,27 +1,46 @@
-<p>
-  <b>Group:</b>
-  <%=h @event.group.name %>
-</p>
+<%- content_for :javascript_includes do -%>
+<%= GMap.header :host => request.headers["SERVER_NAME"] %>
+<%= @map.to_html %>
+<%- end -%>
 
-<p>
-  <b>Location:</b>
-  <%=h @event.location.name %>
-</p>
+<div id="gutter">
+  <%= link_to '<strong>+</strong> Add a New Event', new_event_path %>
+</div>
+<%= @map.div :width => '100%', :height => 490 %>
+<div class="bg_container">
+  <div class="container_12">
+    <div id="strip" class="grid_4">
+      <div class="inner">
+        <h1><%= link_to 'Rubyholic', events_path %></h1>
+        <ol id="upcoming_events">
+            <b>Group:</b>
+            <%=h @event.group.name %>
+          </p>
 
-<p>
-  <b>Start time:</b>
-  <%=h Event.pretty_time(@event.start_time) %>
-</p>
+          <p>
+            <b>Location:</b>
+            <%=h @event.location.name %>
+          </p>
 
-<p>
-  <b>End time:</b>
-  <%=h Event.pretty_time(@event.end_time) %>
-</p>
+          <p>
+            <b>Start time:</b>
+            <%=h Event.pretty_time(@event.start_time) %>
+          </p>
 
-<p>
-  <b>Description:</b>
-  <%=h @event.description %>
-</p>
+          <p>
+            <b>End time:</b>
+            <%=h Event.pretty_time(@event.end_time) %>
+          </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+          <p>
+            <b>Description:</b>
+            <%=h @event.description %>
+          </p>
+
+          <%= link_to 'Edit', edit_event_path(@event) %> |
+          <%= link_to 'Back', events_path %>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
