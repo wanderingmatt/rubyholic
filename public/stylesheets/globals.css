@@ -57,17 +57,17 @@ li.alpha {
 /* =HEADINGS */
 
 h1 {
-  display: block;
-  background: url("/images/logo_rubyholic.png") no-repeat 50% 0;
-  width: 260px;
-  height: 60px;
   font-size: 40px;
-  text-indent: -9999px;
 }
 
 h2 {
   margin-bottom: 40px;
   font-size: 36px;
+}
+
+.new h2 img {
+  position: absolute;
+  left: -35px;
 }
 
 h3 {
@@ -114,6 +114,17 @@ h3 {
   padding-top: 90px;
 }
 
+/* =LOGO */
+
+h1 a {
+  display: block;
+  background: url("/images/logo_rubyholic.png") no-repeat 50% 0;
+  width: 260px;
+  height: 60px;
+  margin: 0 20px;
+  text-indent: -9999px;
+}
+
 /* =INTRO */
 
 #intro p {
@@ -132,7 +143,7 @@ h3 {
 
 #tab .inner {
   background: #981a21;
-  padding: 20px 20px 19px 20px;
+  padding: 20px 0 19px 0;
   border-bottom: 1px solid #3d1614;
 }
 
@@ -143,23 +154,29 @@ h3 {
 
 .events #strip .inner {
   background: #981a21;
-	min-height:100%;
-  padding: 20px;
+	min-height: 100%;
   border-top: 1px solid #5b201d;
   z-index: 10;
 }
 
-.events #nearest_events li {
-  position: relative;
-  clear: left;
-  margin-bottom: 20px;
-  padding-left: 40px;
+.events #upcoming_events li {
+/*  margin-bottom: 20px;*/
 }
 
-.events .date {
+.events #upcoming_events li a {
+  position: relative;
+  display: block;
+  padding: 10px 20px 10px 60px;
+}
+
+.events #upcoming_events li a:hover {
+  background-color: #7a151a;
+}
+
+.events #upcoming_events li .date {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 20px;
+  top: 10px;
   display: block;
   width: 20px;
   line-height: 10px;
@@ -167,33 +184,33 @@ h3 {
   text-align: center;
 }
 
-.events .date .day {
+.events #upcoming_events li .date .day {
   line-height: 20px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
 }
 
-.events .date .month {
+.events #upcoming_events li .date .month {
   position: relative;
   top: -4px;
   font-size: 10px;
   color: #c18683;
 }
 
-.events .date .year {
+.events #upcoming_events li .date .year {
   position: relative;
   top: -8px;
   font-size: 10px;
   color: #ad5e5a;
 }
 
-.events h3 a {
+.events #upcoming_events li h3 {
   font-weight: bold;
   color: #f6e69f;
 }
 
-.events .location a {
+.events #upcoming_events li .location {
   font-size: 14px;
   color: #c18683;
 }
@@ -209,8 +226,9 @@ form li {
   position: relative;
   clear: left;
   margin-right: 20px;
+  margin-bottom: 20px;
   padding-left: 100px;
-  line-height: 40px;
+/*  line-height: 40px;*/
 }
 
 label {
@@ -219,15 +237,25 @@ label {
   display: block;
 /*  float: left;*/
   width: 100px;
+  line-height: 30px;
   font-size: 12px;
   text-transform: uppercase;
 /*  color: #828282;*/
 }
 
-input, textarea {
+select {
+  width: 100%;
+}
+
+input[type='text'], textarea {
   display: block;
   width: 408px;
   border: 1px solid #b4b4b4;
+  line-height: 20px;
+}
+
+.multiple_fields select {
+  width: auto;
 }
 
 form li span {
