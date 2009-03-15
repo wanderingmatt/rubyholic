@@ -17,4 +17,8 @@ class Event < ActiveRecord::Base
   def self.pretty_time(time)
     time.strftime("%a %d %h, %Y at %I:%M %p")
   end
+  
+  define_index do
+    indexes name
+  end
 end

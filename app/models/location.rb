@@ -7,7 +7,7 @@ class Location < ActiveRecord::Base
   validates_presence_of :name, :address
   
   define_index do
-    indexes name
-    indexes address
+    indexes name, :sortable => true
+    indexes address, :sortable => true
   end
 end
