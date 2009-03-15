@@ -11,29 +11,31 @@
   <div class="container_12">
     <div id="strip" class="grid_4">
       <div class="inner">
-        <h1>Rubyholic</h1>
+        <h1><%= link_to 'Rubyholic', events_path %></h1>
         <% form_tag '', :method => 'GET', :class => 'locale' do %> 
         <%= select_tag 'locale', ['test'], 
         :onchange => 'this.form.submit()' %> 
         <%= submit_tag 'submit' %> 
         <%= javascript_tag "$$('.locale input').each(Element.hide)" %> 
         <% end %>
-        <ol id="nearest_events">
+        <ol id="upcoming_events">
 
         <% for event in @events %>
           <li>
-            <h3><%= link_to event.group.name, event.group %></h3>
-            <div class="location"><%= link_to event.location.name, event.location %></div>
-            <div class="date" align="justify">
-              <span class="day"><%=h event.start_time.strftime("%d") %></span>
-              <span class="month"><%=h event.start_time.strftime("%b") %></span>
-              <span class="year"><%=h event.start_time.strftime("%Y") %></span>
-            </div>
-            <!-- <div><%#h event.end_time %></div> -->
-            <!-- <div><%#h event.description %></div> -->
-            <!-- <div><%= link_to 'Show', event %>
-            <%= link_to 'Edit', edit_event_path(event) %>
-            <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></div> -->
+            <a href="<%= url_for event %>">
+              <h3><%= event.group.name %></h3>
+              <div class="location"><%= event.location.name %></div>
+              <div class="date" align="justify">
+                <span class="day"><%=h event.start_time.strftime("%d") %></span>
+                <span class="month"><%=h event.start_time.strftime("%b") %></span>
+                <span class="year"><%=h event.start_time.strftime("%Y") %></span>
+              </div>
+              <!-- <div><%#h event.end_time %></div> -->
+              <!-- <div><%#h event.description %></div> -->
+              <!-- <div><%= link_to 'Show', event %>
+              <%= link_to 'Edit', edit_event_path(event) %>
+              <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></div> -->
+            </a>
           </li>
         <% end %>
 
@@ -48,7 +50,7 @@
           <button type="submit">Search</button>
       </form>
       <p>IP: <%= request.remote_ip %></p>
-      <p>Location Data: <%= @location.join(" ").to_s %></p>
+      <p>Location Data: <%= "#{@location[:latitude]}, #{@location[:longitude]}" %></p>
     </div>
   </div>
 </div>

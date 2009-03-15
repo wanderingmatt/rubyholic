@@ -29,8 +29,6 @@ class EventTest < ActiveSupport::TestCase
     actual = Event.sort(1, 'start_time')
     
     expected = [
-      events(:one),
-      events(:two),
       events(:three),
       events(:five),
       events(:four)
@@ -44,16 +42,14 @@ class EventTest < ActiveSupport::TestCase
     
     expected = [
       events(:three),
-      events(:two),
       events(:four),
       events(:five),
-      events(:one)
     ]
     
     assert expected == actual
   end
   
   test "time should be formatted properly" do
-    assert_equal "Tue 24 Feb, 2009 at 11:45 PM", Event.pretty_time(events(:one).start_time)
+    assert_equal "Tue 24 Feb, 2009 at 11:45 PM", Event.pretty_time(Time.parse('2009-02-24 11:45pm'))
   end
 end

@@ -19,6 +19,17 @@ class EventsControllerTest < ActionController::TestCase
     assert_match "GLatLng(47.0597,-122.3623)", @response.body
   end
   
+  test "map renders upcoming events" do
+    get :index
+    
+    assert_response :success
+    
+    assert_no_match /GLatLng\(#{locations(:one).latitude.to_s}\,#{locations(:one).longitude.to_s}\)/, @response.body
+    assert_no_match /GLatLng\(#{locations(:two).latitude.to_s}\,#{locations(:two).longitude.to_s}\)/, @response.body
+    assert_match "GLatLng(#{locations(:three).latitude},#{locations(:three).longitude})", @response.body
+    assert_match "GLatLng(#{locations(:four).latitude},#{locations(:four).longitude})", @response.body
+    assert_match "GLatLng(#{locations(:five).latitude},#{locations(:five).longitude})", @response.body
+  end
 
   test "should get new" do
     get :new

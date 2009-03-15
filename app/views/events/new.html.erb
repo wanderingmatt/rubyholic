@@ -5,49 +5,51 @@
   <div class="container_12">
     <div id="tab" class="grid_4">
       <div class="inner">
-        <h1>Rubyholic</h1>
+        <h1><%= link_to 'Rubyholic', events_path %></h1>
       </div>
     </div>
     <div id="intro" class="grid_4">
-      <h2>Add a New Event</h2>
+      <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>Add a New Event</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
-    <div class="grid_7 prefix_1">
+    <div id="form" class="grid_7 prefix_1">
+      <%= image_tag 'icons/arrow.png', :size => '25x24', :alt => '', :class => 'arrow' %>
       <% form_for(@event) do |f| %>
         <fieldset>
           <%= f.error_messages %>
           <ol>
             <li>
               <%= f.label :group_id %>
-              <%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %>
-              <%= link_to 'Add a New Group', :controller => 'groups', :action => 'new' %>
+              <span class="select"><%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %></span>
+              <%= link_to 'Add a New Group', { :controller => 'groups', :action => 'new' }, :class => 'add' %>
             </li>
             <li>
               <%= f.label :location_id %>
-              <%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %>
-              <%= link_to 'Add a New Location', :controller => 'locations', :action => 'new' %>
+              <span class="select"><%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %></span>
+              <%= link_to 'Add a New Location', { :controller => 'locations', :action => 'new' }, :class => 'add' %>
             </li>
-            <li>
+            <li class="multiple_fields">
               <%= f.label :start_time %>
-              <%= calendar_date_select_tag "e_date" %>
+              <span class="datetime"><%= calendar_date_select_tag :start_time %></span>
             </li>
-            <li>
+            <li class="multiple_fields">
               <%= f.label :start_time %>
-              <%= f.datetime_select :start_time %>
+              <span class="datetime"><%= f.datetime_select :start_time %></span>
             </li>
-            <li>
+            <li class="multiple_fields">
               <%= f.label :end_time %>
-              <%= f.datetime_select :end_time %>
+              <span class="datetime"><%= f.datetime_select :end_time %></span>
             </li>
             <li>
               <%= f.label :description %>
-              <span class="textarea"><%= f.text_area :description, :size => '30x6' %></span>
+              <span class="textarea"><%= f.text_area :description, :size => '30x4' %></span>
             </li>
           </ol>
-          <%= f.submit "Create" %>
+          <div class="buttons">
+            <%= f.submit "Create" %> <%= link_to 'Back', events_path %>
+          </div>
         </fieldset>
       <% end %>
     </div>
-  <%= link_to 'Back', events_path %>
   </div>
 </div>

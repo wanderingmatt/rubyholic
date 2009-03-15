@@ -3,34 +3,34 @@
 one:
   group: one
   location: one
-  start_time: <%= Time.parse('2009-02-24 11:45pm').utc.to_s(:db) %>
-  end_time: <%= Time.parse('2009-02-24 11:59pm').utc.to_s(:db) %>
+  start_time: <%= (Time.now - 310050).utc.to_s(:db) %>
+  end_time: <%= (Time.now - 310000).utc.to_s(:db) %>
   description: MyText
 
 two:
   group: two
   location: two
-  start_time: <%= Time.parse('2009-02-25 11:45pm').utc.to_s(:db) %>
-  end_time: <%= Time.parse('2009-02-25 11:59pm').utc.to_s(:db) %>
+  start_time: <%= (Time.now - 300050).utc.to_s(:db) %>
+  end_time: <%= (Time.now - 300000).utc.to_s(:db) %>
   description: MyText
   
 three:
   group: three
   location: three
-  start_time: <%= Time.parse('2009-02-26 11:45pm').utc.to_s(:db) %>
-  end_time: <%= Time.parse('2009-02-26 11:59pm').utc.to_s(:db) %>
+  start_time: <%= (Time.now + 300000).utc.to_s(:db) %>
+  end_time: <%= (Time.now + 300050).utc.to_s(:db) %>
   description: MyText
   
 four:
   group: four
   location: four
-  start_time: <%= Time.parse('2009-02-28 11:45pm').utc.to_s(:db) %>
-  end_time: <%= Time.parse('2009-02-28 11:59pm').utc.to_s(:db) %>
+  start_time: <%= (Time.now + 320000).utc.to_s(:db) %>
+  end_time: <%= (Time.now + 320050).utc.to_s(:db) %>
   description: MyText
   
 five:
   group: five
   location: five
-  start_time: <%= Time.parse('2009-02-27 11:45pm').utc.to_s(:db) %>
-  end_time: <%= Time.parse('2009-02-27 11:59pm').utc.to_s(:db) %>
+  start_time: <%= (Time.now + 310000).utc.to_s(:db) %>
+  end_time: <%= (Time.now + 310050).utc.to_s(:db) %>
   description: MyText
