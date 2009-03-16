@@ -5,8 +5,6 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   
   define_index do
-    indexes :name, :sortable => true
-    
-    has updated_at
+    indexes :name, :as => :name, :sortable => true
   end
 end

@@ -9,14 +9,10 @@ class SearchController < ApplicationController
 
     page = params[:page] || 1
     
-    @search = Group.search(
+    @search = Event.search(
       @query, (params[:search] || ""), :page => (params[:page] || 1)
     )
-
-    if @query.nil? || @query.empty?
-      @query = "[no search defined]"
-    end
-
+    
     # @search = Group.search(
     #   @query, (params[:search] || ""), :page => (params[:page] || 1)
     # )
