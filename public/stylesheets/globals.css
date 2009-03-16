@@ -302,6 +302,16 @@ form .buttons {
   margin-left: 100px;
 }
 
+/* =SEARCH */
+.search #recommended {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search #recommended #groups, .search #recommended #locations {
+  margin: 10px 0;
+}
+
 /* =BUTTONS =BASE */
 /* Abstracted from the Wufoo implementation - thanks guys! */
 /* http://particletree.com/features/rediscovering-the-button-element/ */
