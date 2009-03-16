@@ -17,36 +17,30 @@
 
       <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
         <!-- <label for="search_query">Search Groups</label> -->
-        <input type="text" size="30" id="search_query" name="q" value="<%= @query %>" onfocus="this.clear()" />
+        <input type="text" size="30" id="search_query" name="q" value="<%= @query unless @query == "[no search defined]"%>" onfocus="this.clear()" />
         <button type="submit">Search</button>
       </form>
 
       <% if @search.empty? %>
       There are no search results for <%= @query %>.
       <% else %>
-      <h2>There are <%= @search.size %> results for <%= @query %></h2>
+      <h3>There are <%= @search.size %> results for <%= @query %></h3>
       <table>
         <tr>
-          <th>Event Description</th>
+          <th>Group Name</th>
           <th>Date</th>
           <th>Description</th>
           <th>Location</th>
           <th>Address</th>
-          <th>Actions</th>
         </tr>
 
         <% for result in @search %>
         <tr>
-          <td><%= h result.name %></td>
+          <td><%= link_to result.name, result %></td>
           <td><%#= h result.start_time %></td>
           <td><%#= h result.description %></td>
           <td><%#= h result.locations.name %></td>
           <td><%#= h result.location.address %></td>
-          <td>
-            <%= link_to 'Show', result %> | 
-            <%= link_to 'Edit', edit_group_path(result) %> | 
-            <%= link_to 'Destroy', result, :confirm => 'Are you sure?', :method => :delete %>
-          </td>
         </tr>
         <%- end -%>
       </table>

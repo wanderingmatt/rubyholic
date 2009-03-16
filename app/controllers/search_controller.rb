@@ -5,13 +5,17 @@ class SearchController < ApplicationController
   layout 'application'
   
   def index    
-    @query = params[:q].strip
+    params[:q].nil? ? "" : @query = params[:q].strip
 
     page = params[:page] || 1
     
     @search = Group.search(
       @query, (params[:search] || ""), :page => (params[:page] || 1)
     )
+
+    if @query.nil? || @query.empty?
+      @query = "[no search defined]"
+    end
 
     # @search = Group.search(
     #   @query, (params[:search] || ""), :page => (params[:page] || 1)
