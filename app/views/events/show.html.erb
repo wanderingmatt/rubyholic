@@ -11,35 +11,22 @@
   <div class="container_12">
     <div id="strip" class="grid_4">
       <div class="inner">
-        <h1><%= link_to 'Rubyholic', events_path %></h1>
-        <ol id="upcoming_events">
-            <b>Group:</b>
-            <%=h @event.group.name %>
-          </p>
-
-          <p>
-            <b>Location:</b>
-            <%=h @event.location.name %>
-          </p>
-
-          <p>
-            <b>Start time:</b>
-            <%=h Event.pretty_time(@event.start_time) %>
-          </p>
-
-          <p>
-            <b>End time:</b>
-            <%=h Event.pretty_time(@event.end_time) %>
-          </p>
-
-          <p>
-            <b>Description:</b>
-            <%=h @event.description %>
-          </p>
+        <div class="logo">
+          <h1><%= link_to 'Rubyholic', events_path %></h1>
+        </div>
+        <div class="event">
+          <h3><%=h @event.group.name %></h3>
+          <div class="location"><%=h @event.location.name %></div>
+          <div class="date" align="justify">
+            <span class="day"><%=h @event.start_time.strftime("%d") %></span>
+            <span class="month"><%=h @event.start_time.strftime("%b") %></span>
+            <span class="year"><%=h @event.start_time.strftime("%Y") %></span>
+          </div>
+          <p><%=h @event.description %></p>
 
           <%= link_to 'Edit', edit_event_path(@event) %> |
           <%= link_to 'Back', events_path %>
-        </ol>
+        </div>
       </div>
     </div>
   </div>

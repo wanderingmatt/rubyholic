@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  layout 'application'
+  
   # GET /groups
   # GET /groups.xml
   def index

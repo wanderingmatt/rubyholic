@@ -5,7 +5,9 @@
   <div class="container_12">
     <div id="tab" class="grid_4">
       <div class="inner">
-        <h1><%= link_to 'Rubyholic', events_path %></h1>
+        <div class="logo">
+          <h1><%= link_to 'Rubyholic', events_path %></h1>
+        </div>
       </div>
     </div>
     <div id="intro" class="grid_4">
@@ -46,7 +48,7 @@
             </li>
           </ol>
           <div class="buttons">
-            <%= f.submit "Create" %> <%= link_to 'Back', events_path %>
+            <%= content_tag(:button, 'Create', :class => 'button') %> <%= link_to 'Back', events_path %>
           </div>
         </fieldset>
       <% end %>

@@ -11,18 +11,20 @@
   <div class="container_12">
     <div id="strip" class="grid_4">
       <div class="inner">
-        <h1><%= link_to 'Rubyholic', events_path %></h1>
-        <% form_tag '', :method => 'GET', :class => 'locale' do %> 
+        <div class="logo">
+          <h1><%= link_to 'Rubyholic', events_path %></h1>
+        </div>
+        <!-- <% form_tag '', :method => 'GET', :class => 'locale' do %> 
         <%= select_tag 'locale', ['test'], 
         :onchange => 'this.form.submit()' %> 
         <%= submit_tag 'submit' %> 
         <%= javascript_tag "$$('.locale input').each(Element.hide)" %> 
-        <% end %>
+        <% end %> -->
         <ol id="upcoming_events">
 
         <% for event in @events %>
           <li>
-            <a href="<%= url_for event %>">
+            <a class="event" href="<%= url_for event %>">
               <h3><%= event.group.name %></h3>
               <div class="location"><%= event.location.name %></div>
               <div class="date" align="justify">
