@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
     time.strftime("%a %d %h, %Y at %I:%M %p")
   end
   
-  define_index do
-    indexes name
-  end
+  # define_index do
+  #   indexes name
+  # end
 end

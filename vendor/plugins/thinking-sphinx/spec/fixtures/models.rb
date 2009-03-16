@@ -5,6 +5,10 @@ class Person < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
   
+  has_many :tags
+  
+  has_many :football_teams, :through => :tags
+  
   define_index do
     indexes [first_name, middle_initial, last_name], :as => :name
     indexes team.name, :as => :team_name
@@ -43,12 +47,21 @@ class Contact < ActiveRecord::Base
   belongs_to :person
 end
 
+class Tag < ActiveRecord::Base
+  belongs_to :person
+  belongs_to :football_team
+  belongs_to :cricket_team
+end
+
 class FootballTeam < ActiveRecord::Base
-  #
+  has_many :tags
 end
 
 class CricketTeam < ActiveRecord::Base
-  #
+  define_index do
+    indexes :name
+    has "SELECT cricket_team_id, id FROM tags", :source => :query, :as => :tags
+  end
 end
 
 class Friendship < ActiveRecord::Base

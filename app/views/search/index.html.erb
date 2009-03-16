@@ -9,8 +9,8 @@
       </div>
     </div>
     <div id="recommended" class="grid_4">
-      <%= render :partial => 'group_recommendations' %>
-      <%= render :partial => 'location_recommendations' %>
+      <%#= render :partial => 'group_recommendations' %>
+      <%#= render :partial => 'location_recommendations' %>
     </div>
     <div class="grid_8">
       <h2>Search Results</h2>
@@ -37,7 +37,7 @@
 
         <% for result in @search %>
         <tr>
-          <td><%= h result.description %></td>
+          <td><%= h result.name %></td>
           <td><%#= h result.start_time %></td>
           <td><%#= h result.description %></td>
           <td><%#= h result.locations.name %></td>

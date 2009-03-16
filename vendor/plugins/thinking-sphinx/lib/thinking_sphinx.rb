@@ -13,6 +13,7 @@ require 'thinking_sphinx/attribute'
 require 'thinking_sphinx/collection'
 require 'thinking_sphinx/configuration'
 require 'thinking_sphinx/facet'
+require 'thinking_sphinx/class_facet'
 require 'thinking_sphinx/facet_collection'
 require 'thinking_sphinx/field'
 require 'thinking_sphinx/index'
@@ -34,7 +35,7 @@ module ThinkingSphinx
   module Version #:nodoc:
     Major = 1
     Minor = 1
-    Tiny  = 5
+    Tiny  = 6
     
     String = [Major, Minor, Tiny].join('.')
   end
@@ -58,6 +59,10 @@ module ThinkingSphinx
   # that have Sphinx indexes.
   def self.indexed_models
     @@indexed_models ||= []
+  end
+  
+  def self.unique_id_expression(offset = nil)
+    "* #{ThinkingSphinx.indexed_models.size} + #{offset || 0}"
   end
   
   # Check if index definition is disabled.
@@ -143,6 +148,8 @@ module ThinkingSphinx
   end
   
   def self.pid_active?(pid)
+    return true if RUBY_PLATFORM =~ /mswin/
+    
     begin
       Process.getpgid(pid.to_i)
       true

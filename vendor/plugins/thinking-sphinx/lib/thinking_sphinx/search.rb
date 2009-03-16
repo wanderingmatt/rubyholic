@@ -7,6 +7,11 @@ module ThinkingSphinx
   # called from a model.
   # 
   class Search
+    GlobalFacetOptions = {
+      :all_attributes => false,
+      :class_facet    => true
+    }
+    
     class << self
       # Searches for results that match the parameters provided. Will only
       # return the ids for the matching objects. See #search for syntax
@@ -94,16 +99,24 @@ module ThinkingSphinx
       # == Searching by Attributes
       #
       # Also known as filters, you can limit your searches to documents that
-      # have specific values for their attributes. There are two ways to do
-      # this. The first is one that works in all scenarios - using the :with
-      # option.
+      # have specific values for their attributes. There are three ways to do
+      # this. The first two techniques work in all scenarios - using the :with
+      # or :with_all options.
       #
-      #   ThinkingSphinx::Search.search :with => {:parent_id => 10}
+      #   ThinkingSphinx::Search.search :with => {:tag_ids => 10}
+      #   ThinkingSphinx::Search.search :with => {:tag_ids => [10,12]}
+      #   ThinkingSphinx::Search.search :with_all => {:tag_ids => [10,12]}
       #
-      # The second is only viable if you're searching with a specific model
-      # (not multi-model searching). With a single model, Thinking Sphinx
-      # can figure out what attributes and fields are available, so you can
-      # put it all in the :conditions hash, and it will sort it out.
+      # The first :with search will match records with a tag_id attribute of 10.
+      # The second :with will match records with a tag_id attribute of 10 OR 12.
+      # If you need to find records that are tagged with ids 10 AND 12, you
+      # will need to use the :with_all search parameter. This is particuarly
+      # useful in conjunction with Multi Value Attributes (MVAs).
+      #
+      # The third filtering technique is only viable if you're searching with a
+      # specific model (not multi-model searching). With a single model,
+      # Thinking Sphinx can figure out what attributes and fields are available,
+      # so you can put it all in the :conditions hash, and it will sort it out.
       # 
       #   Node.search :conditions => {:parent_id => 10}
       # 
@@ -297,8 +310,10 @@ module ThinkingSphinx
       def retry_search_on_stale_index(query, options, &block)
         stale_ids = []
         stale_retries_left = case options[:retry_stale]
-                              when true:       3  # default to three retries
-                              when nil, false: 0  # no retries
+                              when true
+                                3  # default to three retries
+                              when nil, false
+                                0  # no retries
                               else             options[:retry_stale].to_i
                               end
         begin
@@ -358,15 +373,18 @@ module ThinkingSphinx
         end
       end
       
+      # Model.facets *args
+      # ThinkingSphinx::Search.facets *args
+      # ThinkingSphinx::Search.facets *args, :all_attributes  => true
+      # ThinkingSphinx::Search.facets *args, :class_facet     => false
+      # 
       def facets(*args)
-        hash    = ThinkingSphinx::FacetCollection.new args
-        options = args.extract_options!.clone.merge! :group_function => :attr
+        options = args.extract_options!
         
-        options[:class].sphinx_facets.inject(hash) do |hash, facet|
-          options[:group_by] = facet.attribute_name
-          
-          hash.add_from_results facet, search(*(args + [options]))
-          hash
+        if options[:class]
+          facets_for_model options[:class], args, options
+        else
+          facets_for_all_models args, options
         end
       end
       
@@ -639,6 +657,64 @@ module ThinkingSphinx
         }
         
         string
+      end
+      
+      def facets_for_model(klass, args, options)
+        hash    = ThinkingSphinx::FacetCollection.new args + [options]
+        options = options.clone.merge! :group_function => :attr
+        
+        klass.sphinx_facets.inject(hash) do |hash, facet|
+          unless facet.name == :class && !options[:class_facet]
+            options[:group_by] = facet.attribute_name
+            hash.add_from_results facet, search(*(args + [options]))
+          end
+          
+          hash
+        end
+      end
+      
+      def facets_for_all_models(args, options)
+        options = GlobalFacetOptions.merge(options)
+        hash    = ThinkingSphinx::FacetCollection.new args + [options]
+        options = options.merge! :group_function => :attr
+        
+        facet_names(options).inject(hash) do |hash, name|
+          options[:group_by] = name
+          hash.add_from_results name, search(*(args + [options]))
+          hash
+        end
+      end
+      
+      def facet_classes(options)
+        options[:classes] || ThinkingSphinx.indexed_models.collect { |model|
+          model.constantize
+        }
+      end
+      
+      def facet_names(options)
+        classes = facet_classes(options)
+        names   = options[:all_attributes] ?
+          facet_names_for_all_classes(classes) :
+          facet_names_common_to_all_classes(classes)
+        
+        names.delete "class_crc" unless options[:class_facet]
+        names
+      end
+      
+      def facet_names_for_all_classes(classes)
+        classes.collect { |klass|
+          klass.sphinx_facets.collect { |facet| facet.attribute_name }
+        }.flatten.uniq
+      end
+      
+      def facet_names_common_to_all_classes(classes)
+        facet_names_for_all_classes(classes).select { |name|
+          classes.all? { |klass|
+            klass.sphinx_facets.detect { |facet|
+              facet.attribute_name == name
+            }
+          }
+        }
       end
     end
   end
