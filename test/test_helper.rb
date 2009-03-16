@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
+# require '/vendor/plugins/geokit-rails/lib/'
 
 class Test::Unit::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
@@ -35,4 +36,10 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  # setup :stub_geocoder
+  # def stub_geocoder
+  #   geocode_payload = GeoKit::GeoLoc.new(:lat => 123.456, :lng => 789.012)
+  #   geocode_payload.success = true
+  #   GeoKit::GeoCodes::Multigeocoder.should_receive(:geocode).and_returns(geocode_payload)
+  # end
 end

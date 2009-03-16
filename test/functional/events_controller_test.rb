@@ -51,7 +51,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should show event" do
-    flunk "Mock out the Google Maps stuff."
+    # flunk "Mock out the Google Maps stuff."
     # get :show, :id => events(:one).id
     # 
     # assert_response :success
