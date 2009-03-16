@@ -7,7 +7,7 @@ DESCRIPTION: This stylesheet serves global declarations to all Rubyholic assets
 /*  Grid is inactive when entire section is commented */
 
 body {
-  background: #fff url("../images/16_col.png") center top repeat-y !important;
+  background: #fff url("../images/12_col.png") center top repeat-y !important;
 }
 
 .bg_container {
