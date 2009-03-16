@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'flexmock/test_unit'
 
 class LocationsControllerTest < ActionController::TestCase
   test "should get index" do
@@ -23,28 +24,26 @@ class LocationsControllerTest < ActionController::TestCase
   
   # TODO: Need to mock auto-geocode in this test
   test "should create location" do
-    # flunk "Mock out the auto-geocode stuff."
-    # assert_difference('Location.count') do
-    #   post :create, :location => {
-    #     :name => 'Onehub',
-    #     :address => '3380 146th Pl SE, Bellevue, WA 98007',
-    #     }
-    # end
-    # 
-    # assert_redirected_to location_path(assigns(:location))
+    assert_difference('Location.count') do
+      post :create, :location => {
+        :name => 'Onehub',
+        :address => '3380 146th Pl SE, Bellevue, WA 98007',
+        }
+    end
+    
+    assert_redirected_to location_path(assigns(:location))
   end
   
   # TODO: Need to mock auto-geocode in this test
   test "should not create invalid location" do
-    # flunk "Mock out the auto-geocode stuff."
-    # assert_difference('Location.count', 0) do
-    #   post :create, :location => {
-    #     :name => '',
-    #     :address => '3380 146th Pl SE, Bellevue, WA 98007'
-    #     }
-    # end
-    # 
-    # assert_not_nil assigns(:location).errors.on(:name)
+    assert_difference('Location.count', 0) do
+      post :create, :location => {
+        :name => '',
+        :address => '3380 146th Pl SE, Bellevue, WA 98007'
+        }
+    end
+    
+    assert_not_nil assigns(:location).errors.on(:name)
   end
 
   test "should show location" do
@@ -59,14 +58,14 @@ class LocationsControllerTest < ActionController::TestCase
     assert flash[:notice]
   end
   
+  # TODO: Need to mock Google maps data
   test "map gets location data" do
-    # flunk "Mock out the Google Maps stuff"
-    # get :show, :id => locations(:one).id
-    # 
-    # assert_response :success
-    # 
-    # assert_tag :tag => 'div', :attributes => { :id => 'map' }
-    # assert_match "GLatLng(#{locations(:one).latitude},#{locations(:one).longitude})", @response.body
+    get :show, :id => locations(:one).id
+    
+    assert_response :success
+    
+    assert_tag :tag => 'div', :attributes => { :id => 'map' }
+    assert_match "GLatLng(#{locations(:one).latitude},#{locations(:one).longitude})", @response.body
   end
 
   test "should get edit" do
@@ -91,13 +90,12 @@ class LocationsControllerTest < ActionController::TestCase
 
   # TODO: Need to mock auto-geocode in this test
   test "should update location" do
-    
-    # put :update, :id => locations(:one).id, :location => {
-    #   :name => 'Onehubby'
-    #   }
-    #   
-    # assert_redirected_to location_path(assigns(:location))
-    # assert_equal 'Onehubby', Location.find(locations(:one).id).name
+    put :update, :id => locations(:one).id, :location => {
+      :name => 'Onehubby'
+      }
+      
+    assert_redirected_to location_path(assigns(:location))
+    assert_equal 'Onehubby', Location.find(locations(:one).id).name
   end
 
   test "should destroy location" do

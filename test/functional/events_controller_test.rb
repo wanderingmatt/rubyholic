@@ -50,11 +50,11 @@ class EventsControllerTest < ActionController::TestCase
     assert_redirected_to event_path(assigns(:event))
   end
 
+  # TODO: Need to mock out the Google Maps data
   test "should show event" do
-    # flunk "Mock out the Google Maps stuff."
-    # get :show, :id => events(:one).id
-    # 
-    # assert_response :success
+    get :show, :id => events(:one).id
+    
+    assert_response :success
   end
 
   test "should get edit" do
