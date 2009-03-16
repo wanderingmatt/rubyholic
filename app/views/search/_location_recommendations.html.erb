@@ -1,7 +1,6 @@
-<hr />
 <div id="locations">
-  <h2>Recommended Locations</h2>
-  <% @locations = Location.search(@query) %>
+  <h3>Recommended Locations</h3>
+  <% @locations = Location.search(@query, :limit => 5) %>
   <% if !@locations.nil? && @locations.size > 0 %>
     <ol>
     <% for location in @locations %>
@@ -13,4 +12,3 @@
     <p>There are no locations that match your search terms (<%= @query %>).</p>
   <% end %>
 </div>
-<hr />

@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'flexmock/test_unit'
 
 class LocationsControllerTest < ActionController::TestCase
   test "should get index" do
@@ -29,7 +30,7 @@ class LocationsControllerTest < ActionController::TestCase
         :address => '3380 146th Pl SE, Bellevue, WA 98007',
         }
     end
-
+    
     assert_redirected_to location_path(assigns(:location))
   end
   
@@ -41,7 +42,7 @@ class LocationsControllerTest < ActionController::TestCase
         :address => '3380 146th Pl SE, Bellevue, WA 98007'
         }
     end
-
+    
     assert_not_nil assigns(:location).errors.on(:name)
   end
 
@@ -57,11 +58,12 @@ class LocationsControllerTest < ActionController::TestCase
     assert flash[:notice]
   end
   
+  # TODO: Need to mock Google maps data
   test "map gets location data" do
     get :show, :id => locations(:one).id
     
     assert_response :success
-
+    
     assert_tag :tag => 'div', :attributes => { :id => 'map' }
     assert_match "GLatLng(#{locations(:one).latitude},#{locations(:one).longitude})", @response.body
   end

@@ -1,47 +1,58 @@
-<div id="content">
-  <h1>Search Results</h1>
-
-  <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
-    <!-- <label for="search_query">Search Groups</label> -->
-    <input type="text" size="30" id="search_query" name="q" value="<%= @query %>" />
-    <button type="submit">Search</button>
-  </form>
-
-  <% if @search.empty? %>
-    There are no search results for <%= @query %>.
-  <% else %>
-    <h2>There are <%= @search.size %> results for <%= @query %></h2>
-    <table>
-      <tr>
-        <th>Event Description</th>
-        <th>Date</th>
-        <th>Description</th>
-        <th>Location</th>
-        <th>Address</th>
-        <th>Actions</th>
-      </tr>
-    
-      <% for result in @search %>
-      <tr>
-        <td><%= h result.description %></td>
-        <td><%#= h result.start_time %></td>
-        <td><%#= h result.description %></td>
-        <td><%#= h result.locations.name %></td>
-        <td><%#= h result.location.address %></td>
-        <td>
-          <%= link_to 'Show', result %> | 
-          <%= link_to 'Edit', edit_group_path(result) %> | 
-          <%= link_to 'Destroy', result, :confirm => 'Are you sure?', :method => :delete %>
-        </td>
-      </tr>
-      <%- end -%>
-    </table>
-    <br />
-  <%= will_paginate @search %>
-  <%- end -%>
+<div id="gutter">
+<%= link_to '<strong>+</strong> Add a New Event', new_event_path %>
 </div>
+<div class="bg_container">
+  <div class="container_12">
+    <div id="tab" class="grid_4">
+      <div class="inner">
+        <h1><%= link_to "Rubyholic", :controller => "events", :action => "index" %></h1>
+      </div>
+    </div>
+    <div id="recommended" class="grid_4">
+      <%= render :partial => 'group_recommendations' %>
+      <%= render :partial => 'location_recommendations' %>
+    </div>
+    <div class="grid_8">
+      <h2>Search Results</h2>
 
-<div id="sidebar">
-  <%= render :partial => 'group_recommendations' %>
-  <%= render :partial => 'location_recommendations' %>
+      <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
+        <!-- <label for="search_query">Search Groups</label> -->
+        <input type="text" size="30" id="search_query" name="q" value="<%= @query %>" onfocus="this.clear()" />
+        <button type="submit">Search</button>
+      </form>
+
+      <% if @search.empty? %>
+      There are no search results for <%= @query %>.
+      <% else %>
+      <h2>There are <%= @search.size %> results for <%= @query %></h2>
+      <table>
+        <tr>
+          <th>Event Description</th>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+
+        <% for result in @search %>
+        <tr>
+          <td><%= h result.description %></td>
+          <td><%#= h result.start_time %></td>
+          <td><%#= h result.description %></td>
+          <td><%#= h result.locations.name %></td>
+          <td><%#= h result.location.address %></td>
+          <td>
+            <%= link_to 'Show', result %> | 
+            <%= link_to 'Edit', edit_group_path(result) %> | 
+            <%= link_to 'Destroy', result, :confirm => 'Are you sure?', :method => :delete %>
+          </td>
+        </tr>
+        <%- end -%>
+      </table>
+      <br />
+      <%= will_paginate @search %>
+      <%- end -%>
+    </div>
+  </div>
 </div>

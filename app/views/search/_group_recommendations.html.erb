@@ -1,7 +1,6 @@
-<hr />
 <div id="groups">
-  <h2>Recommended Groups</h2>
-  <% @groups = Group.search(@query) %>
+  <h3>Recommended Groups</h3>
+  <% @groups = Group.search(@query, :limit => 5) %>
   <% if !@groups.nil? && @groups.size > 0 %>
     <ol>
     <% for group in @groups %>
@@ -12,4 +11,3 @@
     <p>There are no groups that match your search terms (<%= @query %>).</p>
   <% end %>
 </div>
-<hr />
