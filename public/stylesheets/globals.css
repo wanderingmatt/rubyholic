@@ -119,6 +119,11 @@ h3 {
 
 /* =LOGO */
 
+.logo {
+  background: #981a21;
+  padding: 20px 0;
+}
+
 h1 a {
   display: block;
   background: url("/images/logo_rubyholic.png") no-repeat 50% 0;
@@ -151,22 +156,30 @@ h1 a {
 
 #tab .inner,
 #strip .inner {
+/*  opacity: .9;*/
   background: #981a21;
-  padding: 20px 0 19px 0;
   border-bottom: 1px solid #3d1614;
 }
 
-#upcoming_events li a {
+.event {
   position: relative;
   display: block;
   padding: 10px 20px 10px 60px;
 }
 
-#upcoming_events li a:hover {
+#upcoming_events .event {
+/*  padding: 0;
+*/}
+
+#upcoming_events .event a {
+ /* padding: 10px 20px 10px 60px;*/
+}
+
+a.event:hover {
   background: #7a151a url("/images/icons/arrow.png") no-repeat 260px 50%;
 }
 
-#upcoming_events li .date {
+.event .date {
   position: absolute;
   left: 20px;
   top: 10px;
@@ -177,35 +190,41 @@ h1 a {
   text-align: center;
 }
 
-#upcoming_events li .date .day {
+.event .date .day {
   line-height: 20px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
 }
 
-#upcoming_events li .date .month {
+.event .date .month {
   position: relative;
   top: -5px;
   font-size: 10px;
   color: #c18683;
 }
 
-#upcoming_events li .date .year {
+.event .date .year {
   position: relative;
   top: -10px;
   font-size: 10px;
   color: #ad5e5a;
 }
 
-#upcoming_events li h3 {
+.event h3 {
   font-weight: bold;
   color: #f6e69f;
 }
 
-#upcoming_events li .location {
+.event .location {
   font-size: 14px;
   color: #c18683;
+}
+
+.event p {
+  font-size: 13px;
+  text-align: justify;
+  color: #fff;
 }
 
 .events #content {
@@ -215,16 +234,17 @@ h1 a {
 
 /* =FORMS */
 
-.new #form {
+#form {
   position: relative;
 }
-.new #form img.arrow {
+
+#form img.arrow {
   position: absolute;
   top: 9px;
   left: 20px;
 }
 
-.new #form a.add {
+#form a.add {
   display: block;
   background: url("/images/icons/add.png") 0 0 no-repeat;
   height: 20px;
@@ -235,7 +255,7 @@ h1 a {
   color: #828282;
 }
 
-.new #form a:hover.add {
+#form a:hover.add {
   background-position: 0 -20px;
   color: #093;
 }
@@ -246,19 +266,16 @@ form li {
   margin: 0 0;
   margin-bottom: 20px;
   padding-left: 100px;
-/*  line-height: 40px;*/
 }
 
 label {
   position: absolute;
   left: 0;
   display: block;
-/*  float: left;*/
   width: 100px;
   line-height: 40px;
   font-size: 11px;
   text-transform: uppercase;
-/*  color: #828282;*/
 }
 
 select {
@@ -266,11 +283,10 @@ select {
 }
 
 input, textarea, select {
-  font: normal 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font size across browsers */
+  font: normal 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font */
 }
 
 input[type="text"], textarea {
-  display: block;
   width: 408px;
   border: 1px solid #b4b4b4;
   line-height: 20px;
@@ -307,80 +323,24 @@ form .buttons {
 /* http://particletree.com/features/rediscovering-the-button-element/ */
 
 .buttons {
-	overflow: hidden; /* Float clearing for good browsers */
-	margin-bottom: 20px;
-	font-size: .85em;
+  line-height: 40px;
 }
 
-.buttons a.button, .buttons button {
-  display: block;
+.buttons .button {
   float: left;
-  background: #22242c url("../images/bg_button_banner.png") bottom center repeat-x;
-  border: 1px solid #4c5163;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 100%;
-  font-weight: normal;
-  text-decoration: none;
-  color: #fff;
-  cursor: pointer;
-  padding: 9px; /* Links */
-  white-space: nowrap;
-  text-align: center;
+  background: #fff url("/images/bg_button.gif") repeat-x center bottom;
+  margin: 7px 10px 7px 0;
+  padding: 6px 15px 5px;
+  border: 1px solid #b4b4b4;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  font: bold 9px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font */
+  text-transform: uppercase;
+  color: #646464;
 }
 
-.buttons button {
-  width: auto;
-  overflow: visible;
-  padding: 4px 10px 3px 7px; /* IE6 */
-}
-
-.buttons button[type] {
-  padding: 5px 10px 5px 7px; /* Firefox */
-  line-height: 18px; /* Safari */
-}
-
-*:first-child+html button[type] {
-  padding: 4px 10px 3px 7px; /* IE7 */
-}
-
-.buttons button img, .buttons a img {
-  margin: 0 3px -3px 0 !important;
-  padding: 0;
-  border: none;
-  width: 16px;
-  height: 16px;
-}
-
-/* =BUTTONS =TWEAKS */
-
-.buttons a.button, .buttons button { /* Safari */
-  -webkit-border-radius: 20px;
-}
-
-.buttons a.button, .buttons button, x:-moz-any-link, x:default {
-  -moz-border-radius: 20px;
-}
-
-/* =BUTTONS =STANDARD */
-
-.buttons button:hover, .buttons a.button:hover, .buttons a.button:active {
-  background: #111216;
-  border: 1px solid #444858;
-  color: #fff;
-}
-
-/* =BUTTONS =RESUME */
-
-button.resume, .buttons a.resume {
-  background: transparent;
-  width: 140px;
-  padding: 8px;
-  border: 2px solid #fae443;
-  color: #555a6e;
-}
-
-.buttons a.resume:hover, button.resume:hover, .buttons a.resume:active {
-  background: #fae443;
-  border: 2px solid #fae443;
-  color: #565b6e;
+.buttons .button:hover {
+	background: #eee;
+	color: #646464;
+	cursor: pointer;
 }
