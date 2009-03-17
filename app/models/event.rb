@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   # TODO: Make this less redundant. It would be easier if upcoming could be called after paginate.
   def self.sort(page, order, upcoming = 'true', location = nil)
     if upcoming == 'true' && !location.nil?
-      self.upcoming.find_within(SEARCH_RADIUS, :origin => location.to_a.map { |a, b| b }).paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
+      self.upcoming.find_within(SEARCH_RADIUS, :origin => [location[:latitude],location[:longitude]]).paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
     elsif upcoming == 'true' && location.nil?
       self.upcoming.paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
     else
