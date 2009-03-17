@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.sort(params[:page], params[:sorted_by], session[:upcoming])
-    create_map @ip_location
+    @events = Event.sort(params[:page], params[:sorted_by], session[:upcoming], @ip_location)
+    create_map @ip_location, 10
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
-    create_map @event.location
+    create_map @event.location, 16
     
     respond_to do |format|
       format.html # show.html.erb
@@ -89,10 +89,10 @@ class EventsController < ApplicationController
 
   private
   
-  def create_map(location)
+  def create_map(location, zoom = 15)
     @map = GMap.new('map')
     @map.control_init(:large_map_3d => true,:map_type => true, :scale => true)
-    @map.center_zoom_init([location[:latitude],location[:longitude]],8)
+    @map.center_zoom_init([location[:latitude],location[:longitude]],zoom)
     @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
     @map.set_map_type_init(GMapType::G_PHYSICAL_MAP)
     get_upcoming_markers.each do |marker|
