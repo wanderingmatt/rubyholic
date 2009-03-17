@@ -3,14 +3,20 @@ class Event < ActiveRecord::Base
   
   belongs_to :group
   belongs_to :location
+  acts_as_mappable :through => :location
   
   validates_presence_of :group_id, :location_id, :start_time, :end_time
   
-  def self.sort(page, order, upcoming = 'true')
-    if upcoming == 'true'
+  SEARCH_RADIUS = 50 # miles
+
+  # TODO: Make this less redundant. It would be easier if upcoming could be called after paginate.
+  def self.sort(page, order, upcoming = 'true', location = nil)
+    if upcoming == 'true' && !location.nil?
+      self.upcoming.find_within(SEARCH_RADIUS, :origin => [location[:latitude],location[:longitude]]).paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
+    elsif upcoming == 'true' && location.nil?
       self.upcoming.paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
     else
-      paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
+      self.paginate({ :page => page, :per_page => 10, :order => order, :include => ['group', 'location'] })
     end
   end
   

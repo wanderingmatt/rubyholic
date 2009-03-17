@@ -5,32 +5,32 @@ one:
   location: one
   start_time: <%= (Time.now - 310050).utc.to_s(:db) %>
   end_time: <%= (Time.now - 310000).utc.to_s(:db) %>
-  description: MyText
+  description: Event One
 
 two:
   group: two
   location: two
   start_time: <%= (Time.now - 300050).utc.to_s(:db) %>
   end_time: <%= (Time.now - 300000).utc.to_s(:db) %>
-  description: MyText
+  description: Event Two
   
 three:
   group: three
   location: three
   start_time: <%= (Time.now + 300000).utc.to_s(:db) %>
   end_time: <%= (Time.now + 300050).utc.to_s(:db) %>
-  description: MyText
+  description: Event Three
   
 four:
   group: four
   location: four
   start_time: <%= (Time.now + 320000).utc.to_s(:db) %>
   end_time: <%= (Time.now + 320050).utc.to_s(:db) %>
-  description: MyText
+  description: Event Four
   
 five:
   group: five
   location: five
   start_time: <%= (Time.now + 310000).utc.to_s(:db) %>
   end_time: <%= (Time.now + 310050).utc.to_s(:db) %>
-  description: MyText
+  description: Event Five
