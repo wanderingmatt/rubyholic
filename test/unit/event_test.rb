@@ -36,7 +36,7 @@ class EventTest < ActiveSupport::TestCase
       events(:four)
     ]
     
-    assert expected == actual
+    assert_equal expected, actual
   end
   
   test "sorts related fields correctly" do    
@@ -50,7 +50,7 @@ class EventTest < ActiveSupport::TestCase
       events(:one)
     ]
     
-    assert expected == actual
+    assert_equal expected, actual
   end
   
   test "sorts fields hides past events" do    
@@ -62,7 +62,21 @@ class EventTest < ActiveSupport::TestCase
       events(:four)
     ]
     
-    assert expected == actual
+    assert_equal expected, actual
+  end
+  
+  test "sorts upcoming local events" do
+    lat = (locations(:three).latitude + locations(:five).latitude) / 2
+    lon = (locations(:three).longitude + locations(:five).longitude) / 2
+    
+    actual = Event.sort(1, 'start_time', 'true', { :latitude => lat, :longitude => lon })
+    
+    expected = [
+      events(:three),
+      events(:five)
+    ]
+    
+    assert_equal expected, actual
   end
   
   test "time should be formatted properly" do

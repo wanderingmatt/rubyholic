@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   def geocode_ip
     # TODO Raw array of location data. Needs to be refinded.
     case request.remote_ip
-    when '127.0.0.1'
+    when '127.0.0.1', /192\.168.*/
       @ip_location = { :latitude => '47.5798527', :longitude => '-122.1456091'}
     else
       raw_location = GEOIPDB.city request.remote_ip
