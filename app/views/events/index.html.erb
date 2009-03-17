@@ -47,8 +47,8 @@
     </div>
     <div id="content" class="grid_8">
       <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
-          <label for="search_query">Search Groups</label>
-          <input type="text" size="30" id="search_query" name="q" value="Search Groups" onfocus="this.clear()" />
+          <label for="search_query">Search</label>
+          <input type="text" size="30" id="search_query" name="q" value="What are you looking for?" onfocus="this.clear()" />
           <button type="submit">Search</button>
       </form>
       <p>IP: <%= request.remote_ip %></p>

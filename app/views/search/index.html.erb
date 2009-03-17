@@ -17,7 +17,7 @@
 
       <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
         <!-- <label for="search_query">Search Groups</label> -->
-        <input type="text" size="30" id="search_query" name="q" value="<%= @query %>" onfocus="this.clear()" />
+        <input type="text" size="30" id="search_query" name="q" value="<%= @query %>" />
         <button type="submit">Search</button>
       </form>
 
@@ -37,8 +37,8 @@
         <% for result in @search %>
         <tr>
           <td><%= link_to result.group.name, result %></td>
-          <td><%#= result.start_date %></td>
-          <td><%= result.description %></td>
+          <td><%= result.start_time.strftime("%d %b %Y") %></td>
+          <td><%= truncate(result.description, :length => 75) %></td>
           <td><%= result.location.name %></td>
           <td><%= result.location.address %></td>
         </tr>
