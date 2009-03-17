@@ -64,7 +64,7 @@ h2 {
   position: relative;
   margin-bottom: 20px;
   line-height: 40px;
-  font-size: 36px;
+  font-size: 34px;
 }
 
 .new h2 img {
@@ -265,14 +265,14 @@ form li {
   clear: left;
   margin: 0 0;
   margin-bottom: 20px;
-  padding-left: 100px;
+  padding-left: 80px;
 }
 
 label {
   position: absolute;
   left: 0;
   display: block;
-  width: 100px;
+  width: 80px;
   line-height: 40px;
   font-size: 11px;
   text-transform: uppercase;
@@ -286,8 +286,16 @@ input, textarea, select {
   font: normal 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font */
 }
 
+input, textarea {
+  padding: 5px;
+}
+
+select {
+  margin: 3px 0;
+}
+
 input[type="text"], textarea {
-  width: 408px;
+  width: 398px;
   border: 1px solid #b4b4b4;
   line-height: 20px;
 }
@@ -311,11 +319,17 @@ form li span {
   background: #d4d4d4;
   width: 410px;
   padding: 5px;
-  line-height: 30px;
+}
+
+form li span em.helper {
+  margin: 0;
+  font-size: 12px;
+  font-style: normal;
+  color: #828282;
 }
 
 form .buttons {
-  margin-left: 100px;
+  margin-left: 80px;
 }
 
 /* =SEARCH */
@@ -336,21 +350,42 @@ form .buttons {
   line-height: 40px;
 }
 
-.buttons .button {
+.buttons button, .buttons .button {
+  display: block;
   float: left;
-  background: #fff url("/images/bg_button.gif") repeat-x center bottom;
-  margin: 7px 10px 7px 0;
-  padding: 6px 15px 5px;
+  margin: 7px 0;
+  padding: 2px 15px 2px;
   border: 1px solid #b4b4b4;
   -moz-border-radius: 12px;
   -webkit-border-radius: 12px;
+  line-height: 18px;
   font: bold 9px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font */
   text-transform: uppercase;
-  color: #646464;
+  color: #069;
 }
 
-.buttons .button:hover {
-	background: #eee;
-	color: #646464;
+.buttons button {
+  background: #f6f6f6 url("/images/bg_button.gif") repeat-x center bottom;
+  padding: 6px 15px 5px;
+}
+
+.buttons button:hover, .buttons .button:hover {
+	background: #069;
+	border-color: #069;
+	color: #fff;
 	cursor: pointer;
+}
+
+.buttons .passive {
+  background: none;
+  padding: 3px 15px 3px;
+  border: 0;
+  color: #646464; 
+}
+
+.buttons .passive:hover {
+  background: #d4d4d4;
+  padding: 3px 15px 3px;
+  border: 0;
+  color: #646464; 
 }

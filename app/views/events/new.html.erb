@@ -31,15 +31,15 @@
               <%= link_to 'Add a New Location', { :controller => 'locations', :action => 'new' }, :class => 'add' %>
             </li>
             <li class="multiple_fields">
-              <%= f.label :start_time %>
+              <%= f.label :start_time, 'Starts' %>
               <span class="datetime"><%= calendar_date_select_tag :start_time %></span>
             </li>
             <li class="multiple_fields">
-              <%= f.label :start_time %>
+              <%= f.label :start_time, 'Starts' %>
               <span class="datetime"><%= f.datetime_select :start_time %></span>
             </li>
             <li class="multiple_fields">
-              <%= f.label :end_time %>
+              <%= f.label :end_time, 'Ends' %>
               <span class="datetime"><%= f.datetime_select :end_time %></span>
             </li>
             <li>
@@ -48,7 +48,7 @@
             </li>
           </ol>
           <div class="buttons">
-            <%= content_tag(:button, 'Create', :class => 'button') %> <%= link_to 'Back', events_path %>
+            <%= content_tag(:button, 'Create') %> <%= link_to 'Back', events_path, :class => 'button passive' %>
           </div>
         </fieldset>
       <% end %>

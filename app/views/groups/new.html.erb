@@ -1,15 +1,35 @@
-<h1>New group</h1>
-
-<% form_for(@group) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>  
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', groups_path %>
+<div id="gutter">
+  <%= link_to 'Home', events_path %>
+</div>
+<div class="bg_container">
+  <div class="container_12">
+    <div id="tab" class="grid_4">
+      <div class="inner">
+        <div class="logo">
+          <h1><%= link_to 'Rubyholic', events_path %></h1>
+        </div>
+      </div>
+    </div>
+    <div id="intro" class="grid_4">
+      <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>Add a New Group</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div id="form" class="grid_7 prefix_1">
+      <%= image_tag 'icons/arrow.png', :size => '25x24', :alt => '', :class => 'arrow' %>
+      <% form_for(@group) do |f| %>
+        <fieldset>
+          <%= f.error_messages %>
+          <ol>
+            <li>
+              <%= f.label :name %>
+              <span class="text"><%= f.text_field :name %></span>
+            </li>
+          </ol>
+          <div class="buttons">
+            <%= content_tag(:button, 'Create') %> <%= link_to 'Back', groups_path, :class => 'button passive' %>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>
