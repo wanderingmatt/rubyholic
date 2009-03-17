@@ -1,4 +1,4 @@
-<% @groups = Group.search(@query) %>
+<%- Search.search_groups -%>
 <% if !@groups.nil? && @groups.size > 0 %>
   <div id="groups">
     <h3>Recommended Groups</h3>
