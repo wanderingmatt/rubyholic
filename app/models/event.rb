@@ -25,8 +25,14 @@ class Event < ActiveRecord::Base
   end
   
   define_index do
-    indexes description
+    indexes description, :sortable => true
+    indexes group_id, location_id
+    indexes group.name, :as => :group, :sortable => true
+    indexes location.name, :as => :location, :sortable => true
+    indexes location.address, :as => :location_address, :sortable => true
     
     has group_id, location_id
+    set_property :enable_star => 1
+    set_property :min_infix_len => 3
   end
 end
