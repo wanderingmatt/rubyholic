@@ -22,9 +22,9 @@
       </form>
 
       <% if @search.empty? %>
-      There are no search results for <%= @query %>.
+      There are no search results for "<%= @query %>".
       <% else %>
-      <h3>There are <%= @search.size %> results for <%= @query %></h3>
+      <h3>There are <%= @search.size %> results for "<%= @query %>"</h3>
       <table>
         <tr>
           <th>Group Name</th>
