@@ -6,11 +6,11 @@ class SearchControllerTest < ActionController::TestCase
   
   fixtures :all
   
-  test "should search Events" do
+  test "should search events" do
     flexmock(Group).should_receive(:search).once.with("hello world").and_return([groups(:one)])
     flexmock(Location).should_receive(:search).once.with("hello world").and_return([locations(:one)])
-    flexmock(Event).should_receive(:search).once.with('hello world', {:page => 1}).and_return([events(:one)])
-  
+    flexmock(Event).should_receive(:search).once.with('hello world', {:geo => [0.0174532925199433, 0.0174532925199433], :page => 1, :order => :date}).and_return([events(:one)])
+      
     get :index, :q => 'hello world'
   end
   

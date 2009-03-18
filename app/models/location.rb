@@ -10,6 +10,8 @@ class Location < ActiveRecord::Base
     indexes name, :sortable => true
     indexes address, :sortable => true
     
+    has latitude, longitude
+    
     set_property :enable_star => 1
     set_property :min_infix_len => 2
   end
