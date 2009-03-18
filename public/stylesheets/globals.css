@@ -371,8 +371,8 @@ form .buttons {
 }
 
 #table table tbody tr td {
-  padding: 0 10px;
-  line-height: 39px;
+  padding: 9px 10px 10px;
+  line-height: 20px;
 }
 
 #table table tbody tr td.action {
@@ -424,7 +424,7 @@ form .buttons {
 .buttons button, .buttons .button {
   display: block;
   float: left;
-  background: #f6f6f6 url("/images/bg_button.gif") repeat-x center bottom;
+  background: #fff url("/images/bg_button.gif") repeat-x center bottom;
   margin: 5px 0;
   padding: 4px 0;
   border: 1px solid #b4b4b4;

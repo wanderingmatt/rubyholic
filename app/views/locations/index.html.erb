@@ -1,26 +1,38 @@
-<h1>Listing locations</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-  </tr>
-
-<% for location in @locations %>
-  <tr>
-    <td><%=h location.name %></td>
-    <td><%=h location.address %></td>
-    <td><%=h location.latitude %></td>
-    <td><%=h location.longitude %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New location', new_location_path %>
+<div id="intro" class="grid_4">
+  <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>All Locations</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<div id="table" class="grid_7 prefix_1">
+  <%= image_tag 'icons/arrow.png', :size => '25x24', :alt => '', :class => 'arrow' %>
+  <div class="buttons">
+    <%= link_to 'Add a Location', new_location_path, :class => 'button positive grid_2' %>
+  </div>
+  <table>
+    <colgroup>
+      <col class="name" />
+      <col class="address" />
+      <col />
+      <col />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <!-- <th>Latitude</th>
+        <th>Longitude</th> -->
+        <th colspan="2" />
+      </tr>
+    </thead>
+    <tbody>
+    <% for location in @locations %>
+      <tr>
+        <td><%= link_to location.name, location %></td>
+        <td><%=h location.address %></td>
+        <!-- <td><%#h location.latitude %></td>
+        <td><%#h location.longitude %></td> -->
+        <td class="action"><%= link_to 'Edit', edit_location_path(location), :class => 'edit' %></td>
+        <td class="action"><%= link_to 'Destroy', location, :class => 'delete', :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
