@@ -10,8 +10,8 @@ class Location < ActiveRecord::Base
     indexes name, :sortable => true
     indexes address, :sortable => true
     
-    has latitude, :as => :latitude, :type => :float
-    has longitude, :as => :longitude, :type => :float
+    has 'RADIANS(latitude)', :as => :latitude, :type => :float
+    has 'RADIANS(longitude)', :as => :longitude, :type => :float
     
     set_property :delta => true
   end

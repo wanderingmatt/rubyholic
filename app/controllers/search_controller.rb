@@ -14,21 +14,23 @@ class SearchController < ApplicationController
         degrees_to_radians(@ip_location[:latitude].to_f),
         degrees_to_radians(@ip_location[:longitude].to_f)
       ],
-      # :latitude_attr => @ip_location[:latitude],
-      # :longitude_attr => @ip_location[:longitude],
       # :with => { "@geodist" => 0.0..80467.2 }, # 50 miles, in meters
       :without => { :start_time => 35.years.ago..Time.now }, # A little hard-coded, but it works well enough for now.
-      :order => "date ASC, @geodist ASC"
+      :order => "date ASC"
     )
+    
+    @lat_rads = degrees_to_radians(@ip_location[:latitude].to_f)
+    @long_rads = degrees_to_radians(@ip_location[:longitude].to_f)
     
     @groups = Group.search(@query || "")
     @locations = Location.search(
-      @query || "",
+      (@query || ""), 
       :geo => [
-        @ip_location[:latitude].to_f,
-        @ip_location[:longitude].to_f
+        degrees_to_radians(@ip_location[:latitude].to_f),
+        degrees_to_radians(@ip_location[:longitude].to_f)
       ],
-      # :with => { "@geodist" => 0.0..10.0 },
+      :with => { "@geodist" => 0.0..80467.2 }, # 50 miles, in meters
+      :without => { :start_time => 35.years.ago..Time.now }, # A little hard-coded, but it works well enough for now.
       :order => "@geodist ASC"
     )
     

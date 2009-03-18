@@ -1,24 +1,13 @@
 <div id="intro" class="grid_4">
   <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>Search Results</h2>
   <p>There are <%= @search.size %> results for "<%= @query %>"</p>
+  <div id="recommended">
+    <%#= render :partial => 'group_recommendations' %>
+    <%= render :partial => 'location_recommendations' %>
+  </div>
 </div>
 <div id="table" class="grid_7 prefix_1">
   <%= image_tag 'icons/arrow.png', :size => '25x24', :alt => '', :class => 'arrow' %>
-  <table>
-    <colgroup>
-      <col class="date" />
-      <col class="group" />
-      <col class="location" /> 
-    </colgroup>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Group</th>
-        <th>Location</th>
-      </tr>
-    </thead>
-    <tbody>
-
     <div class="grid_8">
 
       <form action="<%= url_for(:controller => '/search', :action => 'index') %>" method="get" id="form_search">
@@ -30,7 +19,20 @@
       <% if @search.empty? %>
       There are no search results for "<%= @query %>".
       <% else %>
-
+      <table>
+        <colgroup>
+          <col class="date" />
+          <col class="group" />
+          <col class="location" /> 
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Group</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
         <%# for result in @search %>
         <% @search.each_with_geodist do |result, distance| %>
         <tr>
@@ -51,8 +53,4 @@
       <%- end -%>
     </div>
   </div>
-</div>
-<div id="recommended" class="grid_4">
-  <%#= render :partial => 'group_recommendations' %>
-  <%#= render :partial => 'location_recommendations' %>
 </div>
