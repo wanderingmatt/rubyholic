@@ -1,9 +1,8 @@
 class SearchController < ApplicationController
-  # GET /searches
-  # GET /searches.xml
-
-  layout 'application'
+  layout 'default'
   
+  # GET /searches
+  # GET /searches.xml  
   def index
     @query = params[:q]
     

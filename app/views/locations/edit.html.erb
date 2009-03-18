@@ -1,29 +1,28 @@
-<h1>Editing location</h1>
-
-<% form_for(@location) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-    <em class="helper">Address is automatically geocoded</em>
-  </p>
-  <!-- <p>
-    <%# f.label :latitude %><br />
-    <%# f.text_field :latitude %>
-  </p>
-  <p>
-    <%# f.label :longitude %><br />
-    <%# f.text_field :longitude %>
-  </p> -->
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @location %> |
-<%= link_to 'Back', locations_path %>
+<div id="intro" class="grid_4">
+  <h2><%# image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'edit' %>Edit this Location</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<div id="form" class="grid_7 prefix_1">
+  <%= image_tag 'icons/arrow.png', :size => '25x24', :alt => '', :class => 'arrow' %>
+  <% form_for(@location) do |f| %>
+    <fieldset>
+      <%= f.error_messages %>
+      <ol>
+        <li>
+          <%= f.label :name %>
+          <span class="text"><%= f.text_field :name %></span>
+        </li>
+        <li>
+          <%= f.label :address %>
+          <span class="text">
+            <%= f.text_field :address %>
+            <em class="helper">Address is automatically geocoded</em>
+          </span>
+        </li>
+      </ol>
+      <div class="buttons">
+        <%= content_tag(:button, 'Update', :class => 'grid_2') %> <%= link_to 'Back', locations_path, :class => 'button passive grid_1' %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

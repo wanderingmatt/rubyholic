@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  layout 'application'
+  layout 'default'
   
   # GET /groups
   # GET /groups.xml
