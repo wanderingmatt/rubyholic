@@ -9,5 +9,8 @@ class Location < ActiveRecord::Base
   define_index do
     indexes name, :sortable => true
     indexes address, :sortable => true
+    
+    set_property :enable_star => 1
+    set_property :min_infix_len => 2
   end
 end

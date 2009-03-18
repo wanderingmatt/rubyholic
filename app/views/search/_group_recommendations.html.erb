@@ -1,10 +1,10 @@
-<%- Search.search_groups -%>
+<% @groups = Group.search(@query) %>
 <% if !@groups.nil? && @groups.size > 0 %>
   <div id="groups">
     <h3>Recommended Groups</h3>
       <ol>
       <% for group in @groups %>
-        <li><%= link_to "#{group.name.titleize}", group %></li>
+        <li><%= link_to "#{group.name}", group %></li>
       <% end %>
       </ol>
   </div>
