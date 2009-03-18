@@ -34,6 +34,7 @@ class Event < ActiveRecord::Base
     
     has group_id, location_id, end_time, location.latitude, location.longitude
     
+    set_property :delta => true
     set_property :enable_star => 1
     set_property :min_infix_len => 2
   end
