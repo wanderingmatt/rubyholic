@@ -1,34 +1,43 @@
-<h1>Editing event</h1>
-
-<% form_for(@event) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :group_id %><br />
-    <%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %>
-    <%= link_to 'Add a New Group', :controller => 'groups', :action => 'new' %>
-  </p>
-  <p>
-    <%= f.label :location_id %><br />
-    <%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %>
-    <%= link_to 'Add a New Location', :controller => 'locations', :action => 'new' %>
-  </p>
-  <p>
-    <%= f.label :start_time %><br />
-    <%= f.datetime_select :start_time %>
-  </p>
-  <p>
-    <%= f.label :end_time %><br />
-    <%= f.datetime_select :end_time %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<div id="intro" class="grid_4">
+  <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>Edit this Event</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<div id="form" class="grid_7 prefix_1">
+  <%= image_tag 'icons/arrow.png', :size => '25x24', :alt => '', :class => 'arrow' %>
+  <% form_for(@event) do |f| %>
+    <fieldset>
+      <%= f.error_messages %>
+      <ol>
+        <li>
+          <%= f.label :group_id %>
+          <span class="select"><%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %></span>
+          <%= link_to 'Add a New Group', { :controller => 'groups', :action => 'new' }, :class => 'add' %>
+        </li>
+        <li>
+          <%= f.label :location_id %>
+          <span class="select"><%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %></span>
+          <%= link_to 'Add a New Location', { :controller => 'locations', :action => 'new' }, :class => 'add' %>
+        </li>
+        <!-- <li class="multiple_fields">
+          <%# f.label :start_time, 'Starts' %>
+          <span class="datetime"><%# calendar_date_select_tag :start_time %></span>
+        </li> -->
+        <li class="multiple_fields">
+          <%= f.label :start_time, 'Starts' %>
+          <span class="datetime"><%= f.datetime_select :start_time %></span>
+        </li>
+        <li class="multiple_fields">
+          <%= f.label :end_time, 'Ends' %>
+          <span class="datetime"><%= f.datetime_select :end_time %></span>
+        </li>
+        <li>
+          <%= f.label :description %>
+          <span class="textarea"><%= f.text_area :description, :size => '30x4' %></span>
+        </li>
+      </ol>
+      <div class="buttons">
+        <%= content_tag(:button, 'Update', :class => 'grid_2') %> <%= link_to 'Back', events_path, :class => 'button passive grid_1' %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

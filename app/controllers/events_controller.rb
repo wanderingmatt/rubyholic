@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
-  layout 'application'
-  
+  layout 'default'
   # GET /events
   # GET /events.xml
   def index
@@ -8,7 +7,7 @@ class EventsController < ApplicationController
     create_map @ip_location, 10
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => 'mapped' }
       format.xml  { render :xml => @events }
     end    
   end
@@ -20,7 +19,7 @@ class EventsController < ApplicationController
     create_map @event.location, 16
     
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => 'mapped' }
       format.xml  { render :xml => @event }
     end
   end
@@ -37,7 +36,7 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1/edit
-  def edit
+  def edit    
     @event = Event.find(params[:id])
   end
 
