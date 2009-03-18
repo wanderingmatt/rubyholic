@@ -1,19 +1,31 @@
-<h1>Listing groups</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
-  
-<% for group in @groups %>
-  <tr>
-    <td><%=h group.name %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-
-</table>
-<br />
-<%= link_to 'New group', new_group_path %>
+<div id="intro" class="grid_4">
+  <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>All Groups</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<div id="table" class="grid_7 prefix_1">
+  <%= image_tag 'icons/arrow.png', :size => '25x24', :alt => '', :class => 'arrow' %>
+  <div class="buttons">
+    <%= link_to 'Add a Group', new_group_path, :class => 'button positive grid_2' %>
+  </div>
+  <table>
+    <colgroup>
+      <col class="name" />
+      <col />
+      <col />
+    </colgroup>
+    <thead>
+      <tr>
+        <th colspan="3">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% for group in @groups %>
+      <tr class="<%= cycle 'even', 'odd' %>">
+        <td><%=h group.name %></td>
+        <td class="action"><%= link_to 'Edit', edit_group_path(group), :class => 'edit' %></td>
+        <td class="action"><%= link_to 'Destroy', group, :class => 'delete', :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

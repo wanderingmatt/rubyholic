@@ -2,6 +2,8 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.xml
   def index
+    @title = 'Locations'
+    
     @locations = Location.find(:all)
 
     respond_to do |format|

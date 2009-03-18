@@ -5,7 +5,7 @@ DESCRIPTION: This stylesheet serves global declarations to all Rubyholic assets
 
 /* =GRID OVERRIDE */
 /*  Grid is inactive when entire section is commented */
-
+/*
 body {
   background: #fff url("../images/12_col.png") center top repeat-y !important;
 }
@@ -13,7 +13,7 @@ body {
 .bg_container {
   background: none !important;
 }
-
+*/
 /* =BASE */
 
 html, body {
@@ -65,12 +65,6 @@ h2 {
   margin-bottom: 20px;
   line-height: 40px;
   font-size: 34px;
-}
-
-.new h2 img {
-  position: absolute;
-  top: 9px;
-  left: -55px;
 }
 
 h3 {
@@ -133,9 +127,24 @@ h1 a {
   text-indent: -9999px;
 }
 
+/* =NUANCES */
+
+img.plus {
+  position: absolute;
+  top: 9px;
+  left: -65px;
+}
+
+img.arrow {
+  position: absolute;
+  top: 9px;
+  left: 20px;
+}
+
 /* =INTRO */
 
 #intro p {
+  margin-bottom: 20px;
   font-size: 14px;
   text-align: justify;
   color: #828282;
@@ -238,12 +247,6 @@ a.event:hover {
   position: relative;
 }
 
-#form img.arrow {
-  position: absolute;
-  top: 9px;
-  left: 20px;
-}
-
 #form a.add {
   display: block;
   background: url("/images/icons/add.png") 0 0 no-repeat;
@@ -323,13 +326,80 @@ form li span {
 
 form li span em.helper {
   margin: 0;
-  font-size: 12px;
-  font-style: normal;
+  font: italic 12px/20px Cambria, Georgia, Times, 'Times New Roman', serif;
   color: #828282;
 }
 
 form .buttons {
   margin-left: 80px;
+}
+
+/* =TABLES */
+
+#table {
+  position: relative;
+}
+
+#table .buttons {
+  position: absolute;
+  top: -60px;
+  right: 0;
+}
+
+#table table {
+  width: 100%;
+  border: 1px solid #d4d4d4;
+  font-size: 14px;
+}
+
+#table table thead {
+  background: #d4d4d4;
+}
+
+#table table thead tr th {
+  padding: 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+#table table tbody tr {
+  border-top: 1px solid #d4d4d4;
+}
+
+#table table tbody tr.odd {
+  background-color: #eee;
+}
+
+#table table tbody tr td {
+  padding: 0 10px;
+  line-height: 39px;
+}
+
+#table table tbody tr td.action {
+  width: 16px;
+  padding-left: 0;
+}
+
+/* =ACTIONS */
+
+.action a {
+  display: block;
+  background-position: 0 0;
+  width: 16px;
+  height: 16px;
+  text-indent: -9999px;
+}
+
+.action a.edit {
+  background-image: url("/images/icons/pencil_recessed.png");
+}
+
+.action a.delete {
+  background-image: url("/images/icons/close_recessed.png");
+}
+
+.action a:hover {
+  background-position: 0 -16px;
 }
 
 /* =SEARCH */
@@ -347,26 +417,37 @@ form .buttons {
 /* http://particletree.com/features/rediscovering-the-button-element/ */
 
 .buttons {
+  clear: both;
   line-height: 40px;
 }
 
 .buttons button, .buttons .button {
   display: block;
   float: left;
-  margin: 7px 0;
-  padding: 2px 15px 2px;
+  background: #f6f6f6 url("/images/bg_button.gif") repeat-x center bottom;
+  margin: 5px 0;
+  padding: 4px 0;
   border: 1px solid #b4b4b4;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  line-height: 18px;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+/*  line-height: 20px;*/
   font: bold 9px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font */
   text-transform: uppercase;
+  text-align: center;
   color: #069;
 }
 
 .buttons button {
-  background: #f6f6f6 url("/images/bg_button.gif") repeat-x center bottom;
-  padding: 6px 15px 5px;
+  padding: 8px 0 7px 0;
+}
+
+.buttons button.positive, .buttons .button.positive {
+  color: #093;
+}
+
+.buttons button.positive:hover, .buttons .button.positive:hover {
+	background: #093;
+	border-color: #093;
 }
 
 .buttons button:hover, .buttons .button:hover {
@@ -378,14 +459,12 @@ form .buttons {
 
 .buttons .passive {
   background: none;
-  padding: 3px 15px 3px;
+  padding: 6px 0 5px 0;
   border: 0;
   color: #646464; 
 }
 
 .buttons .passive:hover {
   background: #d4d4d4;
-  padding: 3px 15px 3px;
-  border: 0;
   color: #646464; 
 }
