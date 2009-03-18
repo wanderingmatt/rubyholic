@@ -11,11 +11,13 @@ class SearchController < ApplicationController
       @search = Event.search(
         (@query || ""), 
         :page => (params[:page] || 1),
+        :per_page => 10,
         :geo => [
           degrees_to_radians(params[:lat].to_f),
           degrees_to_radians(params[:lon].to_f)
         ],
-        :order => :date
+        :order => :date,
+        :without => { :start_time => 35.years.ago..Time.now } # A little hard-coded, but it works well enough for now.
       )
       
       @groups = Group.search(@query)

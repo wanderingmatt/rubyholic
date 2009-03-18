@@ -32,10 +32,8 @@ class Event < ActiveRecord::Base
     indexes location.name, :as => :location, :sortable => true
     indexes location.address, :as => :location_address, :sortable => true
     
-    has group_id, location_id, end_time, location.latitude, location.longitude
+    has group_id, location_id, start_time, end_time, location.latitude, location.longitude
     
     set_property :delta => true
-    set_property :enable_star => 1
-    set_property :min_infix_len => 2
   end
 end
