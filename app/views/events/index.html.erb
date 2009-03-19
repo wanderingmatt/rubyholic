@@ -14,12 +14,14 @@
         <div class="logo">
           <h1><%= link_to 'Rubyholic', events_path %></h1>
         </div>
-        <!-- <% form_tag '', :method => 'GET', :class => 'locale' do %> 
-        <%= select_tag 'locale', ['test'], 
-        :onchange => 'this.form.submit()' %> 
-        <%= submit_tag 'submit' %> 
-        <%= javascript_tag "$$('.locale input').each(Element.hide)" %> 
-        <% end %> -->
+        <% form_tag '', :method => 'GET', :class => 'sort' do %> 
+        <%= select_tag 'sorted_by', 
+                       '<option value="0">Sort By</option>
+                        <option value="start_time">Date</option
+                        <option value="groups.name">Group</option>
+                        <option value="locations.name">Location</option>', 
+                       :onchange => 'this.form.submit()' %> 
+        <% end %>
         <ol id="upcoming_events">
 
         <% for event in @events %>
