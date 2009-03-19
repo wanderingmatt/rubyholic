@@ -1,6 +1,6 @@
 <div id="intro" class="grid_4">
   <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>Search Results</h2>
-  <p>There are <%= @search.size %> results for "<%= @query %>"</p>
+  <p>There <%= if @search.size == 1 then "is" else "are" end %> <%= @search.size %> <%= if @search.size == 1 then "result" else "results" end %> for "<%= @query %>"</p>
   <div id="recommended">
     <%#= render :partial => 'group_recommendations' %>
     <%= render :partial => 'location_recommendations' %>
