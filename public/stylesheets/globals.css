@@ -167,7 +167,11 @@ img.arrow {
 #strip .inner {
 /*  opacity: .9;*/
   background: #981a21;
-  border-bottom: 1px solid #3d1614;
+/*  border-bottom: 1px solid #3d1614;*/
+}
+
+#strip .inner {
+  min-height: 540px;
 }
 
 .event {
