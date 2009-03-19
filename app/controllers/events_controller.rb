@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
-    create_map @event.location, 16
+    create_map @event.location, 16, @event
     
     respond_to do |format|
       format.html { render :layout => 'mapped' }
@@ -88,17 +88,18 @@ class EventsController < ApplicationController
 
   private
   
-  def create_map(location, zoom = 15)
+  def create_map(location, zoom = 15, event = nil)
     @map = GMap.new('map')
     @map.control_init(:large_map_3d => true,:map_type => true, :scale => true)
     @map.center_zoom_init([location[:latitude],location[:longitude]],zoom)
     @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
     @map.set_map_type_init(GMapType::G_PHYSICAL_MAP)
-    get_upcoming_markers.each do |marker|
-      @map.record_init @map.add_overlay(marker)
-    end
+    
+    get_upcoming_markers.each { |marker| @map.record_init @map.add_overlay(marker) } if event.nil?
+    
+    @map.record_init @map.add_overlay(GMarker.new([event.location.latitude, event.location.longitude], :info_window => "<div>#{event.group.name}</div><div>#{event.location.name}</div><div>#{Event.pretty_time(event.start_time)}</div>")) unless event.nil?
   end
-  
+    
   def get_upcoming_markers
     markers = []
     Event.upcoming.each do |event|
