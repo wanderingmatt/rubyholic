@@ -25,36 +25,37 @@ class EventTest < ActiveSupport::TestCase
     assert event.errors.on(:end_time)
   end
   
-  test "sorts fields correctly" do    
-    actual = Event.sort(1, 'start_time', 'false')
-    
-    expected = [
-      events(:one),
-      events(:two),
-      events(:three),
-      events(:five),
-      events(:four)
-    ]
-    
-    assert_equal expected, actual
-  end
-  
-  test "sorts related fields correctly" do    
-    actual = Event.sort(1, 'groups.name', 'false')
-    
-    expected = [
-      events(:three),
-      events(:two),
-      events(:four),
-      events(:five),
-      events(:one)
-    ]
-    
-    assert_equal expected, actual
-  end
+  # Obsolete now that upcoming is mandatory
+  # test "sorts fields correctly" do    
+  #   actual = Event.sort(1, 'start_time', 'false')
+  #   
+  #   expected = [
+  #     events(:one),
+  #     events(:two),
+  #     events(:three),
+  #     events(:five),
+  #     events(:four)
+  #   ]
+  #   
+  #   assert_equal expected, actual
+  # end
+  # 
+  # test "sorts related fields correctly" do    
+  #   actual = Event.sort(1, 'groups.name', 'false')
+  #   
+  #   expected = [
+  #     events(:three),
+  #     events(:two),
+  #     events(:four),
+  #     events(:five),
+  #     events(:one)
+  #   ]
+  #   
+  #   assert_equal expected, actual
+  # end
   
   test "sorts fields hides past events" do    
-    actual = Event.sort(1, 'start_time', 'true')
+    actual = Event.sort(1, 'start_time')
     
     expected = [
       events(:three),
