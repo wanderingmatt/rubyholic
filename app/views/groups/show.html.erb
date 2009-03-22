@@ -1,7 +1,10 @@
-<p>
-  <b>Name:</b>
-  <%=h @group.name %>
-</p>
+<div id="intro" class="grid_4">
+  <h2><%=h @group.name %></h2>
+  <div class="buttons">
+    <%= link_to 'Edit', edit_group_path(@group), :class => 'button positive grid_1' %>
+    <%= link_to 'All Groups', groups_path, :class => 'button passive grid_2' %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<div class="grid_7 prefix_1">
+</div>

@@ -6,27 +6,19 @@
 
 <%- end -%>
 
-<p>
-  <b>Name:</b>
-  <%=h @location.name %>
-</p>
+<div id="intro" class="grid_4">
+    <h2><%=h @location.name %></h2>
+    <p><%=h @location.address %></p>
+    
+    <p>
+      <strong>Latitude:</strong> <%=h @location.latitude %><br />
+      <strong>Longitude:</strong> <%=h @location.longitude %>
+    </p>
+    
+    <div class="buttons">
+      <%= link_to 'Edit', edit_location_path(@location), :class => 'button positive grid_1' %>
+      <%= link_to 'All Locations', locations_path, :class => 'button passive grid_2' %>
+    </div>
+</div>
 
-<p>
-  <b>Address:</b>
-  <%=h @location.address %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%=h @location.latitude %>
-</p>
-
-<p>
-  <b>Longitude:</b>
-  <%=h @location.longitude %>
-</p>
-
-<%= @map.div :width => 500, :height => 350 %>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<%= @map.div :width => 500, :height => 350, :class => "grid_7 prefix_1" %>
