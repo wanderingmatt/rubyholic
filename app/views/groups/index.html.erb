@@ -21,7 +21,7 @@
     <tbody>
     <% for group in @groups %>
       <tr class="<%= cycle 'even', 'odd' %>">
-        <td><%=h group.name %></td>
+        <td><%= link_to group.name, group %></td>
         <td class="action"><%= link_to 'Edit', edit_group_path(group), :class => 'edit' %></td>
         <td class="action"><%= link_to 'Destroy', group, :class => 'delete', :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
