@@ -6,16 +6,19 @@ class SearchController < ApplicationController
   def index
     @query = params[:q]
 
+    past = Time.parse(35.years.ago.strftime('%a, %d %b %Y %H:%M:%S %Z %z'))
+
     @search = Event.search(
       (@query || ""), 
       :page => (params[:page] || 1),
       :per_page => 10,
-      :geo => [
-        degrees_to_radians(@ip_location[:latitude].to_f),
-        degrees_to_radians(@ip_location[:longitude].to_f)
-      ],
+      # not working right now ... indexing the items in degrees and not radians, which is bad
+      # :geo => [
+      #   degrees_to_radians(@ip_location[:latitude].to_f),
+      #   degrees_to_radians(@ip_location[:longitude].to_f)
+      # ],
       # :with => { "@geodist" => 0.0..80467.2 }, # 50 miles, in meters
-      :without => { :start_time => 35.years.ago..Time.now }, # A little hard-coded, but it works well enough for now.
+      :without => { :start_time => past..Time.now }, # A little hard-coded, but it works well enough for now.
       :order => "date ASC"
     )
     
@@ -30,7 +33,7 @@ class SearchController < ApplicationController
   
   def search_locations(query)
     Location.search(
-      (query || ""), 
+      (query || ""),
       :geo => [
         degrees_to_radians(@ip_location[:latitude].to_f),
         degrees_to_radians(@ip_location[:longitude].to_f)
