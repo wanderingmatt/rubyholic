@@ -1,6 +1,6 @@
 <div id="intro" class="grid_4">
-  <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>Add an Event</h2>
-  <p>Know something we don't, eh? Thanks for taking the time to make us aware of it. Fill in the information to the right and we'll immediately add it to Rubyholic.</p>
+  <h2><%= image_tag 'icons/plus.png', :size => '25x24', :alt => '', :class => 'plus' %>Add an event</h2>
+  <p>Know of a meetup that we don't, eh? Thanks for taking the time to make us aware of it. Fill in the information to the right and we'll immediately add it to Rubyholic.</p>
   <em class="required"><strong>*</strong> All form fields are required</em>
 </div>
 <div id="form" class="grid_7 prefix_1">
@@ -37,7 +37,7 @@
         </li>
       </ol>
       <div class="buttons">
-        <%= content_tag(:button, 'Create', :class => 'grid_2') %> <%= link_to 'Back', events_path, :class => 'button passive grid_1' %>
+        <%= content_tag(:button, 'Create', :class => 'grid_2') %> <%= link_to 'Cancel', events_path, :class => 'button passive grid_1' %>
       </div>
     </fieldset>
   <% end %>

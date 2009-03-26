@@ -356,6 +356,10 @@ textarea {
   height: 80px;
 }
 
+input:focus, textarea:focus {
+  border-color: #828282;
+}
+
 .multiple_fields input,
 .multiple_fields select {
   display: inline;
@@ -376,7 +380,7 @@ form li span {
 form li span em.helper {
   margin: 0;
   font: italic 12px/20px Cambria, Georgia, Times, 'Times New Roman', serif;
-  color: #828282;
+  color: #646464;
 }
 
 form .buttons {
