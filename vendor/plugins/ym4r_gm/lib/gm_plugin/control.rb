@@ -18,7 +18,7 @@ module Ym4r
     class GLargeMapControl3D
       include MappingObject
       def create
-        "new GLargeMapControl3D()"
+        "new GLargeMapControl3D(), new GControlPosition(G_ANCHOR_BOTTOM_RIGHT, new GSize(10,50))"
       end
     end    
     #Small Zoom control. Report to the Google Maps API documentation for details.
@@ -35,11 +35,12 @@ module Ym4r
         "new GScaleControl()"
       end
     end
+    #CHANGED: Set location to bottom right because they didn't provide a way to do this with ym4r ruby syntax (bcaplan)
     #Map type control. Report to the Google Maps API documentation for details.
     class GMapTypeControl
       include MappingObject
       def create
-        "new GMapTypeControl()"
+        "new GMapTypeControl(), new GControlPosition(G_ANCHOR_BOTTOM_RIGHT, new GSize(10,20))"
       end
     end
      #Map type control. Report to the Google Maps API documentation for details.
