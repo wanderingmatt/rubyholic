@@ -33,6 +33,7 @@ class LocationsControllerTest < ActionController::TestCase
         }
     end
     
+    assert_equal @response.cookies["new_item"], ["location"]
     assert_redirected_to '/locations/'
   end
   

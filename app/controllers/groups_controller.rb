@@ -56,7 +56,7 @@ class GroupsController < ApplicationController
   # POST /groups.xml
   def create
     @group = Group.new(params[:group])
-    @referer = cookies[:http_referer]
+    cookies[:new_item] = "group"
 
     respond_to do |format|
       if @group.save

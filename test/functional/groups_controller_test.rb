@@ -26,6 +26,7 @@ class GroupsControllerTest < ActionController::TestCase
         }
     end
 
+    assert_equal @response.cookies["new_item"], ["group"]
     assert_redirected_to '/groups/'
   end
   

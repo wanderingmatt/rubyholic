@@ -52,11 +52,10 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   # TODO: Need to mock out the Google Maps data
-  # TODO: Need to ge this test working again.
   test "should show event" do
-    # get :show, :id => events(:one).id
-    # 
-    # assert_response :success
+    get :show, :id => events(:one).id
+    
+    assert_response :success
   end
 
   test "should get edit" do
