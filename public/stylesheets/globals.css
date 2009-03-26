@@ -76,7 +76,38 @@ h3 {
 #gutter {
   position: relative;
   background: #000;
-  height: 50px;
+  height: 20px;
+}
+
+#gutter form {
+  position: absolute;
+  top: 30px;
+  z-index: 1;
+}
+
+#gutter form span {
+  display: block;
+  float: left;
+  background: url("../images/bg_black_17.png");
+  width: 410px;
+  padding: 5px;
+}
+
+#gutter form span input {
+  float: left;
+  width: 250px;
+  margin-right: 5px;
+}
+
+#gutter form .buttons {
+  clear: none;
+  float: left;
+  margin: 0;
+  line-height: 1;
+}
+
+#gutter form .buttons button {
+  margin: 0;
 }
 
 #gutter a {
@@ -105,10 +136,11 @@ h3 {
 
 .bg_container {
   background: #fff url("/images/bg_container.png") repeat-x 0 0;
+  min-height: 125px;
 }
 
 .container_12 {
-  padding-top: 70px;
+  padding-top: 100px;
 }
 
 /* =LOGO */
@@ -154,7 +186,7 @@ img.arrow {
 
 #tab {
   position: absolute;
-  top: -50px;
+  top: -20px;
   left: 0;
 }
 
@@ -323,7 +355,7 @@ textarea {
 
 form li span {
   display: block;
-  background: #d4d4d4;
+  background: url("../images/bg_black_17.png");
   width: 410px;
   padding: 5px;
 }
