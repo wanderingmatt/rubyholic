@@ -43,4 +43,10 @@ class ApplicationController < ActionController::Base
     flash[:notice] = message if message
     redirect_to :action => 'index'
   end
+
+  def set_referer_cookie
+    if request.env['HTTP_REFERER']
+      cookies[:http_referer] = { :value => request.env['HTTP_REFERER'], :expires => 2.hours.from_now }
+    end
+  end
 end

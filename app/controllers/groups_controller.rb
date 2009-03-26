@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     
-    # Sets a cookie if the user came from anything other than a direct request
+    # Sets a cookie holding the HTTP_REFERER value for smart redirection after create
     set_referer_cookie
 
     respond_to do |format|
@@ -96,13 +96,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(groups_url) }
       format.xml  { head :ok }
-    end
-  end
-  
-  private
-  def set_referer_cookie
-    if request.env['HTTP_REFERER']
-      cookies[:http_referer] = { :value => request.env['HTTP_REFERER'], :expires => 2.hours.from_now }
     end
   end
 end

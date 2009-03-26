@@ -24,6 +24,8 @@ class LocationsControllerTest < ActionController::TestCase
   
   # TODO: Need to mock auto-geocode in this test
   test "should create location" do
+    @request.cookies['http_referer'] = CGI::Cookie.new('http_referer', '/locations/')
+
     assert_difference('Location.count') do
       post :create, :location => {
         :name => 'Onehub',
@@ -31,7 +33,20 @@ class LocationsControllerTest < ActionController::TestCase
         }
     end
     
-    assert_redirected_to location_path(assigns(:location))
+    assert_redirected_to '/locations/'
+  end
+  
+  test "should redirect back to new event" do
+    @request.cookies['http_referer'] = CGI::Cookie.new('http_referer', '/events/new')
+    
+    assert_difference('Location.count') do
+      post :create, :location => {
+        :name => 'Onehub',
+        :address => '3380 146th Pl SE, Bellevue, WA 98007',
+        }
+    end
+
+    assert_redirected_to '/events/new'    
   end
   
   # TODO: Need to mock auto-geocode in this test
