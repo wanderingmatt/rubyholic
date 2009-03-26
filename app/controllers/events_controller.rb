@@ -90,10 +90,12 @@ class EventsController < ApplicationController
   
   def create_map(location, zoom = 15, event = nil)
     @map = GMap.new('map')
-    @map.control_init(:large_map_3d => true,:map_type => true, :scale => true)
+    @map.control_init(:map_type => true, :scale => true)
+    @map.control_init(:large_map_3d => true)
     @map.center_zoom_init([location[:latitude],location[:longitude]],zoom)
     @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
     @map.set_map_type_init(GMapType::G_PHYSICAL_MAP)
+    @map.interface_init(:continuous_zoom => true, :scroll_wheel_zoom => true)
     
     get_upcoming_markers.each { |marker| @map.record_init @map.add_overlay(marker) } if event.nil?
     
