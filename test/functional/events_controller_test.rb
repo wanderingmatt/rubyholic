@@ -14,10 +14,10 @@ class EventsControllerTest < ActionController::TestCase
     get :index
     
     assert_response :success
-    
+    # This assert_tag generates some wierd output when it runs, using the assert_match instead
     # assert_tag :tag => 'div', :attributes => { :id => 'map' }
     assert_match 'div id="map"', @response.body
-    assert_match "GLatLng(47.0597,-122.3623)", @response.body
+    assert_match "GLatLng(47.0597,-122.5623)", @response.body
   end
   
   test "map renders upcoming events" do
