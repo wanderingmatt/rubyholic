@@ -89,10 +89,13 @@ class EventsController < ApplicationController
   private
   
   def create_map(location, zoom = 15, event = nil)
+    center = [location[:latitude].to_f, location[:longitude].to_f]
+    # Offsets center unless we are viewing a single event
+    center[1] -= 0.2 unless event
     @map = GMap.new('map')
     @map.control_init(:map_type => true, :scale => true)
     @map.control_init(:large_map_3d => true)
-    @map.center_zoom_init([location[:latitude],location[:longitude]],zoom)
+    @map.center_zoom_init(center, zoom)
     @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
     @map.set_map_type_init(GMapType::G_PHYSICAL_MAP)
     @map.interface_init(:continuous_zoom => true, :scroll_wheel_zoom => true)
