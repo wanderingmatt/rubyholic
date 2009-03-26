@@ -59,6 +59,7 @@ class LocationsController < ApplicationController
   # POST /locations.xml
   def create
     @location = Location.new(params[:location])
+    cookies[:new_item] = "location"
 
     respond_to do |format|
       if @location.save
