@@ -18,13 +18,27 @@ class GroupsControllerTest < ActionController::TestCase
   end
 
   test "should create group" do
+    @request.cookies['http_referer'] = CGI::Cookie.new('http_referer', '/groups/')
+    
     assert_difference('Group.count') do
       post :create, :group => {
         :name => 'X-Men'
         }
     end
 
-    assert_redirected_to group_path(assigns(:group))
+    assert_redirected_to '/groups/'
+  end
+  
+  test "should redirect back to new event" do
+    @request.cookies['http_referer'] = CGI::Cookie.new('http_referer', '/events/new')
+    
+    assert_difference('Group.count') do
+      post :create, :group => {
+        :name => 'X-Men'
+        }
+    end
+
+    assert_redirected_to '/events/new'    
   end
   
   test "should not create invalid group" do
