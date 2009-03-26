@@ -6,11 +6,14 @@ DESCRIPTION: This stylesheet serves global declarations to all Rubyholic assets
 /* =GRID OVERRIDE */
 /*  Grid is inactive when entire section is commented */
 /*
-body {
+body, #map {
   background: #fff url("../images/12_col.png") center top repeat-y !important;
 }
 
-.bg_container {
+#map div {
+  display: none;
+}
+.bg_container, .inner {
   background: none !important;
 }
 */
@@ -205,32 +208,28 @@ img.arrow {
 
 #strip {
   position: absolute;
-  top: -540px;
+  top: -510px;
 }
 
 #tab .inner,
 #strip .inner {
-/*  opacity: .9;*/
   background: #981a21;
-/*  border-bottom: 1px solid #3d1614;*/
 }
 
 #strip .inner {
-  min-height: 540px;
+  min-height: 510px;
+}
+
+#strip .inner select {
+  width: 260px;
+  margin: 0 20px 17px 20px;
+  line-height: 40px;
 }
 
 .event {
   position: relative;
   display: block;
   padding: 10px 20px 10px 60px;
-}
-
-#upcoming_events .event {
-/*  padding: 0;
-*/}
-
-#upcoming_events .event a {
- /* padding: 10px 20px 10px 60px;*/
 }
 
 a.event:hover {
