@@ -1,4 +1,6 @@
-class LocationsController < ApplicationController  
+class LocationsController < ApplicationController
+  layout 'default'
+    
   # GET /locations
   # GET /locations.xml
   def index
@@ -23,7 +25,7 @@ class LocationsController < ApplicationController
       redirect_to_index('Invalid group')
     else    
       respond_to do |format|
-        format.html # show.html.erb
+        format.html { render :layout => 'mapped' }
         format.xml  { render :xml => @location }
       end
     end
