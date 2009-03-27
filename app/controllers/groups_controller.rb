@@ -32,10 +32,10 @@ class GroupsController < ApplicationController
   # GET /groups/new.xml
   def new
     @group = Group.new
-    
-    # Sets a cookie holding the HTTP_REFERER value for smart redirection after create
-    set_referer_cookie
 
+    # Set a cookie to carry the user back to where they came from after creating the new group
+    set_referer_cookie
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @group }
@@ -56,13 +56,14 @@ class GroupsController < ApplicationController
   # POST /groups.xml
   def create
     @group = Group.new(params[:group])
-    cookies[:new_item] = "group"
+    return_location = cookies[:http_referer]
 
     respond_to do |format|
       if @group.save
         flash[:notice] = 'Group was successfully created.'
-        format.html { redirect_to(cookies[:http_referer]) }
+        format.html { redirect_to return_location.blank? ? @group : append_object_id(return_location, "group", @group.id.to_i) }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
+        cookies.delete [:http_referer]
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }

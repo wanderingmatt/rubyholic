@@ -5,9 +5,20 @@ class SearchController < ApplicationController
   # GET /searches.xml  
   def index
     @query = params[:q]
-
-    @search = Event.search(
-      (@query || ""), 
+    
+    @search = search_events(@query)
+    
+    @locations = search_locations(@query)
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml { render :xml => @search }
+    end
+  end
+  
+  def search_events(query)
+    Event.search(
+      (query || ""), 
       :page => (params[:page] || 1),
       :per_page => 10,
       :geo => [
@@ -15,17 +26,9 @@ class SearchController < ApplicationController
         degrees_to_radians(@ip_location[:longitude].to_f)
       ],
       # :with => { "@geodist" => 0.0..80467.2 }, # 50 miles, in meters
-      :without => { :start_time => 35.years.ago..Time.now }, # A little hard-coded, but it works well enough for now.
+      :without => { :start_time => 35.years.until..Time.now }, # A little hard-coded, but it works well enough for now.
       :order => "date ASC"
     )
-    
-    @locations = search_locations(@query)
-    # @groups = Group.search(@query || "")
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml { render :xml => @search }
-    end
   end
   
   def search_locations(query)

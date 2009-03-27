@@ -34,7 +34,7 @@ class LocationsController < ApplicationController
   def new
     @location = Location.new
 
-    # Sets a cookie holding the HTTP_REFERER value for smart redirection after create
+    # Set a cookie to carry the user back to where they came from after creating the new group
     set_referer_cookie
 
     respond_to do |format|
@@ -57,13 +57,15 @@ class LocationsController < ApplicationController
   # POST /locations.xml
   def create
     @location = Location.new(params[:location])
-    cookies[:new_item] = "location"
+
+    return_location = cookies[:http_referer]
 
     respond_to do |format|
       if @location.save
         flash[:notice] = 'Location was successfully created.'
-        format.html { redirect_to(cookies[:http_referer]) }
+        format.html { redirect_to return_location.blank? ? @location : append_object_id(return_location, "location", @location.id.to_i) }
         format.xml  { render :xml => @location, :status => :created, :location => @location }
+        cookies.delete [:http_referer]
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @location.errors, :status => :unprocessable_entity }

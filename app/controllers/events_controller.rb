@@ -44,6 +44,7 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
+    cookies.delete :http_referer # get rid of that data so it doesn't cause any weirdness.
 
     respond_to do |format|
       if @event.save

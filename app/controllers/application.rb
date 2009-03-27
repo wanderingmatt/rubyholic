@@ -49,4 +49,13 @@ class ApplicationController < ActionController::Base
       cookies[:http_referer] = { :value => request.env['HTTP_REFERER'], :expires => 2.hours.from_now }
     end
   end
+  
+  # If a parameter has already been added to the URL for group or location, append that paramter with a &, otherwise use a ? to start the params hash
+  def append_object_id(referer, controller, id)
+    if referer.to_s =~ %r{\?(group|location)}
+      referer += "&#{controller}=#{id}"
+    else
+      referer += "?#{controller}=#{id}"
+    end
+  end
 end
