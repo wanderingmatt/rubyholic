@@ -34,7 +34,8 @@
         </thead>
         <tbody>
         <%# for result in @search %>
-        <% @search.each_with_geodist do |result, distance| %>
+        <%# @search.each_with_geodist do |result, distance| %>
+        <%- for result in @search -%>
         <tr>
           <td><%= result.start_time.strftime("%d %b %Y") %></td>
           <td><%= link_to result.group.name, result.group %></td>
@@ -42,7 +43,7 @@
             <%= link_to result.location.name, result.location %>
             <!-- <small style="display:block; font-size:.8em; color:#aaa; width: 200px;"><%= result.location.address %></small> -->
           </td>
-          <!-- <td><%= number_with_delimiter number_with_precision(distance, 0) %></td> -->
+          <!-- <td><%#= number_with_delimiter number_with_precision(distance, 0) %></td> -->
           <!-- <td><%# result.location.address %></td> -->
           <!-- <td><%# truncate(result.description, :length => 75) %></td> -->
         </tr>

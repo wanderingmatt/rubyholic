@@ -3,18 +3,18 @@ development:
   mem_limit: 64M
   delta: true
   enable_star: 1
-  min_infix_len: 2
+  min_infix_len: 1
 
 test:
   port: 3313
   mem_limit: 64M
   delta: true
   enable_star: 1
-  min_infix_len: 2
+  min_infix_len: 1
 
 production:
   port: 3312
   mem_limit: 128M
   delta: true
   enable_star: 1
-  min_infix_len: 2
+  min_infix_len: 1

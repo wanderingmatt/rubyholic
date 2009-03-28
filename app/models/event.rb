@@ -43,11 +43,9 @@ class Event < ActiveRecord::Base
     indexes location.address, :as => :location_address, :sortable => true
     
     has group_id, location_id, start_time, end_time
-    has location.latitude, :as => "latitude"
-    has location.longitude, :as => "longitude"
+    has "RADIANS(locations.latitude)", :as => :latitude, :type => :float
+    has "RADIANS(locations.longitude)", :as => :longitude, :type => :float
     
     set_property :delta => true
-    set_property :latitude_attr => "latitude"
-    set_property :longitude_attr => "longitude"
   end
 end
