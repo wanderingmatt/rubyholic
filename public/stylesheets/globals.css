@@ -176,29 +176,7 @@ img.arrow {
   left: 20px;
 }
 
-/* =INTRO */
-
-#intro p {
-  margin-bottom: 20px;
-  font-size: 14px;
-  text-align: justify;
-  color: #828282;
-}
-
-#intro em {
-  font-size: 12px;
-  font-style: normal;
-  color: #b4b4b4;
-}
-
-#intro em strong {
-  font-size: 20px;
-  font-weight: bold;
-  color: #981a21;
-  vertical-align: middle;
-}
-
-/* =EVENTS */
+/* =LAYOUT */
 
 #tab {
   position: absolute;
@@ -226,17 +204,62 @@ img.arrow {
   line-height: 40px;
 }
 
-.event {
+.mapped #content {
+  position: absolute;
+  left: 320px;
+}
+
+/* =INTRO */
+
+#intro p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: justify;
+  color: #828282;
+}
+
+#intro em {
+  font-size: 12px;
+  font-style: normal;
+  color: #b4b4b4;
+}
+
+#intro em strong {
+  font-size: 20px;
+  font-weight: bold;
+  color: #981a21;
+  vertical-align: middle;
+}
+
+/* =EVENT */
+
+.event h3 {
+  color: #f6e69f;
+}
+
+.event .location {
+  color: #c18683;
+}
+
+.event p {
+  font-size: 13px;
+  text-align: justify;
+  color: #fff;
+}
+
+/* =EVENTS =INDEX */
+
+.events_index .event a {
   position: relative;
   display: block;
   padding: 10px 20px 10px 60px;
 }
 
-a.event:hover {
+.events_index .event a:hover {
   background: #7a151a url("/images/icons/arrow.png") no-repeat 260px 50%;
 }
 
-.event .date {
+.events_index .event .date {
   position: absolute;
   left: 20px;
   top: 10px;
@@ -247,46 +270,62 @@ a.event:hover {
   text-align: center;
 }
 
-.event .date .day {
+.events_index .event .date .day {
   line-height: 20px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
 }
 
-.event .date .month {
+.events_index .event .date .month {
   position: relative;
   top: -5px;
   font-size: 10px;
   color: #c18683;
 }
 
-.event .date .year {
+.events_index .event .date .year {
   position: relative;
   top: -10px;
   font-size: 10px;
   color: #ad5e5a;
 }
 
-.event h3 {
+.events_index .event h3 {
   font-weight: bold;
   color: #f6e69f;
 }
 
-.event .location {
+.events_index .event .location {
   font-size: 14px;
   color: #c18683;
 }
 
-.event p {
+/* =EVENTS =SHOW */
+
+.events_show .event {
+  padding: 0 20px;
+}
+
+.events_show .event h3 {
+  line-height: 40px;
+  font-size: 32px;
+}
+
+.events_show .event .location {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #c18683;
+}
+
+.events_show .event .date {
+  color: #ad5e5a;
+}
+
+.events_show .event p {
   font-size: 13px;
   text-align: justify;
   color: #fff;
-}
-
-.events #content {
-  position: absolute;
-  left: 320px;
 }
 
 /* =FORMS */

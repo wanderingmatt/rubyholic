@@ -31,11 +31,11 @@
                         <option value="locations.name">Location</option>', 
                        :onchange => 'this.form.submit()' %> 
         <% end %>
-        <ol id="upcoming_events">
+        <ol>
 
         <% for event in @events %>
-          <li>
-            <a class="event" href="<%= url_for event %>">
+          <li class="event">
+            <a href="<%= url_for event %>">
               <h3><%= event.group.name %></h3>
               <div class="location"><%= event.location.name %></div>
               <div class="date" align="justify">

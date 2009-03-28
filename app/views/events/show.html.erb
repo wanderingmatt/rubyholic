@@ -14,17 +14,16 @@
           <h1><%= link_to 'Rubyholic', events_path %></h1>
         </div>
         <div class="event">
-          <h3><%=h @event.group.name %></h3>
-          <div class="location"><%=h @event.location.name %></div>
           <div class="date" align="justify">
-            <span class="day"><%=h @event.start_time.strftime("%d") %></span>
-            <span class="month"><%=h @event.start_time.strftime("%b") %></span>
+            <span class="month"><%=h @event.start_time.strftime("%B") %></span>
+            <span class="day"><%=h @event.start_time.strftime("%d") %></span>, 
             <span class="year"><%=h @event.start_time.strftime("%Y") %></span>
           </div>
+          <h3><%=h @event.group.name %></h3>
+          <div class="location"><%=h @event.location.name %></div>
           <p><%=h @event.description %></p>
 
           <%= link_to 'Edit', edit_event_path(@event) %> |
-          <%= link_to 'Back', events_path %>
         </div>
       </div>
     </div>
