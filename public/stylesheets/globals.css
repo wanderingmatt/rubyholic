@@ -115,28 +115,6 @@ h3 {
   margin: 0;
 }
 
-#gutter a {
-  position: absolute;
-  right: 0;
-  padding: 0 20px;
-  line-height: 50px;
-  font-size: 13px;
-  text-transform: uppercase;
-}
-
-#gutter a strong {
-  font-size: 20px;
-}
-
-#gutter a:link, #gutter a:visited {
-  color: #646464;
-}
-
-#gutter a:hover {
-  background: #191919;
-  color: #f6e69f;
-}
-
 /* =CONTAINER */
 
 .bg_container {
@@ -194,14 +172,24 @@ h1 a {
 
 /* =EVENTS =INDEX */
 
+.events_index .new_event {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  z-index: 1;
+}
+
+.events_index .new_event .button {
+  width: 140px;
+}
+
 .events_index .logo {
-  border-bottom: 1px solid #3d0a0d;
+  border-bottom: 1px solid #5b1014;
 }
 
 .events_index .sort {
   background: #5b1014;
-  padding: 19px 20px 19px 20px;
-  border-bottom: 1px solid #3d0a0d;
+  padding: 19px 20px 20px 20px;
 }
 
 #strip .inner select {

@@ -17,6 +17,9 @@
 </div>
 <%= @map.div :width => '100%', :height => 490 %>
 <div class="bg_container">
+  <div class="buttons new_event">
+    <%= link_to 'Add a New Event', new_event_path, :class => 'button positive' %>
+  </div>
   <div class="container_12">
     <div id="strip" class="grid_4">
       <div class="inner">
@@ -50,9 +53,7 @@
         <% end %>
 
         </ol>
-        <%= will_paginate @events %>
-        <%= link_to '<strong>+</strong> Add a New Event', new_event_path %>
-        
+        <%= will_paginate @events %>        
       </div>
     </div>
     <div id="content" class="grid_8">
