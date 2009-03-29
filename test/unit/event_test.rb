@@ -79,8 +79,12 @@ class EventTest < ActiveSupport::TestCase
     
     assert_equal expected, actual
   end
-  
+
+  test "date should be formatted properly" do
+    assert_equal "February 24, 2009", Event.pretty_date(Time.parse('2009-02-24 06:45pm'))
+  end
+    
   test "time should be formatted properly" do
-    assert_equal "Tue 24 Feb, 2009 at 11:45 PM", Event.pretty_time(Time.parse('2009-02-24 11:45pm'))
+    assert_equal "06:45 - 07:45 PM", Event.pretty_time(Time.parse('2009-02-24 06:45pm'), Time.parse('2009-02-24 07:45pm'))
   end
 end
