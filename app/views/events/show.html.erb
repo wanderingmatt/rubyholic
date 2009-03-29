@@ -13,14 +13,13 @@
         <div class="logo">
           <h1><%= link_to 'Rubyholic', events_path %></h1>
         </div>
-        <hr />
         <div class="event">
           <div class="action">
             <%= link_to 'Edit', edit_event_path(@event), :title => 'Edit this Event', :class => 'edit' %>
           </div>
           <div class="date"><%=h Event.pretty_date(@event.start_time) %></div>
-          <h3><%=h @event.group.name %></h3>
-          <div class="location"><%=h @event.location.name %></div>
+          <h2><%=h @event.group.name %></h2>
+          <h3><%=h @event.location.name %></h3>
           <div class="time"><%=h Event.pretty_time(@event.start_time, @event.end_time) %></div>
           <p><%=h @event.description %></p>
         </div>

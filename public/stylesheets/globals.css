@@ -24,9 +24,8 @@ html, body {
 }
 
 body {
-/*  position: relative;
-*/  background: #fff;
-  font: normal 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font size across browsers */
+  background: #fff;
+  font: normal 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: left;
 	color: #444;
 }
@@ -73,6 +72,7 @@ h2 {
 }
 
 h3 {
+  line-height: 20px;
   font-size: 16px;
 }
 
@@ -152,7 +152,8 @@ h3 {
 
 .logo {
   background: #981a21;
-  padding: 20px 0;
+  padding: 20px 0 19px 0;
+  border-bottom: 1px solid #7a151a;
 }
 
 h1 a {
@@ -162,20 +163,6 @@ h1 a {
   height: 60px;
   margin: 0 20px;
   text-indent: -9999px;
-}
-
-/* =NUANCES */
-
-img.plus {
-  position: absolute;
-  top: 9px;
-  left: -65px;
-}
-
-img.arrow {
-  position: absolute;
-  top: 9px;
-  left: 20px;
 }
 
 /* =LAYOUT */
@@ -200,65 +187,32 @@ img.arrow {
   min-height: 510px;
 }
 
-#strip .inner hr {
-  height: 0;
-  margin: 0 0 18px 0;
-  padding: 0;
-  border: 0;
-  border-top: 1px solid #7a151a;
-  border-bottom: 1px solid #a33138;
-}
-
-#strip .inner select {
-  width: 260px;
-  margin: 0 20px 17px 20px;
-  line-height: 40px;
-}
-
 .mapped #content {
   position: absolute;
   left: 320px;
 }
 
-/* =INTRO */
-
-#intro p {
-  margin-bottom: 20px;
-  font-size: 14px;
-  text-align: justify;
-  color: #828282;
-}
-
-#intro em {
-  font-size: 12px;
-  font-style: normal;
-  color: #b4b4b4;
-}
-
-#intro em strong {
-  font-size: 20px;
-  font-weight: bold;
-  color: #981a21;
-  vertical-align: middle;
-}
-
-/* =EVENT */
-
-.event h3 {
-  color: #f6e69f;
-}
-
-.event .location {
-  color: #c18683;
-}
-
-.event p {
-  font-size: 13px;
-  text-align: justify;
-  color: #fff;
-}
-
 /* =EVENTS =INDEX */
+
+.events_index .logo {
+  border-bottom: 1px solid #3d0a0d;
+}
+
+.events_index .sort {
+  background: #5b1014;
+  padding: 19px 20px 19px 20px;
+  border-bottom: 1px solid #3d0a0d;
+}
+
+#strip .inner select {
+  width: 260px;
+  margin: 0;
+  line-height: 40px;
+}
+
+.events_index ol {
+  border-top: 1px solid #a33138;
+}
 
 .events_index .event a {
   position: relative;
@@ -290,29 +244,38 @@ img.arrow {
 
 .events_index .event .date .month {
   position: relative;
-  top: -5px;
+  top: -3px;
   font-size: 10px;
   color: #c18683;
 }
 
 .events_index .event .date .year {
   position: relative;
-  top: -10px;
+  top: -8px;
   font-size: 10px;
   color: #ad5e5a;
 }
 
-.events_index .event h3 {
+.events_index .event h2 {
+  margin-bottom: 0;
+  padding: 0;
+  line-height: 20px;
+  font-size: 16px;
   font-weight: bold;
   color: #f6e69f;
 }
 
-.events_index .event .location {
+.events_index .event h3 {
   font-size: 14px;
+  font-weight: normal;
   color: #3d0a0d;
 }
 
 /* =EVENTS =SHOW */
+
+.events_show .event {
+  border-top: 1px solid #a33138;
+}
 
 .events_show .action {
   position: absolute;
@@ -324,15 +287,17 @@ img.arrow {
 }
 
 .events_show .event {
-  padding: 0 20px;
+  padding: 19px 20px 0 20px;
+}
+
+.events_show .event h2 {
+  margin: 0;
+  line-height: 40px;
+  font-size: 32px;
+  color: #f6e69f;
 }
 
 .events_show .event h3 {
-  line-height: 40px;
-  font-size: 32px;
-}
-
-.events_show .event .location {
   margin-bottom: 20px;
   font-size: 20px;
   color: #fff;
@@ -357,6 +322,28 @@ img.arrow {
 
 #map div {
   font-size: 13px;
+}
+
+/* =INTRO */
+
+#intro p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: justify;
+  color: #828282;
+}
+
+#intro em {
+  font-size: 12px;
+  font-style: normal;
+  color: #b4b4b4;
+}
+
+#intro em strong {
+  font-size: 20px;
+  font-weight: bold;
+  color: #981a21;
+  vertical-align: middle;
 }
 
 /* =FORMS */
@@ -524,7 +511,22 @@ form .buttons {
   background-position: 0 -16px;
 }
 
+/* =NUANCES */
+
+img.plus {
+  position: absolute;
+  top: 9px;
+  left: -65px;
+}
+
+img.arrow {
+  position: absolute;
+  top: 9px;
+  left: 20px;
+}
+
 /* =SEARCH */
+
 .search #recommended {
   margin-top: 10px;
   margin-bottom: 10px;

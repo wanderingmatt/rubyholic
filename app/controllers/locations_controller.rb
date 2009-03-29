@@ -106,13 +106,16 @@ class LocationsController < ApplicationController
   
   private
   
-  def create_map(location)
-    position = [location.latitude,location.longitude]
+  def create_map(location, zoom = 15)
+    center = [location.latitude,location.longitude]
     @map = GMap.new('map')
-    @map.control_init(:large_map_3d => true,:map_type => true, :scale => true)
-    @map.center_zoom_init(position,17)
+    @map.control_init(:map_type => true, :scale => true)
+    @map.control_init(:large_map_3d => true)
+    @map.center_zoom_init(center, zoom)
     @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
-    @map.set_map_type_init(GMapType::G_HYBRID_MAP)
-    @map.overlay_init(GMarker.new(position, :info_window => "<div>#{location.name}</div><div>#{location.address}</div>"))
+    @map.set_map_type_init(GMapType::G_PHYSICAL_MAP)
+    @map.interface_init(:continuous_zoom => true, :scroll_wheel_zoom => true)
+    
+    @map.overlay_init(GMarker.new(center, :info_window => "<strong>#{location.name}</strong><br />#{location.address}"))
   end
 end

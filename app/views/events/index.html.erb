@@ -23,8 +23,8 @@
         <div class="logo">
           <h1><%= link_to 'Rubyholic', events_path %></h1>
         </div>
-        <hr />
-        <% form_tag '', :method => 'GET', :class => 'sort' do %> 
+        <div class="sort">
+        <% form_tag '', :method => 'GET' do %> 
         <%= select_tag 'sorted_by', 
                        '<option value="0">Sort By</option>
                         <option value="start_time">Date</option
@@ -32,24 +32,19 @@
                         <option value="locations.name">Location</option>', 
                        :onchange => 'this.form.submit()' %> 
         <% end %>
-        <hr />
+        </div>
         <ol>
 
         <% for event in @events %>
           <li class="event">
             <a href="<%= url_for event %>">
-              <h3><%= event.group.name %></h3>
-              <div class="location"><%= event.location.name %></div>
+              <h2><%= event.group.name %></h2>
+              <h3><%= event.location.name %></h3>
               <div class="date">
                 <span class="day"><%=h event.start_time.strftime("%d") %></span>
                 <span class="month"><%=h event.start_time.strftime("%b") %></span>
                 <span class="year"><%=h event.start_time.strftime("%Y") %></span>
               </div>
-              <!-- <div><%#h event.end_time %></div> -->
-              <!-- <div><%#h event.description %></div> -->
-              <!-- <div><%= link_to 'Show', event %>
-              <%= link_to 'Edit', edit_event_path(event) %>
-              <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></div> -->
             </a>
           </li>
         <% end %>
