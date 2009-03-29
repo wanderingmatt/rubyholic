@@ -24,14 +24,18 @@ class Event < ActiveRecord::Base
   def self.sort(page, order, upcoming = 'true', location = nil)
     order ||= 'start_time'
     if location.nil?
-      self.upcoming.ordered_by(order, 'ASC').paginate({ :page => page, :per_page => 10 })
+      self.upcoming.ordered_by(order, 'ASC').paginate({ :page => page, :per_page => 5 })
     else
-      self.upcoming.ordered_by(order, 'ASC').find_within(SEARCH_RADIUS, :origin => [location[:latitude],location[:longitude]]).paginate({ :page => page, :per_page => 10 })
+      self.upcoming.ordered_by(order, 'ASC').find_within(SEARCH_RADIUS, :origin => [location[:latitude],location[:longitude]]).paginate({ :page => page, :per_page => 5 })
     end
   end
-  
-  def self.pretty_time(time)
-    time.strftime("%a %d %h, %Y at %I:%M %p")
+
+  def self.pretty_date(time)
+    time.strftime("%B %d, %Y")
+  end
+    
+  def self.pretty_time(start_time, end_time)
+    "#{start_time.strftime("%I:%M")} - #{end_time.strftime("%I:%M %p")}"
   end
   
   define_index do

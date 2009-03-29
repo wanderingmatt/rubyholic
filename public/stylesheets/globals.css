@@ -33,9 +33,11 @@ body {
 
 a:link, a:visited {
 	text-decoration: none;
+	color: #981a21;
 }
 	
 a:hover, a:active {
+  color: #000;
 }
 
 a, strong, b { /* Straightens out OS X font rendering */
@@ -198,6 +200,15 @@ img.arrow {
   min-height: 510px;
 }
 
+#strip .inner hr {
+  height: 0;
+  margin: 0 0 18px 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid #7a151a;
+  border-bottom: 1px solid #a33138;
+}
+
 #strip .inner select {
   width: 260px;
   margin: 0 20px 17px 20px;
@@ -298,10 +309,19 @@ img.arrow {
 
 .events_index .event .location {
   font-size: 14px;
-  color: #c18683;
+  color: #3d0a0d;
 }
 
 /* =EVENTS =SHOW */
+
+.events_show .action {
+  position: absolute;
+  right: 20px;
+}
+
+.events_show .action a {
+  background-position: 0 -16px;
+}
 
 .events_show .event {
   padding: 0 20px;
@@ -315,17 +335,28 @@ img.arrow {
 .events_show .event .location {
   margin-bottom: 20px;
   font-size: 20px;
-  color: #c18683;
+  color: #fff;
 }
 
 .events_show .event .date {
-  color: #ad5e5a;
+  color: #5b1014;
 }
 
+.events_show .event .time,
 .events_show .event p {
   font-size: 13px;
   text-align: justify;
-  color: #fff;
+  color: #3d0a0d;
+}
+
+.events_show .event .time {
+  font-weight: bold;
+}
+
+/* =MAP */
+
+#map div {
+  font-size: 13px;
 }
 
 /* =FORMS */

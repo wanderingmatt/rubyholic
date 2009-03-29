@@ -23,6 +23,7 @@
         <div class="logo">
           <h1><%= link_to 'Rubyholic', events_path %></h1>
         </div>
+        <hr />
         <% form_tag '', :method => 'GET', :class => 'sort' do %> 
         <%= select_tag 'sorted_by', 
                        '<option value="0">Sort By</option>
@@ -31,6 +32,7 @@
                         <option value="locations.name">Location</option>', 
                        :onchange => 'this.form.submit()' %> 
         <% end %>
+        <hr />
         <ol>
 
         <% for event in @events %>
@@ -38,7 +40,7 @@
             <a href="<%= url_for event %>">
               <h3><%= event.group.name %></h3>
               <div class="location"><%= event.location.name %></div>
-              <div class="date" align="justify">
+              <div class="date">
                 <span class="day"><%=h event.start_time.strftime("%d") %></span>
                 <span class="month"><%=h event.start_time.strftime("%b") %></span>
                 <span class="year"><%=h event.start_time.strftime("%Y") %></span>

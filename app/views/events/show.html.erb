@@ -13,17 +13,16 @@
         <div class="logo">
           <h1><%= link_to 'Rubyholic', events_path %></h1>
         </div>
+        <hr />
         <div class="event">
-          <div class="date" align="justify">
-            <span class="month"><%=h @event.start_time.strftime("%B") %></span>
-            <span class="day"><%=h @event.start_time.strftime("%d") %></span>, 
-            <span class="year"><%=h @event.start_time.strftime("%Y") %></span>
+          <div class="action">
+            <%= link_to 'Edit', edit_event_path(@event), :title => 'Edit this Event', :class => 'edit' %>
           </div>
+          <div class="date"><%=h Event.pretty_date(@event.start_time) %></div>
           <h3><%=h @event.group.name %></h3>
           <div class="location"><%=h @event.location.name %></div>
+          <div class="time"><%=h Event.pretty_time(@event.start_time, @event.end_time) %></div>
           <p><%=h @event.description %></p>
-
-          <%= link_to 'Edit', edit_event_path(@event) %> |
         </div>
       </div>
     </div>

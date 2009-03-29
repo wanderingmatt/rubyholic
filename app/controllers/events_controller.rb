@@ -103,7 +103,7 @@ class EventsController < ApplicationController
     
     get_upcoming_markers.each { |marker| @map.record_init @map.add_overlay(marker) } if event.nil?
     
-    @map.record_init @map.add_overlay(GMarker.new([event.location.latitude, event.location.longitude], :info_window => "<div><a href=\"/groups/#{event.group.id}\">#{event.group.name}</a></div><div><a href=\"/locations/#{event.location.id}\">#{event.location.name}</a></div><div>#{Event.pretty_time(event.start_time)}</div>")) unless event.nil?
+    @map.record_init @map.add_overlay(GMarker.new([event.location.latitude, event.location.longitude], :info_window => "<b><a href=\"/groups/#{event.group.id}\">#{event.group.name}</a></b><br /><a href=\"/locations/#{event.location.id}\">#{event.location.name}</a><br />#{Event.pretty_date(event.start_time)}")) unless event.nil?
   end
     
   def get_upcoming_markers
