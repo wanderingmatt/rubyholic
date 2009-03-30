@@ -524,6 +524,50 @@ img.arrow {
   margin: 10px 0;
 }
 
+/* =PAGINATION */
+
+.pagination {
+  position: absolute;
+  bottom: 0;
+  background: #5b1014;
+  width: 100%;
+	padding: 10px 0;
+	line-height: 20px;
+	font-size: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.pagination .disabled {
+	padding: 5px;
+	color: #3d0a0d;
+}
+
+.pagination .current {
+/*  padding: 2px 5px;
+  border: 1px solid #eee;*/
+  padding: 0 5px;
+  font-size: 14px;
+  line-height: ;
+	color: #fff;
+}
+
+.pagination a:link, .pagination a:visited {
+	padding: 3px 5px;
+	font-size: 14px;
+	text-decoration: none;
+	color: #f6e69f;
+}
+
+.pagination a:hover, .pagination a:active {
+	background: #eee;
+	padding: 3px 5px;
+  
+	font-size: 16px;
+	color: #828282;
+}
+
 /* =BUTTONS =BASE */
 /* Abstracted from the Wufoo implementation - thanks guys! */
 /* http://particletree.com/features/rediscovering-the-button-element/ */
