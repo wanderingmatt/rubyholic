@@ -6,11 +6,14 @@ DESCRIPTION: This stylesheet serves global declarations to all Rubyholic assets
 /* =GRID OVERRIDE */
 /*  Grid is inactive when entire section is commented */
 /*
-body {
+body, #map {
   background: #fff url("../images/12_col.png") center top repeat-y !important;
 }
 
-.bg_container {
+#map div {
+  display: none;
+}
+.bg_container, .inner {
   background: none !important;
 }
 */
@@ -21,18 +24,19 @@ html, body {
 }
 
 body {
-/*  position: relative;
-*/  background: #fff;
-  font: normal 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif; /* normalize font size across browsers */
+  background: #fff;
+  font: normal 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: left;
 	color: #444;
 }
 
 a:link, a:visited {
 	text-decoration: none;
+	color: #981a21;
 }
 	
 a:hover, a:active {
+  color: #000;
 }
 
 a, strong, b { /* Straightens out OS X font rendering */
@@ -68,6 +72,7 @@ h2 {
 }
 
 h3 {
+  line-height: 20px;
   font-size: 16px;
 }
 
@@ -110,28 +115,6 @@ h3 {
   margin: 0;
 }
 
-#gutter a {
-  position: absolute;
-  right: 0;
-  padding: 0 20px;
-  line-height: 50px;
-  font-size: 13px;
-  text-transform: uppercase;
-}
-
-#gutter a strong {
-  font-size: 20px;
-}
-
-#gutter a:link, #gutter a:visited {
-  color: #646464;
-}
-
-#gutter a:hover {
-  background: #191919;
-  color: #f6e69f;
-}
-
 /* =CONTAINER */
 
 .bg_container {
@@ -147,7 +130,8 @@ h3 {
 
 .logo {
   background: #981a21;
-  padding: 20px 0;
+  padding: 20px 0 19px 0;
+  border-bottom: 1px solid #7a151a;
 }
 
 h1 a {
@@ -159,18 +143,173 @@ h1 a {
   text-indent: -9999px;
 }
 
-/* =NUANCES */
+/* =LAYOUT */
 
-img.plus {
+#tab {
   position: absolute;
-  top: 9px;
-  left: -65px;
+  top: -20px;
+  left: 0;
 }
 
-img.arrow {
+#strip {
   position: absolute;
-  top: 9px;
+  top: -510px;
+}
+
+#tab .inner,
+#strip .inner {
+  background: #981a21;
+}
+
+#strip .inner {
+  min-height: 510px;
+}
+
+.mapped #content {
+  position: absolute;
+  left: 320px;
+}
+
+/* =EVENTS =INDEX */
+
+.events_index .new_event {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  z-index: 1;
+}
+
+.events_index .new_event .button {
+  width: 140px;
+}
+
+.events_index .logo {
+  border-bottom: 1px solid #5b1014;
+}
+
+.events_index .sort {
+  background: #5b1014;
+  padding: 19px 20px 20px 20px;
+}
+
+#strip .inner select {
+  width: 260px;
+  margin: 0;
+  line-height: 40px;
+}
+
+.events_index ol {
+  border-top: 1px solid #a33138;
+}
+
+.events_index .event a {
+  position: relative;
+  display: block;
+  padding: 10px 20px 10px 60px;
+}
+
+.events_index .event a:hover {
+  background: #7a151a url("/images/icons/arrow.png") no-repeat 260px 50%;
+}
+
+.events_index .event .date {
+  position: absolute;
   left: 20px;
+  top: 10px;
+  display: block;
+  width: 20px;
+  line-height: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.events_index .event .date .day {
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.events_index .event .date .month {
+  position: relative;
+  top: -3px;
+  font-size: 10px;
+  color: #c18683;
+}
+
+.events_index .event .date .year {
+  position: relative;
+  top: -8px;
+  font-size: 10px;
+  color: #ad5e5a;
+}
+
+.events_index .event h2 {
+  margin-bottom: 0;
+  padding: 0;
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f6e69f;
+}
+
+.events_index .event h3 {
+  font-size: 14px;
+  font-weight: normal;
+  color: #3d0a0d;
+}
+
+/* =EVENTS =SHOW */
+
+.events_show .event {
+  border-top: 1px solid #a33138;
+}
+
+.events_show .action {
+  position: absolute;
+  right: 20px;
+}
+
+.events_show .action a {
+  background-position: 0 -16px;
+}
+
+.events_show .event {
+  padding: 19px 20px 0 20px;
+}
+
+.events_show .event h2 {
+  margin: 0;
+  line-height: 40px;
+  font-size: 32px;
+  color: #f6e69f;
+}
+
+.events_show .event h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.events_show .event .date {
+  color: #5b1014;
+}
+
+.events_show .event .time,
+.events_show .event p {
+  font-size: 13px;
+  text-align: justify;
+  color: #3d0a0d;
+}
+
+.events_show .event .time {
+  font-weight: bold;
+}
+
+/* =MAP */
+
+#map div {
+  font-size: 13px;
 }
 
 /* =INTRO */
@@ -193,101 +332,6 @@ img.arrow {
   font-weight: bold;
   color: #981a21;
   vertical-align: middle;
-}
-
-/* =EVENTS */
-
-#tab {
-  position: absolute;
-  top: -20px;
-  left: 0;
-}
-
-#strip {
-  position: absolute;
-  top: -540px;
-}
-
-#tab .inner,
-#strip .inner {
-/*  opacity: .9;*/
-  background: #981a21;
-/*  border-bottom: 1px solid #3d1614;*/
-}
-
-#strip .inner {
-  min-height: 540px;
-}
-
-.event {
-  position: relative;
-  display: block;
-  padding: 10px 20px 10px 60px;
-}
-
-#upcoming_events .event {
-/*  padding: 0;
-*/}
-
-#upcoming_events .event a {
- /* padding: 10px 20px 10px 60px;*/
-}
-
-a.event:hover {
-  background: #7a151a url("/images/icons/arrow.png") no-repeat 260px 50%;
-}
-
-.event .date {
-  position: absolute;
-  left: 20px;
-  top: 10px;
-  display: block;
-  width: 20px;
-  line-height: 10px;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.event .date .day {
-  line-height: 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-}
-
-.event .date .month {
-  position: relative;
-  top: -5px;
-  font-size: 10px;
-  color: #c18683;
-}
-
-.event .date .year {
-  position: relative;
-  top: -10px;
-  font-size: 10px;
-  color: #ad5e5a;
-}
-
-.event h3 {
-  font-weight: bold;
-  color: #f6e69f;
-}
-
-.event .location {
-  font-size: 14px;
-  color: #c18683;
-}
-
-.event p {
-  font-size: 13px;
-  text-align: justify;
-  color: #fff;
-}
-
-.events #content {
-  position: absolute;
-  left: 320px;
 }
 
 /* =FORMS */
@@ -455,7 +499,22 @@ form .buttons {
   background-position: 0 -16px;
 }
 
+/* =NUANCES */
+
+img.plus {
+  position: absolute;
+  top: 9px;
+  left: -65px;
+}
+
+img.arrow {
+  position: absolute;
+  top: 9px;
+  left: 20px;
+}
+
 /* =SEARCH */
+
 .search #recommended {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -463,6 +522,50 @@ form .buttons {
 
 .search #recommended #groups, .search #recommended #locations {
   margin: 10px 0;
+}
+
+/* =PAGINATION */
+
+.pagination {
+  position: absolute;
+  bottom: 0;
+  background: #5b1014;
+  width: 100%;
+	padding: 10px 0;
+	line-height: 20px;
+	font-size: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.pagination .disabled {
+	padding: 5px;
+	color: #3d0a0d;
+}
+
+.pagination .current {
+/*  padding: 2px 5px;
+  border: 1px solid #eee;*/
+  padding: 0 5px;
+  font-size: 14px;
+  line-height: ;
+	color: #fff;
+}
+
+.pagination a:link, .pagination a:visited {
+	padding: 3px 5px;
+	font-size: 14px;
+	text-decoration: none;
+	color: #f6e69f;
+}
+
+.pagination a:hover, .pagination a:active {
+	background: #eee;
+	padding: 3px 5px;
+  
+	font-size: 16px;
+	color: #828282;
 }
 
 /* =BUTTONS =BASE */

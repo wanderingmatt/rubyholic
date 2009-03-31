@@ -11,12 +11,14 @@
       <ol>
         <li>
           <%= f.label :group_id %>
-          <span class="select"><%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] } %></span>
+          <span class="select"><%= f.select :group_id, Group.find(:all).map { |group| [group.name, group.id] }, { :selected => params[:group].to_i } %></span>
           <%= link_to 'Add a New Group', { :controller => 'groups', :action => 'new' }, :class => 'add' %>
         </li>
         <li>
           <%= f.label :location_id %>
-          <span class="select"><%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] } %></span>
+          <span class="select">
+            <%= f.select :location_id, Location.find(:all).map { |location| [location.name, location.id] }, { :selected => params[:location].to_i } %>
+            </span>
           <%= link_to 'Add a New Location', { :controller => 'locations', :action => 'new' }, :class => 'add' %>
         </li>
         <!-- <li class="multiple_fields">
@@ -37,7 +39,7 @@
         </li>
       </ol>
       <div class="buttons">
-        <%= content_tag(:button, 'Create', :class => 'grid_2') %> <%= link_to 'Cancel', events_path, :class => 'button passive grid_1' %>
+        <%= content_tag(:button, 'Create', :class => 'positive grid_2') %> <%= link_to 'Cancel', events_path, :class => 'button passive grid_1' %>
       </div>
     </fieldset>
   <% end %>

@@ -44,6 +44,7 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
+    cookies.delete :http_referer # get rid of that data so it doesn't cause any weirdness.
 
     respond_to do |format|
       if @event.save
@@ -102,13 +103,13 @@ class EventsController < ApplicationController
     
     get_upcoming_markers.each { |marker| @map.record_init @map.add_overlay(marker) } if event.nil?
     
-    @map.record_init @map.add_overlay(GMarker.new([event.location.latitude, event.location.longitude], :info_window => "<div><a href=\"#{url_for event.group}\">#{event.group.name}</a></div><div><a href=\"#{url_for event}\">#{event.location.name}</a></div><div>#{Event.pretty_time(event.start_time)}</div>")) if event
+    @map.record_init @map.add_overlay(GMarker.new([event.location.latitude, event.location.longitude], :info_window => "<div><a href=\"#{url_for event.group}\">#{event.group.name}</a></div><div><a href=\"#{url_for event}\">#{event.location.name}</a></div><div>#{Event.pretty_date(event.start_time)}</div>")) if event
   end
     
   def get_upcoming_markers
     markers = []
     Event.upcoming.each do |event|
-      markers << GMarker.new([event.location.latitude, event.location.longitude], :info_window => "<div><a href=\"#{url_for event.group}\">#{event.group.name}</a></div><div><a href=\"#{url_for event}\">#{event.location.name}</a></div><div>#{Event.pretty_time(event.start_time)}</div>")
+      markers << GMarker.new([event.location.latitude, event.location.longitude], :info_window => "<div><a href=\"#{url_for event.group}\">#{event.group.name}</a></div><div><a href=\"#{url_for event}\">#{event.location.name}</a></div><div>#{Event.pretty_date(event.start_time)}</div>")
     end
     markers
   end

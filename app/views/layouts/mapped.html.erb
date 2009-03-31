@@ -12,7 +12,7 @@
   <%= calendar_date_select_includes 'rubyholic' %>
   <%= yield :javascript_includes %>
 </head>
-<body class="<%= controller_name %> <%= action_name %>"> 
+<body class="<%= controller_name %>_<%= action_name %> mapped"> 
   <div id="wrapper">
     <%= yield %>
   </div>

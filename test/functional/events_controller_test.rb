@@ -39,6 +39,8 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should create event" do
+    @request.cookies[:http_referer] = CGI::Cookie.new('http_referer', '/events/new')
+
     assert_difference('Event.count') do
       post :create, :event => {
         :group_id => groups(:one).id,
@@ -48,15 +50,15 @@ class EventsControllerTest < ActionController::TestCase
         }
     end
 
+    assert_nil @response.cookies[:http_referer]
     assert_redirected_to event_path(assigns(:event))
   end
 
   # TODO: Need to mock out the Google Maps data
-  # TODO: Need to ge this test working again.
   test "should show event" do
-    # get :show, :id => events(:one).id
-    # 
-    # assert_response :success
+    get :show, :id => events(:one).id
+    
+    assert_response :success
   end
 
   test "should get edit" do
